@@ -1,0 +1,16 @@
+{
+  "name": "chiranjeevis-if",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "compile-ink": "npx inky story/main.ink",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "inkjs": "^2.2.0",
+    "vite": "^5.0.0"
+  }
+}
