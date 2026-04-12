@@ -156,7 +156,7 @@ The final hour of the night is absolute. In the distance, you hear the drums of 
 The survivors huddle together in the ravine. The Blood Moon of Kali hangs above like a weeping eye.
 
 * [Listen to the wind.]
-    *“Survival is not victory,”* the phantom of Parashurama whispers.
+    “Survival is not victory,” the phantom of Parashurama whispers.
     -> act1_encampment_choice
 
 === act1_encampment_choice ===

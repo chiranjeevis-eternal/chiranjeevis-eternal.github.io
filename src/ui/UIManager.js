@@ -29,20 +29,57 @@ export class UIManager {
   }
 
   initVFX() {
-    // Spawn initial particles (Ash/Dust)
-    for (let i = 0; i < 30; i++) {
-      this.createParticle();
+    // Spawn initial base ash
+    for (let i = 0; i < 40; i++) {
+        this.createParticle('ash');
     }
   }
 
-  createParticle() {
+  createParticle(type = 'ash') {
     const p = document.createElement('div');
-    p.className = 'particle';
+    p.className = `particle ${type}`;
+    
+    // Randomize properties for more "Fly Ash" feel
+    const size = type === 'ember' ? Math.random() * 4 + 2 : Math.random() * 3 + 1;
+    p.style.width = `${size}px`;
+    p.style.height = `${size}px`;
     p.style.left = `${Math.random() * 100}vw`;
-    p.style.animationDuration = `${10 + Math.random() * 15}s`;
-    p.style.animationDelay = `${Math.random() * 20}s`;
-    p.style.opacity = Math.random() * 0.5;
+    
+    const duration = type === 'ember' ? 8 + Math.random() * 5 : 15 + Math.random() * 10;
+    p.style.animationDuration = `${duration}s`;
+    p.style.animationDelay = `${Math.random() * 10}s`;
+    
+    // Parallax effect: further particles move slower and are smaller
+    if (size < 2) {
+        p.style.zIndex = 4;
+        p.style.filter = 'blur(1px)';
+        p.style.opacity = type === 'ember' ? 0.3 : 0.2;
+    } else {
+        p.style.zIndex = 6;
+        p.style.opacity = type === 'ember' ? 0.8 : 0.5;
+    }
+
     this.vfxLayer.appendChild(p);
+
+    // Clean up particles after they finish their animation cycle
+    // (In a real game loop we'd reuse them, but for DOM IF this is fine)
+    setTimeout(() => {
+        p.remove();
+        this.createParticle(type);
+    }, (duration + 10) * 1000);
+  }
+
+  spawnEmberBurst(count = 10) {
+    for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle ember';
+        p.style.width = '4px';
+        p.style.height = '4px';
+        p.style.left = `${40 + Math.random() * 20}vw`; // Burst near center
+        p.style.animationDuration = `${5 + Math.random() * 3}s`;
+        this.vfxLayer.appendChild(p);
+        setTimeout(() => p.remove(), 8000);
+    }
   }
 
   initModalHandlers() {
@@ -64,7 +101,7 @@ export class UIManager {
       <div class="modal-section">
         <h3>VISUAL</h3>
         <div class="setting-row"><span class="setting-label">Film Grain</span> <span>ON</span></div>
-        <div class="setting-row"><span class="setting-label">Ash Particles</span> <span>ON</span></div>
+        <div class="setting-row"><span class="setting-label">Fly Ash & Embers</span> <span>ON</span></div>
       </div>
     `;
   }
@@ -75,7 +112,7 @@ export class UIManager {
       <h2 class="modal-title">PILGRIM'S GUIDE</h2>
       <div class="modal-section">
         <h3>CURRENT STAGE: SHAMBHALA</h3>
-        <p>You have awakened in the sacred village of Shambhala. The disciples of Adharmendra have breached the sanctuary. You must find the Elder and make your way to the Mahendra Mountains.</p>
+        <p>You have awakened in the sacred village of Shambhala. The disciples of Adharmendra have breached the sanctuary.</p>
       </div>
       <div class="modal-section">
         <h3>WORLD MAP</h3>
@@ -109,7 +146,6 @@ export class UIManager {
     document.body.className = `yuga-${yuga}`;
     document.getElementById('yuga-indicator').textContent = `◉ ${yuga.toUpperCase()} YUGA`;
     
-    // Auto-trigger audio based on Yuga
     if (yuga === 'kali') {
       this.audio.playLoop('yuga', 'https://assets.mixkit.co/music/preview/mixkit-atmospheric-darkness-ambient-162.mp3');
     } else if (yuga === 'satya') {
@@ -123,7 +159,11 @@ export class UIManager {
       const newVal = stats[key];
       const oldVal = this.lastStats[key];
       const delta = newVal - oldVal;
-      if (delta !== 0) this.triggerStatAnimation(key, newVal, delta);
+      if (delta !== 0) {
+          this.triggerStatAnimation(key, newVal, delta);
+          // NEW: Spawn embers on stat surge!
+          if (Math.abs(delta) > 5) this.spawnEmberBurst(8);
+      }
     });
     this.lastStats = { ...stats };
   }
