@@ -62,4 +62,4 @@ Mahabali and his Legion of Patala join your company.
 # companion_joined: bali
 
 // ACT III COMPLETE - MOVING TO THE FINAL MARCH
--> act4_march_begins
+-> act4_march
