@@ -2,6 +2,8 @@ INCLUDE variables.ink
 INCLUDE prologue.ink
 INCLUDE act1_birth.ink
 INCLUDE act2_valley.ink
+INCLUDE act2_hanuman.ink
+INCLUDE act2_vyasa.ink
 INCLUDE visions.ink
 
 // Entry point of the game
