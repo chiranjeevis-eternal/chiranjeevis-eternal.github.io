@@ -1,9 +1,67 @@
 === act2_vibhishana_arrival ===
-# title: The Unlikely Advisor
+# title: The Shore of Shadows
+# yuga: kali
+# audio: waves_dark
+
+Your journey takes you away from the mountains toward the southern coast. Here, the ocean is not blue, but a churning, violet expanse of Adharma-tainted water. The waves crash with a sound like heavy iron chains.
+
+Standing on the black sand is a warrior in regal, albeit weathered, armor. He holds a shield that hums with a protective frequency.
+
+This is [Vibhishana](https://en.wikipedia.org/wiki/Vibhishana), the younger brother of Ravana, the king who chose Dharma over his own kin.
+
+"You have come at the eleventh hour, Avatar," he says, his voice regal and precise. "Lanka has risen again from the sea, but it is not the Lanka I knew. It is a fortress for Adharmendra's fleet."
+
+* [“We will take it back.”]
+    ~ karma += 10
+    "A direct assault would be suicide," he says, tracing a map in the sand. "We need a strategist, not just a soldier."
+    -> act2_vibhishana_test
+
+* [“How did you survive when your brother fell?”]
+    ~ dharma += 10
+    "By remembering that a king's first duty is to the truth, not his blood," he replies sadly. "I have outlived my world to ensure yours does not end in fire."
+    -> act2_vibhishana_test
+
+=== act2_vibhishana_test ===
+# title: The Council of the Wise
 # yuga: kali
 
-In the shadow of a crumbling fortress, you find the one who defected from darkness.
+The three other Chiranjeevis—Parashurama, Hanuman, and Vyasa—gather around the black sand map. The air is thick with the weight of ancient power.
 
-This is [Vibhishana](https://en.wikipedia.org/wiki/Vibhishana).
+"Adharmendra has a weapon," Vibhishana explains. "The *Vimana of Shadows*. It can rain violet fire from beyond the clouds. To get to him, we must cross the bridge of ghosts."
 
--> the_end
+* [Ask Vibhishana for a strategy.]
+    "We use the Adharma Fog as cover," he suggests. "We let them think we are a funeral procession, then strike from within the smoke."
+    ~ karma += 5
+    -> act2_vibhishana_choice
+
+* [Ask Hanuman for a direct strike.]
+    "I will be the wind that clears the sky," Hanuman roars. "Let them see our light before they see our blades!"
+    ~ dharma += 5
+    -> act2_vibhishana_choice
+
+=== act2_vibhishana_choice ===
+# title: The Strategist's Gambit
+# yuga: kali
+
+Vibhishana looks at you. "The path to the heart of the darkness requires a sacrifice. Not of life, but of pride. Will you lead from the front where they expect you, or will you move as a shadow?"
+
+* [“I will be the shadow that takes the heart.”]
+    ~ adharma += 5
+    ~ karma += 10
+    # stat_change: karma_up
+    Vibhishana nods. "The tactician's path. Rare for a hero, but necessary for a survivor."
+    -> act2_vibhishana_companion
+
+* [“I will be the sun that burns the fog.”]
+    ~ dharma += 20
+    # stat_change: dharma_up
+    "Then let the world witness the return of the Avatar," he says, bowing deeply. 
+    -> act2_vibhishana_companion
+
+=== act2_vibhishana_companion ===
+Vibhishana joins your company.
+~ comp_vibhishana = true
+# companion_joined: vibhishana
+
+// Act II Gathering Complete - Moving to the final three immortals or Act III transition
+-> act2_bali_arrival
