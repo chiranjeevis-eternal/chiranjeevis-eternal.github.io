@@ -61,3 +61,73 @@ Vyasa's voice echoes: "The war ended here, Kalki. But the consequences began. Ev
 === vision_vyasa_exit ===
 The battlefield dissolves into the birch-bark scrolls of the cave.
 -> act2_vyasa_choice
+
+=== vision_kripacharya_1 ===
+# title: The Last Sunset
+# yuga: dvapara
+
+The sky is the color of a fresh bruise—purple, red, and dying gold. You are standing in the middle of a field where there are more broken arrows than blades of grass.
+
+You see Kripacharya, his armor shattered, holding the body of a fallen friend. He is not weeping. He is staring at the horizon with a look of absolute, terrifying clarity.
+
+"They are all gone, Kalki," Kripacharya's voice whispers from the wind. "The heroes, the kings, the monsters. All that remains is the duty to the survivors. Do not let your pride burn the world to save your throne."
+
+* [“I will remember the widows of the world.”]
+    The red sun dips below the horizon, and the field turns to shadow.
+    -> vision_kripacharya_exit
+
+* [“The fire of the Yuga will cleanse the field.”]
+    The red sun dips below the horizon, and the field turns to shadow.
+    -> vision_kripacharya_exit
+
+=== vision_kripacharya_exit ===
+The field of bone vanishes. You are back in the mountain fortress.
+-> act3_kripacharya_choice
+
+=== vision_ashwatthama_1 ===
+# title: The Brahmastra Crisis
+# yuga: dvapara
+
+The world erupts into a light that is not white, but a sickly, radioactive green. You see Ashwatthama, his eyes wide with a madness born of grief, holding a blade of grass that has been transformed into a weapon of absolute destruction.
+
+The Brahmasira. The weapon that cannot be recalled.
+
+"I can't take it back!" he screams in the memory. "I won't take it back!"
+
+You see the vision of the unborn child in the womb, the target of his malice. You see the Krishna figure intervening with a curse that will last three thousand years.
+
+* [“I see the pain behind the crime.”]
+    The green fire dissolves into the red cold of the Mahendra passes.
+    -> vision_ashwatthama_exit
+
+* [“The crime is too great for pity.”]
+    The green fire dissolves into the red cold of the Mahendra passes.
+    -> vision_ashwatthama_exit
+
+=== vision_ashwatthama_exit ===
+The vision of fire fades. The red wound in Ashwatthama's forehead still pulses.
+-> act3_ashwatthama_choice
+
+=== vision_bali_1 ===
+# title: The Three Steps
+# yuga: satya
+
+The world is made of ivory, gold, and the purest water you have ever seen. You are at the court of the young King Bali. He has conquered everything, and yet there is no blood on his walls.
+
+A small boy, a dwarf with an umbrella—Vamana—stands before him.
+
+"You have given everything I asked for, Bali," the boy says, his voice like a gentle gong. "Two steps have covered the earth and the heavens. Where should I put the third?"
+
+You see Bali, at the height of his power, kneeling. He does not look defeated. He looks free. He offers his own head as the third step.
+
+* [“The humility of a king is his true crown.”]
+    The ivory world dissolves into the grey soot of the Chasm.
+    -> vision_bali_exit
+
+* [“A king should never kneel, even to a god.”]
+    The ivory world dissolves into the grey soot of the Chasm.
+    -> vision_bali_exit
+
+=== vision_bali_exit ===
+The vision of the Golden Age fades. Bali stands before you in the Kali Yuga.
+-> act3_bali_choice

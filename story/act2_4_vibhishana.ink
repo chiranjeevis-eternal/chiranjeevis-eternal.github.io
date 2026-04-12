@@ -63,5 +63,26 @@ Vibhishana joins your company.
 ~ comp_vibhishana = true
 # companion_joined: vibhishana
 
-// Act II Gathering Complete - Moving to the final three immortals or Act III transition
--> act2_bali_arrival
+# title: The Tactical Crossroads
+# yuga: kali
+
+Vibhishana spreads a map of the continent before you. Two violet sigils pulse on the parchment.
+
+"Kali is a hydra," the King of Lanka explains. "To reach him, we must first cut off his hands. We have two targets within reach."
+
+* [Strike at the Merchant Guilds to the East (LOBHA)]
+    "Greed is the fuel of his war machine," Vibhishana nods. "If we break the guilds, his soldiers will starve."
+    -> act2_branch_lobha_start
+
+* [Expose the False Temples to the North (MOHA)]
+    "Delusion is his strongest shield," Vyasa interjects. "Expose the lies, and the people will no longer fight for him."
+    -> act2_branch_moha_start
+
+=== act2_branch_lobha_start ===
+The decision is made. Your company turns East toward the gilded spires of the trade cities.
+-> act3_kripacharya_arrival
+
+=== act2_branch_moha_start ===
+The decision is made. Your company turns North toward the silent, shadowed temples.
+-> act3_kripacharya_arrival
+
