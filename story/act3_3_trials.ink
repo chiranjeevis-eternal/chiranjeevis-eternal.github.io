@@ -115,7 +115,7 @@ The fire in the camp suddenly turns a cold, electric violet. The shadows of the 
 
 A voice—calm, deep, and sounding like a million years of silk rubbing against stone—resonates in your mind. It is not Adharmendra. It is [Kali](https://en.wikipedia.org/wiki/Kali_(demon)) himself.
 
-*"You are a beautiful tragedy, Kalki. You gather ghosts to fight a shadow. But ask yourself: When you strike me, what comes after? A world of rules? A world of boredom? I am the desire that makes the world move. You are the silence that wants it to stop."*
+\*"You are a beautiful tragedy, Kalki. You gather ghosts to fight a shadow. But ask yourself: When you strike me, what comes after? A world of rules? A world of boredom? I am the desire that makes the world move. You are the silence that wants it to stop."*
 
 * [“I am the truth that makes the world clean.”]
     ~ dharma += 20
