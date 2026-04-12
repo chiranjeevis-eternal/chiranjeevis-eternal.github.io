@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chiranjeevis Eternal: The Age of Kali</title>
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="./assets/index-BVGThlsD.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CWlmiMtv.css">
+  </head>
+  <body>
+    <!-- Landing Page / Loading Context -->
+    <div id="landing-page">
+      <div id="landing-content">
+        <h1 class="landing-title">CHIRANJEEVIS ETERNAL</h1>
+        <h2 class="landing-subtitle">THE AGE OF KALI</h2>
+        
+        <div class="landing-context">
+          <p>The Age of Iron is choking on its own ash.</p>
+          <p>The Bull of Dharma, which once stood proud across the earth, now balances precariously upon a single fractured leg. The world has forgotten its sacred rites. Kings have become thieves, and the rivers run sluggish with the rot of a thousand false promises.</p>
+          <p>For millennia, seven immortals—the Chiranjeevis—have walked this decaying earth in silence. They carry the burdens of fallen empires and the echoes of avatars long gone, bound by an ancient oath to wait for the final turning of the wheel.</p>
+          <p>Now, as the Kali Yuga reaches its suffocating zenith, the wheel groans. In the hidden sanctuary of Shambhala, the tenth and final Avatar opens his eyes.</p>
+          <p>You are Kalki.</p>
+          <p>The end of the age is not a destination. It is a blade waiting to be drawn.</p>
+        </div>
+
+        <div class="landing-actions">
+          <button id="begin-btn">ENTER THE YUGA</button>
+          <button id="resume-btn" class="hidden">CONTINUE PILGRIMAGE</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- App Container -->
+    <div id="game-container" class="yuga-kali">
+        <div id="vfx-layer"></div>
+        <div id="bg-layer"></div>
+        <div class="film-grain"></div>
+      
+      <!-- Top Header Strip -->
+      <header id="top-bar">
+        <div id="scene-title">The Age of Kali</div>
+        <div id="stats-strip">
+          <div class="stat-container">
+            <div class="stat-meta"><span class="stat-label">KARMA</span> <span id="stat-karma-val">50</span></div>
+            <div class="progress-bg"><div id="bar-karma" class="progress-fill gold" style="width: 50%"></div></div>
+          </div>
+          <div class="stat-container">
+            <div class="stat-meta"><span class="stat-label">DHARMA</span> <span id="stat-dharma-val">0</span></div>
+            <div class="progress-bg"><div id="bar-dharma" class="progress-fill saffron" style="width: 0%"></div></div>
+          </div>
+          <div class="stat-container">
+            <div class="stat-meta"><span class="stat-label">ADHARMA</span> <span id="stat-adharma-val">10</span></div>
+            <div class="progress-bg"><div id="bar-adharma" class="progress-fill violet" style="width: 10%"></div></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Layout: 3 Columns Desktop / Stacked Mobile -->
+      <main id="layout-grid">
+        
+        <!-- Left: Companion Panel -->
+        <aside id="companion-panel">
+          <div id="companions-list">
+            <!-- Injected via UI Manager -->
+          </div>
+        </aside>
+
+        <!-- Center: Story Prose -->
+        <section id="prose-column">
+          <div id="story-content">
+            <!-- Text reveals here -->
+          </div>
+          <div id="choices-container">
+            <!-- Action buttons injected here -->
+          </div>
+        </section>
+
+        <!-- Right: Empty / Map / Secondary UI -->
+        <aside id="secondary-panel">
+        </aside>
+
+      </main>
+
+      <!-- Footer / Yuga Indicator -->
+      <!-- Sub-Panels / Modals -->
+    <div id="modal-overlay" class="hidden-fade">
+        <div id="modal-content">
+            <button id="modal-close">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <footer id="footer-bar">
+        <div id="footer-left">
+            <span id="yuga-indicator">◉ KALI YUGA</span>
+        </div>
+        <div id="footer-right">
+            <button id="help-btn" class="footer-icon-btn">❔ HELP</button>
+            <button id="settings-btn" class="footer-icon-btn">⚙️ SETTINGS</button>
+        </div>
+    </footer>
+</div>
+
+    <!-- Memory Vision Full Screen Overlay -->
+    <div id="memory-vision-overlay" class="hidden"></div>
+
+  </body>
+</html>
