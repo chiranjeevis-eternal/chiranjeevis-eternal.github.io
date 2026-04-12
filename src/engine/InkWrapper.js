@@ -69,6 +69,7 @@ export class InkWrapper {
       const [key, value] = tag.split(':').map(s => s.trim());
       if (key === 'title') this.ui.setTitle(value);
       if (key === 'yuga') this.ui.setYugaTheme(value);
+      if (key === 'background') this.ui.setBackground(value);
     });
   }
 

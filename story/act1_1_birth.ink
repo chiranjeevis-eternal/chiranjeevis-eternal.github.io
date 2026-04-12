@@ -38,6 +38,11 @@ This is **Devadatta**.
     ~ karma += 5
     -> act1_screams
 
+=== act1_birth_ceremony ===
+# title: The Ceremony of the Scythe
+# yuga: kali
+# background: act1
+
 === act1_screams ===
 # title: The Screams of Shambhala
 # yuga: kali

@@ -1,6 +1,7 @@
 === act3_trial_lobha ===
 # title: The Trial of Greed
 # yuga: kali
+# background: act3
 # audio: merchant_drums
 
 Your company reaches the Merchant City of Gilded Spires. The air smells of spice, silk, and the heavy, sweet scent of burning gold. The people here walk with their heads down, their shadows long and violet—a sure sign of the Adharma Fog.

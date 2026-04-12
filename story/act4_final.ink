@@ -1,6 +1,7 @@
 === act4_march_begins ===
 # title: The March on the Void
 # yuga: kali
+# background: act4
 # audio: thunder_march
 
 The time for words is over. You lead the Company of Seven and the Army of the Chasm South, toward the obsidian fortress of Adharmendra. The sky above is no longer iron grey; it is black, lit by the periodic, violet flash of the *Vimana of Shadows*.
@@ -77,6 +78,7 @@ Finally, you stand before the inner sanctum. Adharmendra waits for you. He is no
 === act4_kali_presence ===
 # title: The Heart of the Age: Kali
 # yuga: kali
+# background: act5
 # audio: absolute_silence
 
 The inner sanctum is empty. No throne, no army. Only a single, black mirror that stretches from the floor to the ceiling.
@@ -92,6 +94,7 @@ He offers you the handle of his own violet blade.
 "Strike me, and you become the judge, the jury, and the executioner. You become me. Or... you can stop. We can rule a world of comfort together. No more Yugas. No more hunger. Just the soft, violet peace of the Kali Yuga forever."
 
 * [Strike him with the Truth of the Ages.]
+    # background: kalki_strike
     -> ending_resolution
 
 * [Accept the offer of peace.]

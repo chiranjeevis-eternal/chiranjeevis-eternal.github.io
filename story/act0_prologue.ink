@@ -1,6 +1,7 @@
-=== prologue_p1 ===
+=== prologue_start ===
 # title: The World Without Dharma
 # yuga: kali
+# background: act0
 
 The sky above the hidden valley of Shambhala is not blue. It has not been blue for a century. It is the colour of bruised iron, choked by the invisible weight of a world decaying beyond the mountains. The great tectonic spine of the Himalayas, which has shielded this sanctuary since the dawn of the Treta Yuga, offers no protection against the creeping rot of the age.
 

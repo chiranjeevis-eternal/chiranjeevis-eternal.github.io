@@ -1,6 +1,7 @@
 === act2_valley_entrance ===
 # title: The Valley of Ash
 # yuga: kali
+# background: act2
 # audio: valley_wind
 
 You lead the survivors through the narrow throat of the ravine. On the other side, the world opens up into a vast, grey wound in the earth: **The Valley of Ash**.

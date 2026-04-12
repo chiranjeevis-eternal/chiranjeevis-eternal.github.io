@@ -8,6 +8,7 @@ export class UIManager {
     this.modalOverlay = document.getElementById('modal-overlay');
     this.modalBody = document.getElementById('modal-body');
     this.vfxLayer = document.getElementById('vfx-layer');
+    this.bgLayer = document.getElementById('bg-layer');
     this.audio = new AudioEngine();
     this.onChoiceSelected = null;
     
@@ -148,6 +149,18 @@ export class UIManager {
       satya: 'https://assets.mixkit.co/music/preview/mixkit-ethereal-meditation-ambient-563.mp3'
     };
     if (colors[yuga]) this.audio.playLoop('yuga', colors[yuga]);
+  }
+
+  setBackground(bgName) {
+    if (!bgName) return;
+    const url = `assets/backgrounds/${bgName}.png`;
+    
+    // Smooth transition logic
+    this.bgLayer.classList.add('fading');
+    setTimeout(() => {
+        this.bgLayer.style.backgroundImage = `url(${url})`;
+        this.bgLayer.classList.remove('fading');
+    }, 1500);
   }
 
   updateStats(stats) {

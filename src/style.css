@@ -611,6 +611,28 @@ body {
 
 #modal-close:hover { color: var(--c-gold); }
 
+#bg-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 3s ease-in-out, opacity 3s ease-in-out;
+    filter: brightness(0.4) contrast(1.1) saturate(0.8);
+}
+
+#bg-layer.fading {
+    opacity: 0;
+}
+
+#vfx-layer {
+    pointer-events: none;
+}
+
 #modal-body {
   padding: 3rem;
 }
