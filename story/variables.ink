@@ -7,7 +7,7 @@ VAR yuga = "kali"
 // --- COMPANION TRACKERS ---
 VAR comp_parashurama = false
 VAR comp_hanuman = false
-VAR comp_vibishana = false
+VAR comp_vibhishana = false
 VAR comp_vyasa = false
 VAR comp_bali = false
 VAR comp_kripacharya = false
