@@ -19,6 +19,8 @@ This is [Vibhishana](https://en.wikipedia.org/wiki/Vibhishana), the younger brot
 * [“How did you survive when your brother fell?”]
     ~ dharma += 10
     "By remembering that a king's first duty is to the truth, not his blood," he replies sadly. "I have outlived my world to ensure yours does not end in fire."
+    -> act2_vibhishana_test
+
 === act2_vibhishana_test ===
 # title: The Council of the Wise
 # yuga: kali
