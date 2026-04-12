@@ -66,10 +66,31 @@ Vibhishana checks the map. "He is right. The encryption on our scrolls has been 
     -> act3_trial_betrayal_confrontation
 
 === act3_trial_betrayal_confrontation ===
-The companion steps forward. (The story chooses based on your previous treatment of them).
+{
+    - aff_parashurama < aff_hanuman && aff_parashurama < aff_vibhishana && aff_parashurama < aff_vyasa && aff_parashurama < aff_kripacharya && aff_parashurama < aff_ashwatthama:
+        -> act3_betrayer_parashurama
+    - aff_ashwatthama < aff_hanuman && aff_ashwatthama < aff_vibhishana:
+        -> act3_betrayer_ashwatthama
+    - else:
+        -> act3_betrayer_vibhishana // Default to Vibhishana as the strategist who doubts
+}
 
-"It was not for gold," they whisper, their voice breaking. "Mada showed me the future. He showed me the city burning even if you win. He promised... he promised a peace that didn't require more blood."
+=== act3_betrayer_parashurama ===
+Parashurama steps forward, his axe heavy in his hands. He does not look at you.
+"Mada showed me the future, Kalki. He showed me the city burning even if you win. He promised a peace that didn't require more blood. I have seen enough blood."
+-> act3_betrayal_choice
 
+=== act3_betrayer_ashwatthama ===
+Ashwatthama steps forward, the gem in his forehead weeping.
+"I have been cursed for three thousand years, Kalki. Mada offered to take it away. He offered to let me finally... die."
+-> act3_betrayal_choice
+
+=== act3_betrayer_vibhishana ===
+Vibhishana steps forward, his crystalline shield dim.
+"My logic was my shield, Kalki. But Mada showed me the tactical impossibility of our win. I was... trying to negotiate a surrender that would save the villagers."
+-> act3_betrayal_choice
+
+=== act3_betrayal_choice ===
 * [“Dharma is not a bargain with a demon.”]
     ~ dharma += 15
     # stat_change: dharma_up
@@ -82,6 +103,7 @@ The companion steps forward. (The story chooses based on your previous treatment
     # stat_change: karma_up
     You offer your hand. The betrayal is forgiven, but the trust has a scar that will never fully heal.
     -> act3_trial_kali_voice
+
 
 === act3_trial_kali_voice ===
 # title: The Voice of Kali

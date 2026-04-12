@@ -146,7 +146,9 @@ export class UIManager {
     document.getElementById('yuga-indicator').textContent = `◉ ${yuga.toUpperCase()} YUGA`;
     const colors = {
       kali: 'https://assets.mixkit.co/music/preview/mixkit-atmospheric-darkness-ambient-162.mp3',
-      satya: 'https://assets.mixkit.co/music/preview/mixkit-ethereal-meditation-ambient-563.mp3'
+      satya: 'https://assets.mixkit.co/music/preview/mixkit-ethereal-meditation-ambient-563.mp3',
+      treta: 'https://assets.mixkit.co/music/preview/mixkit-ethereal-fairy-background-wave-116.mp3',
+      dvapara: 'https://assets.mixkit.co/music/preview/mixkit-solemn-and-sorrowful-cinematic-strings-535.mp3'
     };
     if (colors[yuga]) this.audio.playLoop('yuga', colors[yuga]);
   }

@@ -19,9 +19,17 @@ This is [Vibhishana](https://en.wikipedia.org/wiki/Vibhishana), the younger brot
 * [“How did you survive when your brother fell?”]
     ~ dharma += 10
     "By remembering that a king's first duty is to the truth, not his blood," he replies sadly. "I have outlived my world to ensure yours does not end in fire."
-    -> act2_vibhishana_test
-
 === act2_vibhishana_test ===
+# title: The Council of the Wise
+# yuga: kali
+
+Vibhishana stops and looks at the violet waves. "Do you see the ghosts of Lanka, Kalki? My past is a bridge made of ash."
+
+* [Enter the memory.]
+    The black sand dissolves into gold and screams.
+    -> vision_vibhishana_1
+
+=== act2_vibhishana_strategy ===
 # title: The Council of the Wise
 # yuga: kali
 
@@ -80,9 +88,9 @@ Vibhishana spreads a map of the continent before you. Two violet sigils pulse on
 
 === act2_branch_lobha_start ===
 The decision is made. Your company turns East toward the gilded spires of the trade cities.
--> act3_kripacharya_arrival
+-> act3_trial_lobha
 
 === act2_branch_moha_start ===
 The decision is made. Your company turns North toward the silent, shadowed temples.
--> act3_kripacharya_arrival
+-> act3_trial_moha
 

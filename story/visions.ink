@@ -32,13 +32,43 @@ A shape leaps across the sky, silhouetted against a moon that looks too large. I
 
 "See, Kalki," a younger Hanuman whispers beside you. "We burned the city of the Demon King not out of hate, but out of necessity. To some, I was a god. To others, I was a monster. You will be both."
 
-* [“How did you carry the fire without burning your soul?”]
-    "I did not carry it for myself," he says. "I carried it for my Lord. Find who you carry the fire for, and it will never burn you."
+* [“Memory is a chain that prevents moving forward.”]
+    ~ aff_hanuman -= 10
+    The golden light of the Treta Yuga fades.
+    -> vision_hanuman_exit
+
+* [“Some names are meant to be eternal.”]
+    ~ aff_hanuman += 10
+    The golden light of the Treta Yuga fades.
     -> vision_hanuman_exit
 
 === vision_hanuman_exit ===
 The flames vanish. You are back in the cold temple with the gold-furred monk.
 -> act2_hanuman_choice
+
+=== vision_vibhishana_1 ===
+# title: The Burning Bridge
+# yuga: treta
+
+The air is thick with the smell of seawater, ozone, and the dying screams of a golden civilization. You are on the ramparts of a city of pure gold—Lanka. Below, an army of monkeys is swarming the walls.
+
+You see a younger Vibhishana. He is weeping as he watches his brother, the ten-headed king, fall from the sky.
+
+"The bridge of family is burning," his younger self whispers. "I have betrayed my kin to save the truth. Tell me, future king... was it worth the sorrow?"
+
+* [“Loyalty to Rama was the only path to peace.”]
+    ~ aff_vibhishana += 10
+    The golden city collapses into the black sands of the coast.
+    -> vision_vibhishana_exit
+
+* [“To strike your own blood is a scar that never heals.”]
+    ~ aff_vibhishana -= 10
+    The golden city collapses into the black sands of the coast.
+    -> vision_vibhishana_exit
+
+=== vision_vibhishana_exit ===
+The vision of ancient Lanka fades. Vibhishana stands before you in the present darkness.
+-> act2_vibhishana_choice
 
 === vision_vyasa_1 ===
 # title: The Field of Dharma
@@ -50,12 +80,14 @@ You see a warrior with a bow, his head bowed in grief. Beside him, a charioteer 
 
 Vyasa's voice echoes: "The war ended here, Kalki. But the consequences began. Every line I wrote was a tombstone for a friend. Will you write tombstones, or a testament?"
 
-* [“I want to write a testament of peace.”]
-    The charioteer seems to look directly at you for a split second. The vision tilts.
+* [“A script needs an ending, no matter how cruel.”]
+    ~ aff_vyasa -= 10
+    The ink of the vision washes away into the rain.
     -> vision_vyasa_exit
 
-* [“I will finish what they started.”]
-    The ground trembles as the first conch sounds. The vision tilts.
+* [“The script is only a guide. The ink is still wet.”]
+    ~ aff_vyasa += 10
+    The ink of the vision washes away into the rain.
     -> vision_vyasa_exit
 
 === vision_vyasa_exit ===
@@ -72,12 +104,14 @@ You see Kripacharya, his armor shattered, holding the body of a fallen friend. H
 
 "They are all gone, Kalki," Kripacharya's voice whispers from the wind. "The heroes, the kings, the monsters. All that remains is the duty to the survivors. Do not let your pride burn the world to save your throne."
 
-* [“I will remember the widows of the world.”]
-    The red sun dips below the horizon, and the field turns to shadow.
+* [“Loyalty to a lie is no virtue.”]
+    ~ aff_kripacharya -= 10
+    The golden sunset of Kurukshetra is replaced by the grey mist.
     -> vision_kripacharya_exit
 
-* [“The fire of the Yuga will cleanse the field.”]
-    The red sun dips below the horizon, and the field turns to shadow.
+* [“Teachers are the anchors of an age, even a failing one.”]
+    ~ aff_kripacharya += 10
+    The golden sunset of Kurukshetra is replaced by the grey mist.
     -> vision_kripacharya_exit
 
 === vision_kripacharya_exit ===
@@ -96,12 +130,14 @@ The Brahmasira. The weapon that cannot be recalled.
 
 You see the vision of the unborn child in the womb, the target of his malice. You see the Krishna figure intervening with a curse that will last three thousand years.
 
-* [“I see the pain behind the crime.”]
-    The green fire dissolves into the red cold of the Mahendra passes.
+* [“Justice should be absolute, not personal.”]
+    ~ aff_parashurama -= 10
+    The vision of blood dissolves into the grey soot of the Valley.
     -> vision_ashwatthama_exit
 
-* [“The crime is too great for pity.”]
-    The green fire dissolves into the red cold of the Mahendra passes.
+* [“The weight of the axe was your dharma.”]
+    ~ aff_parashurama += 10
+    The vision of blood dissolves into the grey soot of the Valley.
     -> vision_ashwatthama_exit
 
 === vision_ashwatthama_exit ===
@@ -121,10 +157,12 @@ A small boy, a dwarf with an umbrella—Vamana—stands before him.
 You see Bali, at the height of his power, kneeling. He does not look defeated. He looks free. He offers his own head as the third step.
 
 * [“The humility of a king is his true crown.”]
+    ~ aff_bali += 10
     The ivory world dissolves into the grey soot of the Chasm.
     -> vision_bali_exit
 
 * [“A king should never kneel, even to a god.”]
+    ~ aff_bali -= 10
     The ivory world dissolves into the grey soot of the Chasm.
     -> vision_bali_exit
 

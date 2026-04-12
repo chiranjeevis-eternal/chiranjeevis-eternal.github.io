@@ -10,12 +10,18 @@ The Adharma Fog is so thick here that you can barely see the person beside you. 
 
 * [Lead from the front.]
     ~ dharma += 10
+    {dharma > 100:
+        Vyasa watches you, his scrolls fluttering. "You do not lead as a man, Kalki. You lead as the Age itself. The light is blinding."
+    }
     You draw your iron blade—now glowing with a steady, white heat. The fog withers before you.
     -> act4_koka_gate
 
 * [Move as a shadow within the army.]
     ~ adharma += 5
     ~ karma += 10
+    {karma > 100:
+        Vibhishana nods, his shield humming. "Strength is a silent river, Avatar. We move as the shadow of the sword that is yet to fall."
+    }
     You stay in the center of the formation, letting the immortals take the initial weight of the darkness.
     -> act4_koka_gate
 
