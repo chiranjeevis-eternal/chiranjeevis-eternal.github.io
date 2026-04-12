@@ -89,9 +89,41 @@ The first battle of the Age of Kali is over, but the war has only just begun. Yo
 -> act1_encampment
 
 === act1_encampment ===
-# title: The Encampment
+# title: Under the Crimson Moon
 # yuga: kali
 
-You must gather those who remain and find a way to the Mahendra mountains. The path will be long, and the disciples of Adharmendra will be searching for the light you have just unleashed.
+The village of Shambhala is a smudge of orange fire against the darkening hills. You have gathered the survivors—barely two dozen—in a shallow Ravine guarded by the ancient stone teeth of the lower Himalayas. 
+
+The moon that rises tonight is not the pale orb you remember from childhood. It is bloated, bruised, and weeping a deep, rusty red—the **Blood Moon of Kali**. It casts an unnatural light over the wounded villagers, making their blood look like black oil.
+
+You sit apart from the others, the heavy iron blade resting across your knees. The golden glow on your palms has faded to a faint shimmer, but the heat remains.
+
+// Reactive Voice: Parashurama
+* [Close your eyes and listen to the wind.]
+    The wind doesn't carry the scent of pine anymore. It carries a voice—low, grinding, and familiar. 
+    *“The first blood is always the hardest to wash away, Kalki,”* the phantom of [Parashurama](https://en.wikipedia.org/wiki/Parshurama) whispers in the cavern of your mind. *“But do not mistake survival for victory. The disciples of Kali are like hounds—they have caught your scent. They will not stop until the world is silent.”*
+    -> act1_encampment_choice
+
+=== act1_encampment_choice ===
+A young woman, her face smudged with soot but her eyes clear and fierce, approaches you. She is Vanya, the daughter of the Elder you saved (or failed to save).
+
+"The people are frightened," she says, her voice steady despite the trembling of her hands. "They say the stars have gone dark. They look to you, Kalki. They saw what you did in the square."
+
++ [Reassure them: "We will reach the Mahendra Peaks together."]
+    ~ karma += 10
+    ~ dharma += 5
+    "Shambhala is gone, but the spirit of the village lives in us," you say, your voice carrying further than you intended. "The mountain peaks have shielded us for an age. Parashurama waits there. We go to find the strength to take back our home."
+    -> act1_valley_entry
+
++ [Warn them: "The journey will be brutal. Prepare for war."]
+    ~ adharma += 5
+    ~ karma += 5
+    "The soldiers you saw were only scouts," you state coldly. "The darkness is spreading, and it will not spare those who are weak. If you wish to survive the trek through the Valley of Ash, you must learn to carry more than just your memories. You must learn to carry steel."
+    -> act1_ valley_entry
+
+=== act1_valley_entry ===
+As the camp settles into a fitful, terrified sleep, you look toward the horizon. The path through the **Valley of Ash** is the only way to the Mahendra Peaks. It is a wasteland where the Adharma Fog is said to be so thick it can steal a man's sight—and his soul.
+
+But you have no choice. The wheel has turned.
 
 -> the_end

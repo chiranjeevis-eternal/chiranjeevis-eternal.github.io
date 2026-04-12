@@ -1,3 +1,5 @@
+import { AudioEngine } from '../audio/AudioEngine.js';
+
 export class UIManager {
   constructor() {
     this.contentDiv = document.getElementById('story-content');
@@ -5,6 +7,8 @@ export class UIManager {
     this.companionsDiv = document.getElementById('companions-list');
     this.modalOverlay = document.getElementById('modal-overlay');
     this.modalBody = document.getElementById('modal-body');
+    this.vfxLayer = document.getElementById('vfx-layer');
+    this.audio = new AudioEngine();
     this.onChoiceSelected = null;
     
     this.lastStats = { karma: 50, dharma: 0, adharma: 10 };
@@ -21,6 +25,24 @@ export class UIManager {
     
     this.initCompanionPanel();
     this.initModalHandlers();
+    this.initVFX();
+  }
+
+  initVFX() {
+    // Spawn initial particles (Ash/Dust)
+    for (let i = 0; i < 30; i++) {
+      this.createParticle();
+    }
+  }
+
+  createParticle() {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = `${Math.random() * 100}vw`;
+    p.style.animationDuration = `${10 + Math.random() * 15}s`;
+    p.style.animationDelay = `${Math.random() * 20}s`;
+    p.style.opacity = Math.random() * 0.5;
+    this.vfxLayer.appendChild(p);
   }
 
   initModalHandlers() {
@@ -37,17 +59,12 @@ export class UIManager {
       <div class="modal-section">
         <h3>AUDIO</h3>
         <div class="setting-row"><span class="setting-label">Master Volume</span> <span>[||||||||--]</span></div>
-        <div class="setting-row"><span class="setting-label">Narration Chants</span> <span>ON</span></div>
+        <div class="setting-row"><span class="setting-label">Atmosphere Loops</span> <span>ON</span></div>
       </div>
       <div class="modal-section">
         <h3>VISUAL</h3>
-        <div class="setting-row"><span class="setting-label">Font Size</span> <span>NORMAL</span></div>
-        <div class="setting-row"><span class="setting-label">High Contrast</span> <span>OFF</span></div>
-      </div>
-      <div class="modal-section">
-        <h3>GAME</h3>
-        <div class="setting-row"><span class="setting-label">Text Speed</span> <span>80ms</span></div>
-        <div class="setting-row"><span class="setting-label">Auto-Save</span> <span>ACTIVE</span></div>
+        <div class="setting-row"><span class="setting-label">Film Grain</span> <span>ON</span></div>
+        <div class="setting-row"><span class="setting-label">Ash Particles</span> <span>ON</span></div>
       </div>
     `;
   }
@@ -67,12 +84,6 @@ export class UIManager {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[?? LANKA ??]
         </div>
-      </div>
-      <div class="modal-section">
-        <h3>DHARMIC PATHS</h3>
-        <div class="help-guide-entry"><span class="help-guide-title">KARMA:</span> Your soul's vibration. High karma unlocks divine interventions.</div>
-        <div class="help-guide-entry"><span class="help-guide-title">DHARMA:</span> Your alignment with the cosmic order. Grows as you find Chiranjeevis.</div>
-        <div class="help-guide-entry"><span class="help-guide-title">ADHARMA:</span> The corruption within. High adharma darkens the world and your choices.</div>
       </div>
     `;
   }
@@ -97,6 +108,13 @@ export class UIManager {
   setYugaTheme(yuga) {
     document.body.className = `yuga-${yuga}`;
     document.getElementById('yuga-indicator').textContent = `◉ ${yuga.toUpperCase()} YUGA`;
+    
+    // Auto-trigger audio based on Yuga
+    if (yuga === 'kali') {
+      this.audio.playLoop('yuga', 'https://assets.mixkit.co/music/preview/mixkit-atmospheric-darkness-ambient-162.mp3');
+    } else if (yuga === 'satya') {
+      this.audio.playLoop('yuga', 'https://assets.mixkit.co/music/preview/mixkit-ethereal-meditation-ambient-563.mp3');
+    }
   }
 
   updateStats(stats) {

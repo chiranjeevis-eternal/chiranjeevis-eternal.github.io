@@ -141,6 +141,43 @@ body {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  position: relative;
+}
+
+/* --- VFX Overlay --- */
+#vfx-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5; /* Behind UI, above background */
+  overflow: hidden;
+  opacity: 0.4;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  animation: floatParticle 15s linear infinite;
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(110vh) translateX(0) scale(1); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(-10vh) translateX(100px) scale(0.5); opacity: 0; }
+}
+
+.film-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  pointer-events: none;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/1k_Static_Grain.png/1024px-1k_Static_Grain.png');
+  opacity: 0.05;
+  mix-blend-mode: overlay;
 }
 
 #top-bar {
