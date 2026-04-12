@@ -37,10 +37,10 @@ You watch an ember drift lazily upward, catching the anemic low light of the mor
     ~ karma += 5
     ~ prologue_village_approach = "sprint"
     There is no time for complex strategy; there is only immediate duty. You abandon the safety of the treeline and sprint down the rocky incline. Your boots kick up clouds of dry dust. Your mind clears of all philosophical burdens, focusing entirely on the geometry of the descent and the position of the smoke. You will throw yourself between the swords of the invaders and the fragile bodies of the elders who raised you. 
-    -> vision_parashurama_1
+    -> act1_house
 
 + [Wait in the shadows. Keep the high ground.]
     ~ adharma += 5
     ~ prologue_village_approach = "shadows"
     Caution is the armor of the survivor. To rush in blindly is to invite an arrow into the throat. You step backward into the thicket, letting the darkness of the ancient pines swallow you completely. If Adharmendra's soldiers want to conquer Shambhala, they will eventually have to secure the high ground where you stand. You regulate your breathing, slow your heart rate, and wait for the enemy to break formation and come to you.
-    -> vision_parashurama_1
+    -> act1_house

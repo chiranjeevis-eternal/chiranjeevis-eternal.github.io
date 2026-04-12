@@ -28,5 +28,5 @@ Parashurama's burning eyes linger in your vision for a fraction of a second long
 
 The long, bloody work of the Tenth Avatar has finally commenced.
 
-// Transition to Act I proper
--> act1_screams
+// Transition back to Act II
+-> act2_parashu_choice

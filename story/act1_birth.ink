@@ -1,129 +1,173 @@
+=== act1_house ===
+# title: The Father's House
+# yuga: kali
+
+You are twelve years old when your father, Vishnuyasha, takes you into the inner sanctum of the house. The air here smells of old parchment and the heavy, sweet scent of Tulsi.
+
+"Kalki," he says, his voice a low vibration in the small room. He holds a scroll that looks older than the village itself. "The world outside Shambhala is not the world of the Vedas anymore. It is a world of shadows, where kings have forgotten they are servants of Dharma."
+
+He looks at you with a weight in his eyes that no child should have to carry. "You were born with a mark on your palm. Do not hide it. But do not flaunt it."
+
+* [Ask about the mark.]
+    "It is the Srivatsa," he whispers. "The sign that you are not just my son, but a vessel for the turning of the age. Parashurama will come for you when the first black snow falls. Until then, you must be a student of the heart."
+    ~ dharma += 5
+    -> act1_horse
+
+* [Ask about the kings and the shadows.]
+    "They call him Adharmendra," Vishnuyasha says, his hands trembling slightly. "A warlord who has found a way to weaponize the very rot of the Kali Yuga. He burns those who do not bow. We are safe here... for now."
+    ~ karma += 5
+    -> act1_horse
+
+=== act1_horse ===
+# title: The Horse at Dawn
+# yuga: kali
+
+Years pass in a blur of scripture and woodcutting. One morning, just as the sun is a bruised purple slit on the horizon, you find a white horse at the edge of the forest. 
+
+He is magnificent—built of muscle and moonlight, with eyes that seem to hold the clarity of a mountain lake. He does not flee. He simply waits.
+
+This is **Devadatta**.
+
+* [Approach him slowly, hand outstretched.]
+    He allows you to touch his muzzle. His hide is cold as ice, yet you feel a jolt of heat in your palms. He is not a creature of this earth alone.
+    ~ dharma += 10
+    -> act1_screams
+
+* [Call for your father.]
+    By the time Vishnuyasha reaches the forest edge, the horse is gone. But in the soft mud where he stood, there is a single, glowing footprint of light.
+    ~ karma += 5
+    -> act1_screams
+
 === act1_screams ===
 # title: The Screams of Shambhala
 # yuga: kali
 
-The vision of the mountain peaks of the Satya Yuga vanishes like smoke in a gale. You are back in the present, your feet planted in the dry earth of Shambhala, but the weight of Parashurama's axe still feels as though it lingers in the phantom heat of your palms.
+The vision of the mountain peaks of the Satya Yuga vanishes like smoke in a gale. You are back in the present, your feet planted in the dry earth of Shambhala.
 
 From the valley below, the first scream reaches you. It is sharp, absolute, and cut short with the wet sound of iron meeting bone.
 
-{ prologue_village_approach == "sprint":
-    You are already moving, your heart hammering against your ribs like a trapped bird. You reach the first circle of huts in a blur of motion, your lungs burning with the sharp intake of ash and mountain air. The stench here is unbearable—the smell of burning grain mixed with something deeper, more visceral.
-- else:
-    You descend with measured steps, a shadow moving between the ancient pines. You reach the edge of the clearing, your eyes scanning the chaos for the source of the sound. You are a predator now, watching the prey from the safety of the dark.
-}
-
-In the center of the village square, three soldiers in the lacquered black armor of [Adharmendra](https://en.wikipedia.org/wiki/Adharma) have surrounded an elder. Their blades are drawn, glowing with a faint, sickly violet light—the mark of the Adharma Fog. The elder—your teacher, the man who taught you the names of the stars—is on his knees, blood staining his white dhoti.
+In the center of the village square, three soldiers in the lacquered black armor of Adharmendra have surrounded an elder. Their blades are drawn, glowing with a faint, sickly violet light.
 
 + [Intervene immediately with a frontal strike.]
     ~ karma += 5
     ~ dharma += 10
-    ~ kalki_first_blood = true
-    The time for observation died with that first scream. You draw your blade—the cold, heavy iron vibrating with a sudden, localized heat as it catches the firelight. You step into the square, your voice a low thunder that halts the soldiers in their tracks.
+    You draw your iron blade—the heavy metal vibrating with a sudden heat. 
     -> act1_battle_start
 
 + [Wait for a strategic opening from the shadows.]
     ~ adharma += 5
-    You stay in the periphery, watching their footwork. They are disciplined, but arrogant—drunk on the ease of their conquest. They do not expect a counter-strike in this sanctuary. You wait for the lead soldier to turn his back, his attention fixed on the elder's throat.
+    You stay in the periphery, watching for a gap in their black armor.
     -> act1_battle_start
 
 === act1_battle_start ===
-The lead soldier turns. His face is hidden behind a mask of hammered steel, shaped into a sneer of eternal contempt. 
+The lead soldier turns. His face is hidden behind a sneer of hammered steel. "Another lamb for the slaughter?" 
 
-"Another lamb for the slaughter?" he mocks, his voice sounding like dry leaves skittering over stone. He raises his violet-edged blade, the Adharma Fog rolling off the steel in oily waves.
-
-The world slows. You feel the presence of the [Chiranjeevis](https://en.wikipedia.org/wiki/Chiranjivi) watching you from across the divide of time. This is the first true test of the Avatar.
-
-+ [Parry his strike and counter with precision.]
+* [Parry and counter with precision.]
     ~ karma += 5
-    As he lunges, you don't retreat. You step into his guard, the iron of your blade meeting his violet steel with a shower of white sparks. The force of the impact vibrates up your arm, but you feel the strength of a hundred ancestors behind your grip. You twist the blade, catching his hilt, and deliver a short, brutal punch to the steel of his face-mask.
+    Spark fly as iron meets violet steel. You step inside his guard and strike.
     -> act1_battle_result
 
-+ [Unleash a devastating, overhead blow.]
+* [Unleash a raw, overhead blow.]
     ~ adharma += 5
-    ~ karma -= 5
-    You abandon finesse for raw, terrifying power. You bring your sword down in a vertical arc that screams through the air. The soldier barely manages to raise his blade in time. The impact is not a clang; it is a crunch. His sword shatters, and the force of your strike drives him to his knees, his armor cracking beneath the weight of your wrath.
+    You abandon finesse. The impact shatters his guard and drives him to his knees.
     -> act1_battle_result
 
 === act1_battle_result ===
-The other two soldiers hesitate. They see one of their own—a seasoned killer of the Kali Yuga—bested in a single breath by a village youth. The violet light on their blades flickers, momentarily weakened by the sudden surge of your presence.
+The other soldiers hesitate. "He's not a villager!" one of them hisses.
 
-"He's not a villager!" one of them hisses, his voice cracking with a fear he hasn't felt in decades.
-
-Behind them, the elder looks up, his eyes wide despite the blood-loss. "Kalki..." he whispers. "The wheel... it turns..."
-
-But the battle is not over. The lead soldier, though wounded, reaches into his belt for a small, obsidian vial. He intends to unleash a concentrated burst of the Adharma Fog to mask their retreat.
-
-+ [Mercy: Allow them to flee. Save the elder.]
++ [Mercy: Save the elder.]
     ~ dharma += 15
-    ~ karma += 10
-    You lower your blade and rush to the elder's side, ignoring the soldiers as they smash the vial and vanish into a cloud of violet smoke. Their lives are not worth the second it would take to save your teacher. You press your hands against the wound, feeling the warmth of his life-blood. "I am here," you promise.
+    You rush to the elder's side, letting the cowards flee into the smoke.
     -> act1_aftermath
 
-+ [Justice: Strike them down before they can escape.]
++ [Justice: Strike them down.]
     ~ adharma += 10
-    ~ karma -= 10
-    You do not let them leave. As the lead soldier reaches for the vial, you are already mid-swing. Your blade cuts through the violet fog, meeting flesh and bone. One by one, they fall, their black armor clattering against the stones of the square. Shambhala will not be a sanctuary for those who bring the darkness of Kali.
+    You ensure they never bring his darkness to another village.
     -> act1_aftermath
 
 === act1_aftermath ===
 # title: The Red Snow
 # yuga: kali
 
-The immediate threat is gone, but the valley is no longer silent. The sound of burning thatch and the distant cries of other villagers fill the air. The snow falling from the iron sky is no longer white; it is grey with the ash of your childhood home.
+The threat is gone, but Shambhala is burning. The snow falling from the iron sky is grey with the ash of your childhood home. 
 
-As you stand in the square, the heavy iron of your sword feels lighter. Or perhaps you have simply grown accustomed to the weight. 
+* [Look at your palms.]
+    They are glowing with a faint, golden radiance. The mark of the Avatar has awakened.
+    -> act1_mothers_wisdom
 
-Something is different. The air around you seems to vibrate with a soft, steady hum. 
+=== act1_mothers_wisdom ===
+# title: The Mother's Wisdom
+# yuga: kali
 
-+ [Look at your hands.]
-    Your palms are glowing with a faint, golden radiance that refuses to be suppressed by the falling ash. The mark of the Avatar is no longer a hidden memory; it is a physical reality.
-    -> act1_next_step
+You find your mother, Sumati, in the ruins of the temple. She is tending to a wounded child, her face serene despite the chaos.
 
-+ [Look at the sky.]
-    For the briefest of seconds, the iron clouds part. A single ray of pure, blinding sunlight strikes the center of the village square, illuminating the blood and the ash alike.
-    -> act1_next_step
+"Kalki," she says softly. "Violence is a mirror. If you look into it too long, you will only see the enemy's face where your own should be. Adharmendra was once a king who loved his people. He fell because he feared his own mortality more than he loved the truth."
 
-=== act1_next_step ===
-The first battle of the Age of Kali is over, but the war has only just begun. You know now that the Chiranjeevis were not just waiting for you to be born. They were waiting for you to wake up.
+* [Ask: "Is it wrong to fight them?"]
+    "It is wrong to fight without love for what you protect," she replies. "Do not become a sword with no hand to guide it."
+    ~ karma += 5
+    -> act1_village_elder
 
--> act1_encampment
+* ["I will find him. I will end this."]
+    She sighs, a sound of profound grief. "Then find the Man with the Axe first. Only a Chiranjeevi can teach you how to carry that weight without breaking."
+    ~ adharma += 5
+    -> act1_village_elder
+
+=== act1_village_elder ===
+# title: The Elder's Secret
+# yuga: kali
+
+Before he passes into the Great Sleep, the village elder pulls you close. His breath smells of iron.
+
+"Thirty years ago... a man came. He carried an axe that never grew dull. He said he was waiting for a boy with a mark on his palm. He is at the Mahendra Peaks, Kalki. He is the last of the old world."
+
+* [Ask about the Axe.]
+    "It was not for wood," the elder coughs. "It was for the ego of kings. Go. Find Parashurama."
+    ~ dharma += 5
+    -> act1_devadatta_speaks
+
+=== act1_devadatta_speaks ===
+# title: The Vision of the Horse
+# yuga: kali
+
+That night, Devadatta appears again in the camp. He look at you, and for a moment, the world fades. He shows you a vision of a crowned shadow sitting on a throne of bone. He shows you a world where there is no sun, only the violet glow of the Adharma Fog.
+
+He nudges your hand toward the North—toward the mountains.
+
+* [Follow the Vision.]
+    You realize the path is not a choice, but a duty.
+    ~ dharma += 10
+    -> act1_silence
+
+=== act1_silence ===
+# title: The Silence Before
+# yuga: kali
+
+The final hour of the night is absolute. In the distance, you hear the drums of Adharmendra's army. They are moving South, consolidating their grip. You must move North.
+
+* [Prepare for the journey.]
+    You sharpen your blade one last time in the silence.
+    -> act1_encampment
 
 === act1_encampment ===
 # title: Under the Crimson Moon
 # yuga: kali
 
-The village of Shambhala is a smudge of orange fire against the darkening hills. You have gathered the survivors—barely two dozen—in a shallow Ravine guarded by the ancient stone teeth of the lower Himalayas. 
+The survivors huddle together in the ravine. The Blood Moon of Kali hangs above like a weeping eye.
 
-The moon that rises tonight is not the pale orb you remember from childhood. It is bloated, bruised, and weeping a deep, rusty red—the **Blood Moon of Kali**. It casts an unnatural light over the wounded villagers, making their blood look like black oil.
-
-You sit apart from the others, the heavy iron blade resting across your knees. The golden glow on your palms has faded to a faint shimmer, but the heat remains.
-
-// Reactive Voice: Parashurama
-* [Close your eyes and listen to the wind.]
-    The wind doesn't carry the scent of pine anymore. It carries a voice—low, grinding, and familiar. 
-    *“The first blood is always the hardest to wash away, Kalki,”* the phantom of [Parashurama](https://en.wikipedia.org/wiki/Parshurama) whispers in the cavern of your mind. *“But do not mistake survival for victory. The disciples of Kali are like hounds—they have caught your scent. They will not stop until the world is silent.”*
+* [Listen to the wind.]
+    *“Survival is not victory,”* the phantom of Parashurama whispers.
     -> act1_encampment_choice
 
 === act1_encampment_choice ===
-A young woman, her face smudged with soot but her eyes clear and fierce, approaches you. She is Vanya, the daughter of the Elder you saved (or failed to save).
+Vanya approaches you. "They look to you, Kalki."
 
-"The people are frightened," she says, her voice steady despite the trembling of her hands. "They say the stars have gone dark. They look to you, Kalki. They saw what you did in the square."
-
-+ [Reassure them: "We will reach the Mahendra Peaks together."]
++ [Reassure them: "We reach the Peaks together."]
     ~ karma += 10
     ~ dharma += 5
-    "Shambhala is gone, but the spirit of the village lives in us," you say, your voice carrying further than you intended. "The mountain peaks have shielded us for an age. Parashurama waits there. We go to find the strength to take back our home."
-    -> act1_valley_entry
+    -> act2_valley_entrance
 
-+ [Warn them: "The journey will be brutal. Prepare for war."]
++ [Warn them: "Prepare for war."]
     ~ adharma += 5
     ~ karma += 5
-    "The soldiers you saw were only scouts," you state coldly. "The darkness is spreading, and it will not spare those who are weak. If you wish to survive the trek through the Valley of Ash, you must learn to carry more than just your memories. You must learn to carry steel."
-    -> act1_ valley_entry
-
-=== act1_valley_entry ===
-As the camp settles into a fitful, terrified sleep, you look toward the horizon. The path through the **Valley of Ash** is the only way to the Mahendra Peaks. It is a wasteland where the Adharma Fog is said to be so thick it can steal a man's sight—and his soul.
-
-But you have no choice. The wheel has turned.
-
--> the_end
+    -> act2_valley_entrance

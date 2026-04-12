@@ -1,6 +1,7 @@
 INCLUDE variables.ink
 INCLUDE prologue.ink
 INCLUDE act1_birth.ink
+INCLUDE act2_valley.ink
 INCLUDE visions.ink
 
 // Entry point of the game
