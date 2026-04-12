@@ -70,7 +70,36 @@ export class InkWrapper {
       if (key === 'title') this.ui.setTitle(value);
       if (key === 'yuga') this.ui.setYugaTheme(value);
       if (key === 'background') this.ui.setBackground(value);
+      if (key === 'encounter') this.processEncounter(value);
+      if (key === 'actMap') this.ui.showMap(value);
     });
+  }
+
+  processEncounter(id) {
+    const encounters = {
+      adharmendra: {
+        id: 'adharmendra',
+        name: 'Adharmendra',
+        bio: 'The Corrupted General. A man who sought to protect his kingdom by taking the power Kali offered, only to become a slave to the very darkness he feared.',
+        aura: 'TRAGIC COLLAPSE'
+      },
+      koka: {
+        id: 'koka',
+        name: 'Koka',
+        bio: 'The General of the Void. A monstrous entity in black plate who knows only the logic of the sword.',
+        aura: 'ABSOLUTE COLD'
+      },
+      kali: {
+        id: 'kali',
+        name: 'Kali',
+        bio: 'The Demon King. The personification of ego, greed, and the decay of the spiritual world.',
+        aura: 'TOTAL OBLIVION'
+      }
+    };
+
+    if (encounters[id]) {
+      this.ui.showEncounter(encounters[id]);
+    }
   }
 
   makeChoice(index) {

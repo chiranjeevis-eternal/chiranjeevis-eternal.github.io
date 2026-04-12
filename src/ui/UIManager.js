@@ -110,19 +110,82 @@ export class UIManager {
   }
 
   showHelp() {
+    this.showMap('act1'); // Default to act 1 for help
+  }
+
+  showMap(actId) {
     this.modalOverlay.classList.remove('hidden-fade');
     this.modalBody.innerHTML = `
-      <h2 class="modal-title">PILGRIM'S GUIDE</h2>
-      <div class="modal-section">
-        <h3>WORLD MAP</h3>
-        <div id="world-map">
-          [SHAMBHALA] ----(Valley of Ash)----> [MAHENDRA PEAKS]<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[?? LANKA ??]
-        </div>
+      <h2 class="modal-title">THE GREAT CHRONICLE</h2>
+      <div class="map-parchment">
+        ${this.generateMapSVG(actId)}
+      </div>
+      <div class="modal-section" style="margin-top:1rem; font-size: 0.8rem; color: var(--c-text-muted)">
+        * Locations in <span style="color:var(--c-gold)">GOLD</span> are discovered. Pulse indicates current position.
       </div>
     `;
   }
+
+  generateMapSVG(actId) {
+    // Styling the map SVG to look like golden ink on parchment
+    const configs = {
+      act1: {
+        title: "SHAMBHALA VALLEY",
+        nodes: [
+          { x: 100, y: 150, name: "The Stable", id: "stable" },
+          { x: 300, y: 100, name: "Village Center", id: "village" },
+          { x: 500, y: 180, name: "Forest Edge", id: "forest" }
+        ],
+        paths: "M 100 150 L 300 100 L 500 180"
+      },
+      act2: {
+        title: "MAHENDRA MOUNTAINS",
+        nodes: [
+          { x: 150, y: 250, name: "Valley Entrance", id: "entrance" },
+          { x: 350, y: 150, name: "Hermitage", id: "hermitage" },
+          { x: 550, y: 200, name: "Southern Coast", id: "coast" }
+        ],
+        paths: "M 150 250 L 350 150 L 550 200"
+      },
+      act3: {
+        title: "THE THREE PATHS",
+        nodes: [
+          { x: 100, y: 250, name: "Shadow Temples", id: "moha" },
+          { x: 300, y: 150, name: "Crossroads", id: "crossroads" },
+          { x: 500, y: 250, name: "Merchant Spires", id: "lobha" },
+          { x: 300, y: 350, name: "Black Chasm", id: "bali" }
+        ],
+        paths: "M 300 150 L 100 250 M 300 150 L 500 250 M 300 350 L 300 150"
+      },
+      act4: {
+        title: "OBSIDIAN FORTRESS",
+        nodes: [
+          { x: 300, y: 350, name: "Grand Gate", id: "gate" },
+          { x: 300, y: 200, name: "Inner Sanctum", id: "sanctum" },
+          { x: 300, y: 50, name: "The Mirror", id: "mirror" }
+        ],
+        paths: "M 300 350 L 300 200 L 300 50"
+      }
+    };
+
+    const config = configs[actId] || configs.act1;
+    
+    return `
+      <div style="text-align:center; color: var(--c-gold); margin-bottom: 10px; font-family: var(--font-title)">${config.title}</div>
+      <svg viewBox="0 0 600 400" style="background: rgba(40,30,20,0.4); border: 2px solid var(--c-gold); border-radius: 5px;">
+        <path d="${config.paths}" fill="none" stroke="rgba(212, 175, 55, 0.3)" stroke-width="2" />
+        ${config.nodes.map(n => `
+          <g>
+            <circle cx="${n.x}" cy="${n.y}" r="8" fill="var(--c-background)" stroke="var(--c-gold)" stroke-width="2">
+                <animate attributeName="r" values="8;10;8" dur="3s" repeatCount="indefinite" />
+            </circle>
+            <text x="${n.x}" y="${n.y + 25}" text-anchor="middle" fill="var(--c-gold)" style="font-size: 12px; font-family: var(--font-main)">${n.name}</text>
+          </g>
+        `).join('')}
+      </svg>
+    `;
+  }
+
 
   hideModal() {
     this.modalOverlay.classList.add('hidden-fade');
@@ -271,6 +334,28 @@ export class UIManager {
             <div id="world-map" style="font-size:0.7rem; color:var(--c-gold)">
                BOND LEVEL: AWAKENED<br>
                YUGA ORIGIN: TRETA/DVAPARA/SATYA
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  showEncounter(villain) {
+    this.modalOverlay.classList.remove('hidden-fade');
+    this.modalBody.innerHTML = `
+      <div class="modal-content-split">
+        <div class="modal-portrait" style="background-image: url('assets/villains/${villain.id}.png')"></div>
+        <div class="modal-text-side">
+          <h2 class="modal-title" style="color:var(--c-kali-red)">${villain.name.toUpperCase()}</h2>
+          <div class="modal-section">
+            <h3 style="color:var(--c-adharma)">THE MARK OF KALI</h3>
+            <p>${villain.bio}</p>
+          </div>
+          <div class="modal-section">
+            <div id="world-map" style="font-size:0.7rem; color:var(--c-kali-red)">
+               THREAT LEVEL: OMEGA<br>
+               ADHARMA AURA: ${villain.aura}
             </div>
           </div>
         </div>

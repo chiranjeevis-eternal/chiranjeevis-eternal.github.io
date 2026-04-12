@@ -21,6 +21,12 @@ You wear no armor yet, only the woven cotton of a village ascetic, but a heavy i
     Your fingers instinctively curl around the leather-bound hilt of your sword. It is a reflex born of forgotten lifetimes—the muscle memory of a king who died on a chariot, of a prince who walked into exile. You are reacting to a shadow you cannot yet see. The iron feels cold, hungry, vibrating slightly in your grip. It knows that its long sleep is over. The time for meditation has passed; the time for butchery has arrived.
     -> prologue_p2
 
+=== act0_prologue ===
+# title: The White Horse
+# yuga: satya
+# background: prologue
+# actMap: act1
+
 === prologue_p2 ===
 # title: The Scent of Smoke
 # yuga: kali
