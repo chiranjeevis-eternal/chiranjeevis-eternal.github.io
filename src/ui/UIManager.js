@@ -7,13 +7,19 @@ export class UIManager {
     this.companionsDiv = document.getElementById('companions-list');
     this.modalOverlay = document.getElementById('modal-overlay');
     this.modalBody = document.getElementById('modal-body');
-    this.vfxLayer = document.getElementById('vfx-layer');
-    this.bgLayer = document.getElementById('bg-layer');
-    this.audio = new AudioEngine();
-    this.onChoiceSelected = null;
+     this.vfxLayer = document.getElementById('vfx-layer');
+     this.bgLayer = document.getElementById('bg-layer');
+     this.container = document.getElementById('game-container');
+     this.yugaIndicator = document.getElementById('yuga-indicator');
+     this.audio = new AudioEngine();
+     this.onChoiceSelected = null;
     
     this.lastStats = { karma: 50, dharma: 0, adharma: 10 };
     this.activeCompanions = [];
+    this.currentYuga = 'kali';
+    this.vfx = null;
+    
+    this.init();
 
     this.allCompanions = [
       { id: 'parashurama', name: 'Parashurama', icon: '🪓', bio: 'The Sixth Avatar. The man with the axe who slaughtered twenty-one generations of corrupt kings. He awaits on Mahendra Mountain to train the final Avatar.' },
@@ -27,8 +33,15 @@ export class UIManager {
     
     this.initCompanionPanel();
     this.initModalHandlers();
-    this.initVFX();
     this.ensureNotificationLayer();
+  }
+
+  init() {
+    this.initModalHandlers();
+  }
+
+  setVFX(vfxManager) {
+    this.vfx = vfxManager;
   }
 
   ensureNotificationLayer() {
@@ -86,10 +99,17 @@ export class UIManager {
   }
 
   initModalHandlers() {
-    document.getElementById('settings-btn').onclick = () => this.showSettings();
-    document.getElementById('help-btn').onclick = () => this.showHelp();
-    document.getElementById('modal-close').onclick = () => this.hideModal();
-    this.modalOverlay.onclick = (e) => { if (e.target === this.modalOverlay) this.hideModal(); };
+    const helpBtn = document.getElementById('help-btn');
+    const settingsBtn = document.getElementById('settings-btn');
+    const closeBtn = document.getElementById('modal-close');
+
+    if (helpBtn) helpBtn.onclick = () => this.showMap();
+    if (settingsBtn) settingsBtn.onclick = () => this.showSettings();
+    if (closeBtn) closeBtn.onclick = () => this.hideModal();
+
+    this.modalOverlay.onclick = (e) => {
+      if (e.target === this.modalOverlay) this.hideModal();
+    };
   }
 
   showSettings() {
@@ -206,14 +226,19 @@ export class UIManager {
 
   setYugaTheme(yuga) {
     document.body.className = `yuga-${yuga}`;
-    document.getElementById('yuga-indicator').textContent = `◉ ${yuga.toUpperCase()} YUGA`;
+    this.container.className = `yuga-${yuga}`;
+    this.yugaIndicator.innerText = `◉ ${yuga.toUpperCase()} YUGA`;
+    
+    if (this.vfx) this.vfx.setYuga(yuga);
+    
     const colors = {
       kali: 'https://assets.mixkit.co/music/preview/mixkit-atmospheric-darkness-ambient-162.mp3',
       satya: 'https://assets.mixkit.co/music/preview/mixkit-ethereal-meditation-ambient-563.mp3',
-      treta: 'https://assets.mixkit.co/music/preview/mixkit-ethereal-fairy-background-wave-116.mp3',
-      dvapara: 'https://assets.mixkit.co/music/preview/mixkit-solemn-and-sorrowful-cinematic-strings-535.mp3'
+      treta: 'https://assets.mixkit.co/music/preview/mixkit-epic-battle-drums-671.mp3',
+      dvapara: 'https://assets.mixkit.co/music/preview/mixkit-mysterious-forest-ambient-1212.mp3'
     };
-    if (colors[yuga]) this.audio.playLoop('yuga', colors[yuga]);
+    
+    this.audio.playLoop(colors[yuga] || colors.kali);
   }
 
   setBackground(bgName) {

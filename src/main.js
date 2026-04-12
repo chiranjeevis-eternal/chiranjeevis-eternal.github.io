@@ -1,13 +1,17 @@
 import './style.css';
 import { InkWrapper } from './engine/InkWrapper.js';
 import { UIManager } from './ui/UIManager.js';
-import storyJson from '../story/story.json';
+import { VFXManager } from './ui/VFXManager.js';
+import storyJson from './story.json';
 
 let game, ui;
 
 async function startSession(isNew = true) {
   try {
     ui = new UIManager();
+    const vfx = new VFXManager('vfx-layer');
+    ui.setVFX(vfx);
+    
     game = new InkWrapper(storyJson, ui);
     
     const landingPage = document.getElementById('landing-page');

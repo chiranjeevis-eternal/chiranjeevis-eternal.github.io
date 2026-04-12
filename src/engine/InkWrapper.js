@@ -16,12 +16,12 @@ export class InkWrapper {
       this.bound = true;
     }
     
-    // Only continue if we aren't already at a choice point (loaded state)
     if (this.story.canContinue) {
       this.continueStory();
     } else {
-      // If we loaded into a choice point, we need to refresh the UI stats/companions/choices
-      this.refreshUI();
+      // Restore last prose from storage for visual continuity
+      const lastProse = JSON.parse(localStorage.getItem('chiranjeevis_last_prose') || '[]');
+      this.refreshUI(lastProse);
     }
   }
 
@@ -38,6 +38,7 @@ export class InkWrapper {
     }
 
     this.processTags(tags);
+    localStorage.setItem('chiranjeevis_last_prose', JSON.stringify(prose));
     this.refreshUI(prose);
     this.save();
   }
