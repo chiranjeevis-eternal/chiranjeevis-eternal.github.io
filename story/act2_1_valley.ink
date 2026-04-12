@@ -100,6 +100,8 @@ Parashurama watches you as you return from the memory of the 21 Dynasties.
 
 === act2_valley_end ===
 The path to the Mahendra Peaks is open. Parashurama walks beside you now, a silent sentinel in the fog.
+~ comp_parashurama = true
+# companion_joined: parashurama
 
 -> act2_hanuman_arrival
 

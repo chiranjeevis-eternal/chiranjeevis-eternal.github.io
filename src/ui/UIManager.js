@@ -12,24 +12,33 @@ export class UIManager {
     this.onChoiceSelected = null;
     
     this.lastStats = { karma: 50, dharma: 0, adharma: 10 };
+    this.activeCompanions = [];
 
     this.allCompanions = [
-      { id: 'parashurama', name: 'Parashurama', icon: '🪓' },
-      { id: 'hanuman', name: 'Hanuman', icon: '🟠' },
-      { id: 'vibhishana', name: 'Vibhishana', icon: '🛡️' },
-      { id: 'vyasa', name: 'Vyasa', icon: '📜' },
-      { id: 'bali', name: 'Mahabali', icon: '🏺' },
-      { id: 'kripacharya', name: 'Kripacharya', icon: '🏹' },
-      { id: 'ashwatthama', name: 'Ashwatthama', icon: '👁️' }
+      { id: 'parashurama', name: 'Parashurama', icon: '🪓', bio: 'The Sixth Avatar. The man with the axe who slaughtered twenty-one generations of corrupt kings. He awaits on Mahendra Mountain to train the final Avatar.' },
+      { id: 'hanuman', name: 'Hanuman', icon: '🟠', bio: 'The God of Wind and Devotion. He has walked the earth for millennia, guarding the memories of the Treta Yuga and the glory of Rama.' },
+      { id: 'vibhishana', name: 'Vibhishana', icon: '🛡️', bio: 'The wise king of Lanka who chose Dharma over blood. His knowledge of tactical warfare and the nature of Adharma is unmatched.' },
+      { id: 'vyasa', name: 'Vyasa', icon: '📜', bio: 'The Sage of Sages. The chronicler of the Mahabharata. He knows every heartbeat of the universe, past and future.' },
+      { id: 'bali', name: 'Mahabali', icon: '🏺', bio: 'The noble Asura king of the netherworld. Though banished to Sutala, he visits the earth once a year to ensure his people are happy.' },
+      { id: 'kripacharya', name: 'Kripacharya', icon: '🏹', bio: 'The master of archery and military science. He is the royal Guru who outlived the great war of the Kuru dynasty.' },
+      { id: 'ashwatthama', name: 'Ashwatthama', icon: '👁️', bio: 'The son of Drona, cursed with immortality and a gem that bleeds on his forehead. He seeks redemption through the sword of Kalki.' }
     ];
     
     this.initCompanionPanel();
     this.initModalHandlers();
     this.initVFX();
+    this.ensureNotificationLayer();
+  }
+
+  ensureNotificationLayer() {
+    if (!document.getElementById('notification-overlay')) {
+      const overlay = document.createElement('div');
+      overlay.id = 'notification-overlay';
+      document.body.appendChild(overlay);
+    }
   }
 
   initVFX() {
-    // Spawn initial base ash
     for (let i = 0; i < 40; i++) {
         this.createParticle('ash');
     }
@@ -38,18 +47,14 @@ export class UIManager {
   createParticle(type = 'ash') {
     const p = document.createElement('div');
     p.className = `particle ${type}`;
-    
-    // Randomize properties for more "Fly Ash" feel
     const size = type === 'ember' ? Math.random() * 4 + 2 : Math.random() * 3 + 1;
     p.style.width = `${size}px`;
     p.style.height = `${size}px`;
     p.style.left = `${Math.random() * 100}vw`;
-    
     const duration = type === 'ember' ? 8 + Math.random() * 5 : 15 + Math.random() * 10;
     p.style.animationDuration = `${duration}s`;
     p.style.animationDelay = `${Math.random() * 10}s`;
     
-    // Parallax effect: further particles move slower and are smaller
     if (size < 2) {
         p.style.zIndex = 4;
         p.style.filter = 'blur(1px)';
@@ -60,9 +65,6 @@ export class UIManager {
     }
 
     this.vfxLayer.appendChild(p);
-
-    // Clean up particles after they finish their animation cycle
-    // (In a real game loop we'd reuse them, but for DOM IF this is fine)
     setTimeout(() => {
         p.remove();
         this.createParticle(type);
@@ -75,7 +77,7 @@ export class UIManager {
         p.className = 'particle ember';
         p.style.width = '4px';
         p.style.height = '4px';
-        p.style.left = `${40 + Math.random() * 20}vw`; // Burst near center
+        p.style.left = `${40 + Math.random() * 20}vw`; 
         p.style.animationDuration = `${5 + Math.random() * 3}s`;
         this.vfxLayer.appendChild(p);
         setTimeout(() => p.remove(), 8000);
@@ -111,10 +113,6 @@ export class UIManager {
     this.modalBody.innerHTML = `
       <h2 class="modal-title">PILGRIM'S GUIDE</h2>
       <div class="modal-section">
-        <h3>CURRENT STAGE: SHAMBHALA</h3>
-        <p>You have awakened in the sacred village of Shambhala. The disciples of Adharmendra have breached the sanctuary.</p>
-      </div>
-      <div class="modal-section">
         <h3>WORLD MAP</h3>
         <div id="world-map">
           [SHAMBHALA] ----(Valley of Ash)----> [MAHENDRA PEAKS]<br>
@@ -145,24 +143,21 @@ export class UIManager {
   setYugaTheme(yuga) {
     document.body.className = `yuga-${yuga}`;
     document.getElementById('yuga-indicator').textContent = `◉ ${yuga.toUpperCase()} YUGA`;
-    
-    if (yuga === 'kali') {
-      this.audio.playLoop('yuga', 'https://assets.mixkit.co/music/preview/mixkit-atmospheric-darkness-ambient-162.mp3');
-    } else if (yuga === 'satya') {
-      this.audio.playLoop('yuga', 'https://assets.mixkit.co/music/preview/mixkit-ethereal-meditation-ambient-563.mp3');
-    }
+    const colors = {
+      kali: 'https://assets.mixkit.co/music/preview/mixkit-atmospheric-darkness-ambient-162.mp3',
+      satya: 'https://assets.mixkit.co/music/preview/mixkit-ethereal-meditation-ambient-563.mp3'
+    };
+    if (colors[yuga]) this.audio.playLoop('yuga', colors[yuga]);
   }
 
   updateStats(stats) {
     const keys = ['karma', 'dharma', 'adharma'];
     keys.forEach(key => {
       const newVal = stats[key];
-      const oldVal = this.lastStats[key];
-      const delta = newVal - oldVal;
+      const delta = newVal - (this.lastStats[key] || 0);
       if (delta !== 0) {
           this.triggerStatAnimation(key, newVal, delta);
-          // NEW: Spawn embers on stat surge!
-          if (Math.abs(delta) > 5) this.spawnEmberBurst(8);
+          if (Math.abs(delta) > 10) this.spawnEmberBurst(12);
       }
     });
     this.lastStats = { ...stats };
@@ -171,7 +166,8 @@ export class UIManager {
   triggerStatAnimation(key, newVal, delta) {
     const valEl = document.getElementById(`stat-${key}-val`);
     const barEl = document.getElementById(`bar-${key}`);
-    
+    if (!valEl) return;
+
     let color = 'var(--c-gold)';
     if (key === 'dharma') color = '#e07020';
     if (key === 'adharma') color = 'var(--c-adharma)';
@@ -179,29 +175,12 @@ export class UIManager {
 
     valEl.textContent = newVal;
     barEl.style.width = `${Math.min(Math.max(newVal, 0), 100)}%`;
-    valEl.style.color = color;
-    barEl.style.color = color;
-
     valEl.classList.remove('val-pop');
-    barEl.classList.remove('stat-pulse');
     void valEl.offsetWidth; 
     valEl.classList.add('val-pop');
-    barEl.classList.add('stat-pulse');
-
-    const deltaEl = document.createElement('div');
-    deltaEl.className = 'float-delta';
-    deltaEl.textContent = delta > 0 ? `+${delta}` : delta;
-    deltaEl.style.color = color;
     
-    const rect = valEl.getBoundingClientRect();
-    deltaEl.style.left = `${rect.left}px`;
-    deltaEl.style.top = `${rect.top}px`;
-    
-    document.body.appendChild(deltaEl);
-    setTimeout(() => {
-      deltaEl.remove();
-      valEl.style.color = '';
-    }, 1200);
+    // Tiny burst for every stat change
+    if (Math.abs(delta) > 2) this.spawnEmberBurst(3);
   }
 
   initCompanionPanel() {
@@ -214,11 +193,20 @@ export class UIManager {
         <div class="companion-icon">${comp.icon}</div>
         <div class="companion-name">${comp.name}</div>
       `;
+      slot.onclick = () => {
+        if (slot.classList.contains('discovered')) this.showCompanionLore(comp);
+      };
       this.companionsDiv.appendChild(slot);
     });
   }
 
   updateCompanions(activeIds) {
+    activeIds.forEach(id => {
+      if (!this.activeCompanions.includes(id)) {
+        this.triggerAwakening(id);
+      }
+    });
+
     this.allCompanions.forEach(comp => {
       const slot = document.getElementById(`comp-slot-${comp.id}`);
       if (activeIds.includes(comp.id)) {
@@ -227,6 +215,47 @@ export class UIManager {
         slot.classList.remove('discovered');
       }
     });
+    this.activeCompanions = [...activeIds];
+  }
+
+  triggerAwakening(id) {
+    const companion = this.allCompanions.find(c => c.id === id);
+    if (!companion) return;
+
+    // Toast Notification
+    const toast = document.createElement('div');
+    toast.className = 'awakening-toast';
+    toast.textContent = `AWAKENED: ${companion.name.toUpperCase()}`;
+    document.getElementById('notification-overlay').appendChild(toast);
+    setTimeout(() => toast.remove(), 3500);
+
+    // Sidebar Pop
+    const slot = document.getElementById(`comp-slot-${id}`);
+    if (slot) {
+        slot.classList.remove('awakened-pop');
+        void slot.offsetWidth;
+        slot.classList.add('awakened-pop');
+    }
+
+    // Heavy Ember Burst
+    this.spawnEmberBurst(20);
+  }
+
+  showCompanionLore(comp) {
+    this.modalOverlay.classList.remove('hidden-fade');
+    this.modalBody.innerHTML = `
+      <h2 class="modal-title">${comp.name.toUpperCase()}</h2>
+      <div class="modal-section">
+        <h3>THE IMMORTAL'S BURDEN</h3>
+        <p>${comp.bio}</p>
+      </div>
+      <div class="modal-section">
+        <div id="world-map" style="font-size:0.7rem; color:var(--c-gold)">
+           BOND LEVEL: AWAKENED<br>
+           YUGA ORIGIN: TRETA/DVAPARA
+        </div>
+      </div>
+    `;
   }
 
   renderProse(paragraphs) {
@@ -238,15 +267,13 @@ export class UIManager {
       const p = document.createElement('p');
       p.className = 'story-paragraph';
       if (isVision) p.classList.add('vision-text');
-      let parsedText = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" class="prose-link">$1</a>');
-      p.innerHTML = parsedText;
+      p.innerHTML = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" class="prose-link">$1</a>');
       p.style.animationDelay = `${i * 0.4}s`; 
       this.contentDiv.appendChild(p);
     });
   }
 
   renderChoices(choices) {
-    if (choices.length === 0) return;
     choices.forEach((choice, idx) => {
       const btn = document.createElement('button');
       btn.className = 'choice-btn';
