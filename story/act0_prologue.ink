@@ -2,6 +2,7 @@
 # title: The World Without Dharma
 # yuga: kali
 # background: act0
+# actMap: act1
 
 The sky above the hidden valley of Shambhala is not blue. It has not been blue for a century. It is the colour of bruised iron, choked by the invisible weight of a world decaying beyond the mountains. The great tectonic spine of the Himalayas, which has shielded this sanctuary since the dawn of the Treta Yuga, offers no protection against the creeping rot of the age.
 
@@ -20,12 +21,6 @@ You wear no armor yet, only the woven cotton of a village ascetic, but a heavy i
     ~ adharma += 5
     Your fingers instinctively curl around the leather-bound hilt of your sword. It is a reflex born of forgotten lifetimes—the muscle memory of a king who died on a chariot, of a prince who walked into exile. You are reacting to a shadow you cannot yet see. The iron feels cold, hungry, vibrating slightly in your grip. It knows that its long sleep is over. The time for meditation has passed; the time for butchery has arrived.
     -> prologue_p2
-
-=== act0_prologue ===
-# title: The White Horse
-# yuga: satya
-# background: prologue
-# actMap: act1
 
 === prologue_p2 ===
 # title: The Scent of Smoke
