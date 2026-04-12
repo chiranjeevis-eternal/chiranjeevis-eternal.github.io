@@ -257,15 +257,20 @@ export class UIManager {
   showCompanionLore(comp) {
     this.modalOverlay.classList.remove('hidden-fade');
     this.modalBody.innerHTML = `
-      <h2 class="modal-title">${comp.name.toUpperCase()}</h2>
-      <div class="modal-section">
-        <h3>THE IMMORTAL'S BURDEN</h3>
-        <p>${comp.bio}</p>
-      </div>
-      <div class="modal-section">
-        <div id="world-map" style="font-size:0.7rem; color:var(--c-gold)">
-           BOND LEVEL: AWAKENED<br>
-           YUGA ORIGIN: TRETA/DVAPARA
+      <div class="modal-content-split">
+        <div class="modal-portrait" style="background-image: url('assets/companions/${comp.id}.png')"></div>
+        <div class="modal-text-side">
+          <h2 class="modal-title">${comp.name.toUpperCase()}</h2>
+          <div class="modal-section">
+            <h3>THE IMMORTAL'S BURDEN</h3>
+            <p>${comp.bio}</p>
+          </div>
+          <div class="modal-section">
+            <div id="world-map" style="font-size:0.7rem; color:var(--c-gold)">
+               BOND LEVEL: AWAKENED<br>
+               YUGA ORIGIN: TRETA/DVAPARA/SATYA
+            </div>
+          </div>
         </div>
       </div>
     `;

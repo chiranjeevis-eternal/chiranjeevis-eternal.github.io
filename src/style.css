@@ -449,6 +449,29 @@ body {
   font-size: 1.2rem;
   background: var(--c-surface);
   color: var(--c-gold);
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.modal-content-split {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.modal-portrait {
+    width: 250px;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--c-gold);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    flex-shrink: 0;
+}
+
+.modal-text-side {
+    flex-grow: 1;
 }
 
 .companion-icon svg {
