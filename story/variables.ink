@@ -23,3 +23,18 @@ VAR aff_bali = 0
 // --- STORY STATE FLAGS ---
 VAR prologue_village_approach = ""
 VAR kalki_first_blood = false
+VAR kalki_nature = "warrior"
+
+// --- MEMORY FLAGS ---
+VAR memories_parashu_judgment = false
+VAR memories_hanuman_courage = false
+VAR memories_vyasa_truth = false
+VAR memories_vibhishana_cost = false
+VAR memories_kripacharya_war = false
+VAR memories_ashwatthama_curse = false
+VAR memories_bali_surrender = false
+VAR memories_kali_first_contact = false
+
+// --- ACT 4 FLAGS ---
+VAR ashwatthama_betrayed = false
+VAR kali_name_given = "ego"
