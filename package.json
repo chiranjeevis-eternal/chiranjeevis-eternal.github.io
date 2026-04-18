@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "compile-ink": "npx inky story/main.ink",
+    "compile-ink": "inkjs-compiler story/main.ink -o src/story.json",
     "preview": "vite preview"
   },
   "devDependencies": {
