@@ -8,6 +8,7 @@ export class InkWrapper {
     this.companionIds = [
       'parashurama', 'hanuman', 'vibhishana', 'vyasa', 'bali', 'kripacharya', 'ashwatthama'
     ];
+    this._pendingVisionMeta = {}; // collects vision_* tags before overlay fires
   }
 
   start() {
@@ -65,14 +66,34 @@ export class InkWrapper {
   }
 
   processTags(tags) {
+    // First pass: harvest all metadata tags in this batch
     tags.forEach(tag => {
       if (!tag.includes(':')) return;
       const [key, value] = tag.split(':').map(s => s.trim());
-      if (key === 'title') this.ui.setTitle(value);
-      if (key === 'yuga') this.ui.setYugaTheme(value);
+      if (key === 'vision_yuga')        this._pendingVisionMeta.yuga = value;
+      if (key === 'vision_title')       this._pendingVisionMeta.title = value;
+      if (key === 'vision_chiranjeevi') this._pendingVisionMeta.chiranjeevi = value;
+    });
+
+    // Second pass: act on command tags
+    tags.forEach(tag => {
+      if (!tag.includes(':')) return;
+      const [key, value] = tag.split(':').map(s => s.trim());
+      if (key === 'title')      this.ui.setTitle(value);
+      if (key === 'yuga')       this.ui.setYugaTheme(value);
       if (key === 'background') this.ui.setBackground(value);
-      if (key === 'encounter') this.processEncounter(value);
-      if (key === 'actMap') this.ui.showMap(value);
+      if (key === 'encounter')  this.processEncounter(value);
+      if (key === 'actMap')     this.ui.showMap(value);
+
+      if (key === 'overlay') {
+        if (value === 'memory_vision') {
+          // Fire the cinematic overlay with accumulated metadata
+          this.ui.showMemoryVision({ ...this._pendingVisionMeta });
+          this._pendingVisionMeta = {};
+        } else if (value === 'end') {
+          this.ui.hideMemoryVision();
+        }
+      }
     });
   }
 

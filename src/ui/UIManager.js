@@ -18,7 +18,10 @@ export class UIManager {
     this.activeCompanions = [];
     this.currentYuga = 'kali';
     this.vfx = null;
+    this.inVision = false;
+    this.pendingVision = {}; // accumulates vision_* tags before overlay fires
     
+    this.visionOverlay = document.getElementById('memory-vision-overlay');
     this.init();
 
     this.allCompanions = [
@@ -211,6 +214,91 @@ export class UIManager {
     this.modalOverlay.classList.add('hidden-fade');
   }
 
+  // ─── Memory Vision Overlay ──────────────────────────────────────────────
+
+  /**
+   * Activate the full-screen Memory Vision cinematic overlay.
+   * @param {object} meta - { yuga, title, chiranjeevi }
+   */
+  showMemoryVision(meta = {}) {
+    this.inVision = true;
+    const yuga = meta.yuga || 'dvapara';
+    const title = meta.title || 'A MEMORY FROM ANOTHER AGE';
+    const chiranjeevi = meta.chiranjeevi || '';
+
+    // Yuga palette config
+    const palettes = {
+      satya:   { bg: '#1c1507', accent: '#e6b840', sub: '#c8a060', label: 'SATYA YUGA',   particle: 'satya' },
+      treta:   { bg: '#1a0800', accent: '#e07020', sub: '#c05010', label: 'TRETA YUGA',   particle: 'treta' },
+      dvapara: { bg: '#0d0d12', accent: '#8a9aba', sub: '#505870', label: 'DVAPARA YUGA', particle: 'dvapara' },
+      kali:    { bg: '#0a0a10', accent: '#c9a84c', sub: '#6b21a8', label: 'KALI YUGA',    particle: 'kali' },
+    };
+    const p = palettes[yuga] || palettes.dvapara;
+
+    this.visionOverlay.innerHTML = `
+      <div class="vision-bg" style="background:${p.bg}"></div>
+      <div class="vision-particles" id="vision-particles"></div>
+      <div class="vision-frame">
+        <div class="vision-era-label" style="color:${p.sub}">${p.label}</div>
+        <div class="vision-chiranjeevi" style="color:${p.accent}">${chiranjeevi.toUpperCase()}</div>
+        <div class="vision-separator" style="background:${p.accent}"></div>
+        <div class="vision-title-text">${title}</div>
+        <div class="vision-eyebrow">✦ MEMORY VISION ✦</div>
+      </div>
+      <div id="vision-story-content" class="vision-story-content"></div>
+      <div id="vision-choices-content" class="vision-choices-content"></div>
+    `;
+
+    this.visionOverlay.classList.remove('hidden');
+    // Force reflow then animate in
+    void this.visionOverlay.offsetWidth;
+    this.visionOverlay.classList.add('vision-active');
+
+    // Spawn ambient particles for this yuga
+    this._spawnVisionParticles(p.accent);
+
+    // Redirect prose / choices into the vision overlay
+    this._visionContentEl = document.getElementById('vision-story-content');
+    this._visionChoicesEl = document.getElementById('vision-choices-content');
+  }
+
+  /**
+   * Dismiss the Memory Vision overlay and return to main game.
+   */
+  hideMemoryVision() {
+    this.inVision = false;
+    this.pendingVision = {};
+    this._visionContentEl = null;
+    this._visionChoicesEl = null;
+
+    this.visionOverlay.classList.remove('vision-active');
+    // Wait for CSS transition, then hide & clean up
+    setTimeout(() => {
+      this.visionOverlay.classList.add('hidden');
+      this.visionOverlay.innerHTML = '';
+    }, 1200);
+  }
+
+  _spawnVisionParticles(color) {
+    const container = document.getElementById('vision-particles');
+    if (!container) return;
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement('div');
+      p.className = 'vision-particle';
+      p.style.cssText = `
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        width: ${Math.random() * 3 + 1}px;
+        height: ${Math.random() * 3 + 1}px;
+        background: ${color};
+        opacity: ${Math.random() * 0.4 + 0.1};
+        animation-duration: ${10 + Math.random() * 15}s;
+        animation-delay: ${Math.random() * 8}s;
+      `;
+      container.appendChild(p);
+    }
+  }
+
   bindChoiceHandler(callback) {
     this.onChoiceSelected = callback;
   }
@@ -218,6 +306,8 @@ export class UIManager {
   clearUI() {
     this.contentDiv.innerHTML = '';
     this.choicesDiv.innerHTML = '';
+    if (this._visionContentEl) this._visionContentEl.innerHTML = '';
+    if (this._visionChoicesEl) this._visionChoicesEl.innerHTML = '';
   }
 
   setTitle(title) {
@@ -389,30 +479,37 @@ export class UIManager {
   }
 
   renderProse(paragraphs) {
-    const isVision = document.body.classList.contains('yuga-satya') || 
-                     document.body.classList.contains('yuga-treta') || 
-                     document.body.classList.contains('yuga-dvapara');
+    // Route to vision overlay if inside a memory vision
+    const target = (this.inVision && this._visionContentEl)
+      ? this._visionContentEl
+      : this.contentDiv;
+
+    const isVision = this.inVision;
 
     paragraphs.forEach((text, i) => {
       const p = document.createElement('p');
-      p.className = 'story-paragraph';
-      if (isVision) p.classList.add('vision-text');
+      p.className = isVision ? 'story-paragraph vision-prose-para' : 'story-paragraph';
       p.innerHTML = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" class="prose-link">$1</a>');
-      p.style.animationDelay = `${i * 0.4}s`; 
-      this.contentDiv.appendChild(p);
+      p.style.animationDelay = `${i * 0.4}s`;
+      target.appendChild(p);
     });
   }
 
   renderChoices(choices) {
+    // Route to vision overlay if inside a memory vision
+    const target = (this.inVision && this._visionChoicesEl)
+      ? this._visionChoicesEl
+      : this.choicesDiv;
+
     choices.forEach((choice, idx) => {
       const btn = document.createElement('button');
-      btn.className = 'choice-btn';
+      btn.className = this.inVision ? 'choice-btn vision-choice-btn' : 'choice-btn';
       btn.textContent = choice.text;
       const delay = (this.contentDiv.children.length * 0.4) + (idx * 0.2);
       btn.style.animationDelay = `${delay}s`;
       btn.classList.add('reveal');
       btn.onclick = () => { if (this.onChoiceSelected) this.onChoiceSelected(choice.index); };
-      this.choicesDiv.appendChild(btn);
+      target.appendChild(btn);
     });
   }
 }
