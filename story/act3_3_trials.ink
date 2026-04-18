@@ -7,7 +7,7 @@
 
 Your company reaches the Merchant City of Gilded Spires. The air smells of spice, silk, and the heavy, sweet scent of burning gold. The people here walk with their heads down, their shadows long and violet—a sure sign of the Adharma Fog.
 
-In the center of the Grand Plaza stands [Lobha](https://en.wikipedia.org/wiki/Greed), the first of Kali's lieutenants. He looks like a prince, his silk robes shimmering with the logic of a thousand profitable lies.
+In the center of the Grand Plaza stands **Lobha**, the first of Kali's lieutenants. He looks like a prince, his silk robes shimmering with the logic of a thousand profitable lies.
 
 "Kalki," he says, smiling as if you were an old friend. "Why do you bring an army of ghosts and monsters to a city of wealth? Shambhala is cold and poor. Stay here. I will give you a palace that outshines the sun, and your people will never hunger again."
 
@@ -63,7 +63,7 @@ Vibhishana checks the map. "He is right. The encryption on our scrolls has been 
     -> act3_trial_betrayal_confrontation
 
 * [Search the camp in silence.]
-    You find a piece of violet silk—the mark of [Mada](https://en.wikipedia.org/wiki/Arrogance), the lieutenant of Arrogance—hidden in the gear of your companions.
+    You find a piece of violet silk—the mark of **Mada**, the lieutenant of Arrogance—hidden in the gear of your companions.
     -> act3_trial_betrayal_confrontation
 
 === act3_trial_betrayal_confrontation ===
@@ -113,7 +113,7 @@ Vibhishana steps forward, his crystalline shield dim.
 
 The fire in the camp suddenly turns a cold, electric violet. The shadows of the trees stretch toward you like grasping fingers.
 
-A voice—calm, deep, and sounding like a million years of silk rubbing against stone—resonates in your mind. It is not Adharmendra. It is [Kali](https://en.wikipedia.org/wiki/Kali_(demon)) himself.
+A voice—calm, deep, and sounding like a million years of silk rubbing against stone—resonates in your mind. It is not Adharmendra. It is **Kali**) himself.
 
 \*"You are a beautiful tragedy, Kalki. You gather ghosts to fight a shadow. But ask yourself: When you strike me, what comes after? A world of rules? A world of boredom? I am the desire that makes the world move. You are the silence that wants it to stop."*
 

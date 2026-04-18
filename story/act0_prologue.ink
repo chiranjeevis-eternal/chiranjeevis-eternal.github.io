@@ -30,7 +30,7 @@ A sound breaks the stillness. A sharp, singular crack that echoes off the granit
 
 Behind you, down in the valley where the elders' thatched huts cluster tightly beside the freezing river, a thin column of thick, oily black smoke begins to rise into the bruised sky. 
 
-It is not a hearth fire. The color is wrong. The smell is wrong—it smells of burning pitch and wet thatch. The warlord’s men—the faceless, brutal disciples of the lieutenant [Adharmendra](https://en.wikipedia.org/wiki/Adharma)—must have breached the valley's ancient wards before dawn. They did not come with war horns or demands for tribute. They moved like dark water seeping through cracks in a fortress wall. Efficient. Silent. Soulless.
+It is not a hearth fire. The color is wrong. The smell is wrong—it smells of burning pitch and wet thatch. The warlord’s men—the faceless, brutal disciples of the lieutenant **Adharmendra**—must have breached the valley's ancient wards before dawn. They did not come with war horns or demands for tribute. They moved like dark water seeping through cracks in a fortress wall. Efficient. Silent. Soulless.
 
 You watch an ember drift lazily upward, catching the anemic low light of the morning sun. The invasion of Shambhala has begun. The sanctuary is compromised.
 

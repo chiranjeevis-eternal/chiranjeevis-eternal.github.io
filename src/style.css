@@ -517,6 +517,13 @@ body {
   text-underline-offset: 4px;
 }
 
+.prose-name {
+  color: var(--c-gold);
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0.02em;
+}
+
 /* --- Choices --- */
 #choices-container {
   margin-top: 5rem;

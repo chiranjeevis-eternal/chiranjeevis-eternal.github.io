@@ -9,7 +9,7 @@ Suddenly, the earth begins to heave. Not a quake of destruction, but a systemati
 
 Standing atop the highest pillar is a gargantuan figure, crowned in vines and emeralds. He carries no weapon, for his very presence is a mountain.
 
-This is [Mahabali](https://en.wikipedia.org/wiki/Mahabali), the noble Asura King of Patala.
+This is **Mahabali**, the noble Asura King of Patala.
 
 "I have waited for three Yugas to repay my debt to the Line of Vishnu," he booms, his voice echoing from the chasm floor. "Kali's age has no room for kings who care for their people. My army is yours, Kalki."
 

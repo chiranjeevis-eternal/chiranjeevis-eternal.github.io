@@ -7,7 +7,7 @@ The air grows colder, almost metallic, as you lead your company into the high pa
 
 Lying across the path, half-buried in the frozen soot, is a man whose roar of pain seems to vibrate in the very stones. A red, pulsating light emanates from a jagged hole in his forehead—the place where a divine gem once sat, now a weeping wound that will not heal.
 
-This is [Ashwatthama](https://en.wikipedia.org/wiki/Ashwatthama), the son of Drona, the cursed immortal.
+This is **Ashwatthama**, the son of Drona, the cursed immortal.
 
 "Get... away..." he snarls, his hands clawing at the ice. "The darkness... it feeds on my hate. If you touch me, Avatar, you will taste the burning of a thousand Kurukshetras."
 

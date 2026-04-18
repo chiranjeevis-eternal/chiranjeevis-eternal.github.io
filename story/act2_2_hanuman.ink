@@ -9,7 +9,7 @@ Parashurama stops in his tracks, his eyes narrowing. "A Treta wind," he mutters,
 
 At the gates of an abandoned rock-temple, a figure stands silhouetted against the setting sun. He is massive, his fur the color of burnished gold, draped in a simple saffron cloth. 
 
-This is [Hanuman](https://en.wikipedia.org/wiki/Hanuman), the first of the Chiranjeevis to find you after your Guru.
+This is **Hanuman**, the first of the Chiranjeevis to find you after your Guru.
 
 * [Bow immediately.]
     ~ dharma += 10

@@ -489,7 +489,10 @@ export class UIManager {
     paragraphs.forEach((text, i) => {
       const p = document.createElement('p');
       p.className = isVision ? 'story-paragraph vision-prose-para' : 'story-paragraph';
-      p.innerHTML = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" class="prose-link">$1</a>');
+      // Render **bold** → <strong> and _italic_ → <em>
+      p.innerHTML = text
+        .replace(/\*\*([^*]+)\*\*/g, '<strong class="prose-name">$1</strong>')
+        .replace(/_([^_]+)_/g, '<em>$1</em>');
       p.style.animationDelay = `${i * 0.4}s`;
       target.appendChild(p);
     });

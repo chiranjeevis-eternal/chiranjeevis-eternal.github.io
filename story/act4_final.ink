@@ -30,7 +30,7 @@ The Adharma Fog is so thick here that you can barely see the person beside you. 
 # title: The First Wall: Koka
 # yuga: kali
 
-At the gates of the obsidian fortress stands [Koka](https://en.wikipedia.org/wiki/Koka), the General of the Outer Wall. He is a giant in black mail, but unlike the wraiths, he has honor in his eyes. He recognizes Mahabali.
+At the gates of the obsidian fortress stands **Koka**, the General of the Outer Wall. He is a giant in black mail, but unlike the wraiths, he has honor in his eyes. He recognizes Mahabali.
 
 "Kalki!" Koka roars. "One of us must fall today so the world can turn. I challenge you to single combat!"
 # encounter: koka
@@ -52,7 +52,7 @@ At the gates of the obsidian fortress stands [Koka](https://en.wikipedia.org/wik
 
 Beyond the gate, the world turns insane. You see your mother, Sumati, standing in a field of flowers. You see Shambhala unburned. You see your father, Vishnuyasha, calling you home.
 
-It is [Matsarya](https://en.wikipedia.org/wiki/Envy), the lieutenant of Envy. The illusion is perfect.
+It is **Matsarya**, the lieutenant of Envy. The illusion is perfect.
 
 * [Trust Hanuman’s sight.]
     Hanuman roars, a sound that shatters the silence. "Focus on the Tulsi, Kalki! The scent of the real world!"

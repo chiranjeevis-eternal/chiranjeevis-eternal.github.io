@@ -6,7 +6,7 @@
 
 Your company reaches the Silent Temples of the North. Here, the Adharma Fog doesn't just block the sun—it whispers. It sounds like the voices of your ancestors, telling you to lay down your sword and rest.
 
-In the center of the sanctum stands [Moha](https://en.wikipedia.org/wiki/Delusion), the lieutenant of Delusion. He wears the robes of a High Priest, and his face is a mask of perfect, untroubled peace.
+In the center of the sanctum stands **Moha**, the lieutenant of Delusion. He wears the robes of a High Priest, and his face is a mask of perfect, untroubled peace.
 
 "Why do you bring the fire of war to a place of prayer, Kalki?" he asks, his voice vibrating with a false sanctity. "Kali has not conquered the world; he has simply brought it to a consensus. Join us, and the struggle ends."
 

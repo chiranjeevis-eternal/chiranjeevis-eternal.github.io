@@ -7,7 +7,7 @@ Your journey takes you away from the mountains toward the southern coast. Here, 
 
 Standing on the black sand is a warrior in regal, albeit weathered, armor. He holds a shield that hums with a protective frequency.
 
-This is [Vibhishana](https://en.wikipedia.org/wiki/Vibhishana), the younger brother of Ravana, the king who chose Dharma over his own kin.
+This is **Vibhishana**, the younger brother of Ravana, the king who chose Dharma over his own kin.
 
 "You have come at the eleventh hour, Avatar," he says, his voice regal and precise. "Lanka has risen again from the sea, but it is not the Lanka I knew. It is a fortress for Adharmendra's fleet."
 

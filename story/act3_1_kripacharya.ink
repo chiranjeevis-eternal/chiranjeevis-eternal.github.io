@@ -7,7 +7,7 @@ Following the coast North, your growing company enters a hidden mountain fortres
 
 In the center of the courtyard, an elderly warrior with a silver beard and eyes like sharpened flint is teaching a young recruit the *Garuda Vyuha*.
 
-This is [Kripacharya](https://en.wikipedia.org/wiki/Kripa), the royal teacher of a forgotten dynasty.
+This is **Kripacharya**, the royal teacher of a forgotten dynasty.
 
 "Form is temporary, Dharma is permanent," he says, parrying the recruit's strike with a simple wooden staff. He looks at you. "You have the aura of the Avatar, but the footwork of a villager."
 

@@ -7,7 +7,7 @@ Leaving the Mahendra slopes with Hanuman and Parashurama, you descend into a dee
 
 At the end of the gorge is a cave that glows with a faint, blue bioluminescence. Inside, sitting atop a pile of ancient birch-bark scrolls that could fill a library, is an old man. His beard is as long as a river, and his eyes... his eyes are not looking at you. They are looking at the *entirety* of time.
 
-This is [Vyasa](https://en.wikipedia.org/wiki/Vyasa), the Chronicler of the Ages.
+This is **Vyasa**, the Chronicler of the Ages.
 
 "You are late, Kalki," he says, without looking up from the scroll he is writing. "Only by three centuries, but late nonetheless."
 

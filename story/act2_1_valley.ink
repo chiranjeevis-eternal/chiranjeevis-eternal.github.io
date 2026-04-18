@@ -56,7 +56,7 @@ As you stand amidst the cooling soot of the wraiths, a figure emerges from the f
 
 He does not speak. He simply watches you for three long days as you lead the people toward the Mahendra Peaks. 
 
-Finally, on the eve of the fourth night, he stands before your fire. This is [Parashurama](https://en.wikipedia.org/wiki/Parshurama).
+Finally, on the eve of the fourth night, he stands before your fire. This is **Parashurama**.
 
 * [Bow before him.]
     "I do not seek your worship, Kalki," he says, his voice like the grinding of tectonic plates. "I seek your resolve."
