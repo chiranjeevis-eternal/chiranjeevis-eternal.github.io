@@ -55,3 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
   beginBtn.addEventListener('click', () => startSession(true));
   resumeBtn.addEventListener('click', () => startSession(false));
 });
+
+// PWA Service Worker Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('Service Worker Registered (Dharma Protected)'))
+      .catch(err => console.log('Service Worker Registration Failed:', err));
+  });
+}
+
