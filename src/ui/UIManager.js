@@ -17,6 +17,8 @@ export class UIManager {
     this.lastStats = { karma: 50, dharma: 0, adharma: 10 };
     this.activeCompanions = [];
     this.currentYuga = 'kali';
+    this.currentTitle = 'Chiranjeevis Eternal';
+    this.currentBg = null;
     this.vfx = null;
     this.inVision = false;
     this.pendingVision = {}; // accumulates vision_* tags before overlay fires
@@ -311,10 +313,12 @@ export class UIManager {
   }
 
   setTitle(title) {
+    this.currentTitle = title;
     document.getElementById('scene-title').textContent = title;
   }
 
   setYugaTheme(yuga) {
+    this.currentYuga = yuga;
     document.body.className = `yuga-${yuga}`;
     this.container.className = `yuga-${yuga}`;
     this.yugaIndicator.innerText = `◉ ${yuga.toUpperCase()} YUGA`;
@@ -326,6 +330,7 @@ export class UIManager {
 
   setBackground(bgName) {
     if (!bgName) return;
+    this.currentBg = bgName;
     const url = `assets/backgrounds/${bgName}.png`;
     
     // Smooth transition logic
@@ -334,6 +339,23 @@ export class UIManager {
         this.bgLayer.style.backgroundImage = `url(${url})`;
         this.bgLayer.classList.remove('fading');
     }, 1500);
+  }
+
+  getState() {
+    return {
+      title: this.currentTitle,
+      yuga: this.currentYuga,
+      bg: this.currentBg
+    };
+  }
+
+  restoreState(state) {
+    if (!state) return;
+    if (state.title) this.setTitle(state.title);
+    if (state.yuga) this.setYugaTheme(state.yuga);
+    if (state.bg) {
+      setTimeout(() => this.setBackground(state.bg), 500); // delay so CSS resolves
+    }
   }
 
   updateStats(stats) {

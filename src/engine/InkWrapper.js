@@ -154,20 +154,31 @@ export class InkWrapper {
 
   save() {
     try {
-      const state = this.story.state.toJson();
-      localStorage.setItem('chiranjeevis_eternal_save', state);
+      const inkState = this.story.state.toJson();
+      const uiState = this.ui.getState();
+      const saveData = JSON.stringify({ ink: inkState, ui: uiState });
+      localStorage.setItem('chiranjeevis_eternal_save', saveData);
     } catch (e) {
       console.warn("Save failed:", e);
     }
   }
 
   load() {
-    const savedState = localStorage.getItem('chiranjeevis_eternal_save');
-    if (savedState) {
+    const rawData = localStorage.getItem('chiranjeevis_eternal_save');
+    if (rawData) {
       try {
-        this.story.state.LoadJson(savedState);
+        let loadedState = JSON.parse(rawData);
+        
+        // Handle migration from old pure-string saves
+        if (typeof loadedState === 'string') {
+          this.story.state.LoadJson(loadedState);
+        } else {
+          this.story.state.LoadJson(loadedState.ink);
+          this.ui.restoreState(loadedState.ui);
+        }
+        
         this.ui.clearUI();
-        // Don't call continueStory here, start() will handle it via refreshUI
+        // start() will handle continueStory and refreshUI
       } catch (e) {
         console.error("Load failed:", e);
         localStorage.removeItem('chiranjeevis_eternal_save');
