@@ -789,6 +789,38 @@ body {
 
 .setting-label { font-family: var(--font-prose); font-size: 1.1rem; }
 
+/* Custom Sliders */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 150px;
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  background: var(--c-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(201, 168, 76, 0.5);
+  transition: transform 0.2s ease;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+
+/* Custom Checkboxes */
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #e07020; /* Saffron */
+}
+
 /* Help / Map Styles */
 .help-guide-entry {
   margin-bottom: 1.5rem;

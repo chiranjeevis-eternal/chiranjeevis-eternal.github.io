@@ -24,6 +24,16 @@ export class UIManager {
     this.pendingVision = {}; // accumulates vision_* tags before overlay fires
     
     this.visionOverlay = document.getElementById('memory-vision-overlay');
+    
+    // Default Settings
+    this.settings = {
+      volume: 50,
+      atmosphere: true,
+      grain: true,
+      vfx: true
+    };
+    this.loadSettings();
+    
     this.init();
 
     this.allCompanions = [
@@ -117,21 +127,99 @@ export class UIManager {
     };
   }
 
+  loadSettings() {
+    const saved = localStorage.getItem('chiranjeevis_settings');
+    if (saved) {
+      this.settings = { ...this.settings, ...JSON.parse(saved) };
+    }
+    this.applySettings();
+  }
+
+  saveSettings() {
+    localStorage.setItem('chiranjeevis_settings', JSON.stringify(this.settings));
+  }
+
+  applySettings() {
+    // Audio
+    if (this.audio) {
+      this.audio.masterVolume = this.settings.volume / 100;
+      this.audio.setVolume(this.settings.volume / 100);
+    }
+    
+    // Visuals
+    const grain = document.querySelector('.film-grain');
+    if (grain) grain.style.display = this.settings.grain ? 'block' : 'none';
+    
+    if (this.vfx) this.vfx.active = this.settings.vfx;
+    if (this.vfxLayer) this.vfxLayer.style.display = this.settings.vfx ? 'block' : 'none';
+  }
+
   showSettings() {
     this.modalOverlay.classList.remove('hidden-fade');
     this.modalBody.innerHTML = `
       <h2 class="modal-title">SETTINGS</h2>
       <div class="modal-section">
         <h3>AUDIO</h3>
-        <div class="setting-row"><span class="setting-label">Master Volume</span> <span>[||||||||--]</span></div>
-        <div class="setting-row"><span class="setting-label">Atmosphere Loops</span> <span>ON</span></div>
+        <div class="setting-row">
+          <span class="setting-label">Master Volume</span> 
+          <input type="range" id="set-volume" min="0" max="100" value="${this.settings.volume}">
+        </div>
+        <div class="setting-row">
+          <span class="setting-label">Ambient Drone</span> 
+          <input type="checkbox" id="set-atmosphere" ${this.settings.atmosphere ? 'checked' : ''}>
+        </div>
       </div>
       <div class="modal-section">
         <h3>VISUAL</h3>
-        <div class="setting-row"><span class="setting-label">Film Grain</span> <span>ON</span></div>
-        <div class="setting-row"><span class="setting-label">Fly Ash & Embers</span> <span>ON</span></div>
+        <div class="setting-row">
+          <span class="setting-label">Film Grain</span> 
+          <input type="checkbox" id="set-grain" ${this.settings.grain ? 'checked' : ''}>
+        </div>
+        <div class="setting-row">
+          <span class="setting-label">Fly Ash & Embers</span> 
+          <input type="checkbox" id="set-vfx" ${this.settings.vfx ? 'checked' : ''}>
+        </div>
+      </div>
+      <div style="margin-top:2rem; text-align:center">
+        <button id="modal-close-btn" class="choice-btn" style="width: auto; padding: 1rem 3rem;">RETURN TO JOURNEY</button>
       </div>
     `;
+
+    this.attachSettingsListeners();
+  }
+
+  attachSettingsListeners() {
+    const vol = document.getElementById('set-volume');
+    const atm = document.getElementById('set-atmosphere');
+    const grn = document.getElementById('set-grain');
+    const vfx = document.getElementById('set-vfx');
+    const close = document.getElementById('modal-close-btn');
+
+    vol.oninput = (e) => {
+      this.settings.volume = parseInt(e.target.value);
+      this.applySettings();
+      this.saveSettings();
+    };
+
+    atm.onchange = (e) => {
+      this.settings.atmosphere = e.target.checked;
+      this.applySettings();
+      this.saveSettings();
+    };
+
+    grn.onchange = (e) => {
+      this.settings.grain = e.target.checked;
+      this.applySettings();
+      this.saveSettings();
+    };
+
+    vfx.onchange = (e) => {
+      this.settings.vfx = e.target.checked;
+      this.applySettings();
+      this.saveSettings();
+    };
+
+    close.onclick = () => this.hideModal();
   }
 
   showHelp() {
