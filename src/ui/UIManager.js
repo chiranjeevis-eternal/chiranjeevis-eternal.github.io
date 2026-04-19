@@ -321,14 +321,7 @@ export class UIManager {
     
     if (this.vfx) this.vfx.setYuga(yuga);
     
-    const colors = {
-      kali: 'https://assets.mixkit.co/music/preview/mixkit-atmospheric-darkness-ambient-162.mp3',
-      satya: 'https://assets.mixkit.co/music/preview/mixkit-ethereal-meditation-ambient-563.mp3',
-      treta: 'https://assets.mixkit.co/music/preview/mixkit-epic-battle-drums-671.mp3',
-      dvapara: 'https://assets.mixkit.co/music/preview/mixkit-mysterious-forest-ambient-1212.mp3'
-    };
-    
-    this.audio.playLoop(colors[yuga] || colors.kali);
+    this.audio.playProceduralYuga(yuga);
   }
 
   setBackground(bgName) {
