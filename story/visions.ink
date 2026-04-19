@@ -160,12 +160,12 @@ The Brahmasira. The weapon that cannot be recalled.
 You see the vision of the unborn child in the womb, the target of his malice. You see the Krishna figure intervening with a curse that will last three thousand years.
 
 * ["Justice should be absolute, not personal."]
-    ~ aff_parashurama -= 10
+    ~ aff_ashwatthama -= 10
     The vision of blood dissolves into the grey soot of the Valley.
     -> vision_ashwatthama_exit
 
 * ["The weight of the axe was your dharma."]
-    ~ aff_parashurama += 10
+    ~ aff_ashwatthama += 10
     The vision of blood dissolves into the grey soot of the Valley.
     -> vision_ashwatthama_exit
 
