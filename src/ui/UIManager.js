@@ -68,7 +68,7 @@ export class UIManager {
   }
 
   initVFX() {
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 80; i++) {
         this.createParticle('ash');
     }
   }
@@ -76,7 +76,7 @@ export class UIManager {
   createParticle(type = 'ash') {
     const p = document.createElement('div');
     p.className = `particle ${type}`;
-    const size = type === 'ember' ? Math.random() * 4 + 2 : Math.random() * 3 + 1;
+    const size = type === 'ember' ? Math.random() * 4 + 2 : Math.random() * 5 + 1;
     p.style.width = `${size}px`;
     p.style.height = `${size}px`;
     p.style.left = `${Math.random() * 100}vw`;
@@ -84,13 +84,13 @@ export class UIManager {
     p.style.animationDuration = `${duration}s`;
     p.style.animationDelay = `${Math.random() * 10}s`;
     
-    if (size < 2) {
+    if (size < 2.5) {
         p.style.zIndex = 4;
         p.style.filter = 'blur(1px)';
-        p.style.opacity = type === 'ember' ? 0.3 : 0.2;
+        p.style.opacity = type === 'ember' ? 0.4 : 0.35;
     } else {
         p.style.zIndex = 6;
-        p.style.opacity = type === 'ember' ? 0.8 : 0.5;
+        p.style.opacity = type === 'ember' ? 0.9 : 0.7;
     }
 
     this.vfxLayer.appendChild(p);

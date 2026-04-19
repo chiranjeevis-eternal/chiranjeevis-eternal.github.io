@@ -183,7 +183,7 @@ body {
   pointer-events: none;
   z-index: 5; /* Behind UI, above background */
   overflow: hidden;
-  opacity: 0.4;
+  opacity: 0.8; /* Boosted from 0.4 */
 }
 
 .particle {
@@ -228,12 +228,21 @@ body {
 
 .film-grain {
   position: fixed;
-  inset: 0;
+  inset: -100px;
   z-index: 500;
   pointer-events: none;
   background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/1k_Static_Grain.png/1024px-1k_Static_Grain.png');
-  opacity: 0.05;
+  opacity: 0.12; /* Boosted visibility */
   mix-blend-mode: overlay;
+  animation: grainJitter 0.1s steps(2) infinite;
+}
+
+@keyframes grainJitter {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-10px, 5px); }
+  50% { transform: translate(10px, -5px); }
+  75% { transform: translate(-5px, -10px); }
+  100% { transform: translate(5px, 10px); }
 }
 
 #top-bar {
