@@ -196,18 +196,66 @@ export class UIManager {
     const config = configs[actId] || configs.act1;
     
     return `
-      <div style="text-align:center; color: var(--c-gold); margin-bottom: 10px; font-family: var(--font-title)">${config.title}</div>
-      <svg viewBox="0 0 600 400" style="background: rgba(40,30,20,0.4); border: 2px solid var(--c-gold); border-radius: 5px;">
-        <path d="${config.paths}" fill="none" stroke="rgba(212, 175, 55, 0.3)" stroke-width="2" />
-        ${config.nodes.map(n => `
-          <g>
-            <circle cx="${n.x}" cy="${n.y}" r="8" fill="var(--c-background)" stroke="var(--c-gold)" stroke-width="2">
-                <animate attributeName="r" values="8;10;8" dur="3s" repeatCount="indefinite" />
-            </circle>
-            <text x="${n.x}" y="${n.y + 25}" text-anchor="middle" fill="var(--c-gold)" style="font-size: 12px; font-family: var(--font-main)">${n.name}</text>
-          </g>
-        `).join('')}
-      </svg>
+      <div style="text-align:center; color: var(--c-gold); margin-bottom: 20px; font-family: var(--font-title); font-size: 1.5rem; letter-spacing: 5px; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);">${config.title}</div>
+      <div style="position: relative; padding: 5px; background: linear-gradient(45deg, #111, #222); border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.8), inset 0 0 20px rgba(212,175,55,0.1); border: 1px solid rgba(212, 175, 55, 0.3);">
+        <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: auto; background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/1k_Static_Grain.png/1024px-1k_Static_Grain.png'), radial-gradient(circle at center, #1a1610 0%, #0a0805 100%); mix-blend-mode: screen; border-radius: 4px;">
+          <defs>
+            <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+            <filter id="redPulsar" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="5" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+            <pattern id="tacticalGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(212, 175, 55, 0.05)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <style>
+            .tactical-line {
+              stroke-dasharray: 10, 10;
+              animation: marchFlow 4s linear infinite;
+            }
+            @keyframes marchFlow {
+              to { stroke-dashoffset: -40; }
+            }
+            .node-pulsar {
+              animation: expandFade 2.5s ease-out infinite;
+            }
+            @keyframes expandFade {
+              0% { r: 4; opacity: 1; stroke-width: 2; }
+              100% { r: 25; opacity: 0; stroke-width: 0.5; }
+            }
+          </style>
+
+          <!-- Grid Background -->
+          <rect width="100%" height="100%" fill="url(#tacticalGrid)" />
+
+          <!-- Paths: Underglow + Marching Line -->
+          <path d="${config.paths}" fill="none" stroke="rgba(212, 175, 55, 0.15)" stroke-width="6" filter="url(#goldGlow)" />
+          <path d="${config.paths}" fill="none" stroke="rgba(212, 175, 55, 0.8)" stroke-width="1.5" class="tactical-line" />
+
+          <!-- Nodes -->
+          ${config.nodes.map(n => `
+            <g transform="translate(${n.x}, ${n.y})">
+              <!-- Tactical Reticle Underlay -->
+              <circle cx="0" cy="0" r="14" fill="none" stroke="rgba(212, 175, 55, 0.2)" stroke-width="1" />
+              <path d="M -18 0 L -10 0 M 18 0 L 10 0 M 0 -18 L 0 -10 M 0 18 L 0 10" fill="none" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1.5" />
+              
+              <!-- Expanding Ping rings -->
+              <circle cx="0" cy="0" r="4" fill="none" stroke="var(--c-kali-red)" class="node-pulsar" filter="url(#redPulsar)" />
+              
+              <!-- Core dot -->
+              <circle cx="0" cy="0" r="5" fill="var(--c-gold)" filter="url(#goldGlow)" />
+              
+              <!-- Label Box -->
+              <rect x="-40" y="20" width="80" height="20" fill="rgba(0,0,0,0.7)" rx="3" stroke="rgba(212,175,55,0.3)" stroke-width="1" />
+              <text x="0" y="34" text-anchor="middle" fill="var(--c-gold)" style="font-size: 11px; font-family: var(--font-main); letter-spacing: 1px; font-weight:600;">${n.name.toUpperCase()}</text>
+            </g>
+          `).join('')}
+        </svg>
+      </div>
     `;
   }
 
