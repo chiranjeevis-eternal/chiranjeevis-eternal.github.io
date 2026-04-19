@@ -24,6 +24,7 @@ VAR aff_bali = 0
 VAR prologue_village_approach = ""
 VAR kalki_first_blood = false
 VAR kalki_nature = "warrior"
+VAR betrayer_id = ""
 
 // --- MEMORY FLAGS ---
 VAR memories_parashu_judgment = false

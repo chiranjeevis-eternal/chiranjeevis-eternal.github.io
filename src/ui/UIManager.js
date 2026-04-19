@@ -434,6 +434,15 @@ export class UIManager {
     this.spawnEmberBurst(20);
   }
 
+  pulseCompanion(id) {
+    const slot = document.getElementById(`comp-slot-${id}`);
+    if (slot && slot.classList.contains('discovered')) {
+      slot.classList.remove('companion-pulsing');
+      void slot.offsetWidth; // Force reflow
+      slot.classList.add('companion-pulsing');
+    }
+  }
+
   showCompanionLore(comp) {
     this.modalOverlay.classList.remove('hidden-fade');
     this.modalBody.innerHTML = `

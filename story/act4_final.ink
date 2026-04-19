@@ -12,6 +12,7 @@ The Adharma Fog is so thick here that you can barely see the person beside you. 
 * [Lead from the front.]
     ~ dharma += 10
     {dharma > 60:
+        # companion_pulse: vyasa
         Vyasa watches you, his scrolls fluttering. "You do not lead as a man, Kalki. You lead as the Age itself. The light is blinding."
     }
     You draw your iron blade—now glowing with a steady, white heat. The fog withers before you.
@@ -19,6 +20,7 @@ The Adharma Fog is so thick here that you can barely see the person beside you. 
 
 * [Walk among the soldiers.]
     ~ karma += 5
+# companion_pulse: hanuman
     Hanuman walks beside you. "They are afraid," he notes gently. "Show them your shadow, Avatar, not just your light."
     -> act4_koka_gate
 
@@ -44,11 +46,13 @@ At the gates of the obsidian fortress stands **Koka**, the General of the Outer 
 
 * {comp_parashurama} [Send Parashurama.]
     ~ karma += 5
+# companion_pulse: parashurama
     "An old score," the Guru mutters, his axe catching the violet light. The impact of their clash shakes the fortress walls. Koka falls, laughing.
     -> act4_illusion_field
 
 * {comp_bali} [Send Mahabali to handle his old rival.]
     ~ karma += 10
+# companion_pulse: bali
     Bali steps forward. "Your war ended an age ago, Koka." 
     "And yet we are both still here, King."
     -> act4_illusion_field
@@ -62,10 +66,12 @@ Beyond the gate, the world turns insane. You see your mother, Sumati, standing i
 It is **Matsarya**, the lieutenant of Envy. The illusion is perfect.
 
 * {comp_hanuman} [Trust Hanuman’s sight.]
+# companion_pulse: hanuman
     Hanuman roars, a sound that shatters the silence. "Focus on the scent of the real world, Kalki! It smells of ash!"
     -> act4_adharmendra_clash
 
 * {comp_vyasa} [Ask Vyasa for the counter-sight.]
+# companion_pulse: vyasa
     Vyasa unrolls a blank scroll. "An illusion is merely a story told badly," he says. The flowers bleed ink and dissolve into soot.
     -> act4_adharmendra_clash
 
@@ -101,6 +107,7 @@ You push through to the courtyard. Adharmendra waits for you. He is no longer th
 
 Before the massive bronze doors of the throne room, shadows coalesce into a thousand armored figures. This is Vikoka's inner guard. 
 
+# companion_pulse: kripacharya
 "They intend to drown you in numbers before you reach the throne," Kripacharya observes grimly. "We must split the company to hold the exits."
 
 * [Assign them based on their strengths.]
@@ -110,12 +117,14 @@ Before the massive bronze doors of the throne room, shadows coalesce into a thou
 
 * {comp_ashwatthama} [Ask Ashwatthama to hold the main door.]
     ~ adharma += 10
+# companion_pulse: ashwatthama
     Ashwatthama's gem glows with fierce, violent light. "For the first time in millennia," he smiles, "I am allowed to unleash everything."
     -> act4_ashwatthama_moment
 
 * [Tell them all to stay back. You face Kali alone.]
     ~ karma += 15
     ~ dharma += 10
+# companion_pulse: vyasa
     Your companions hesitate, then bow. "We will ensure none interrupt you," Vyasa says softly.
     -> act4_kali_presence
 

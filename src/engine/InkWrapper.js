@@ -84,6 +84,24 @@ export class InkWrapper {
       if (key === 'background') this.ui.setBackground(value);
       if (key === 'encounter')  this.processEncounter(value);
       if (key === 'actMap')     this.ui.showMap(value);
+      if (key === 'companion_pulse') this.ui.pulseCompanion(value);
+
+      if (key === 'calculate_betrayer') {
+        let lowestAffinity = Infinity;
+        let betrayer = 'vibhishana'; // default fallback
+        
+        this.companionIds.forEach(id => {
+          if (this.story.variablesState[`comp_${id}`]) {
+            const aff = this.story.variablesState[`aff_${id}`] || 0;
+            if (aff < lowestAffinity) {
+              lowestAffinity = aff;
+              betrayer = id;
+            }
+          }
+        });
+        
+        this.story.variablesState["betrayer_id"] = betrayer;
+      }
 
       if (key === 'overlay') {
         if (value === 'memory_vision') {

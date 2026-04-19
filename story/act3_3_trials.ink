@@ -50,6 +50,7 @@ Vibhishana looks at the ash. "One hand of Kali is cut. But the other five are al
 === act3_trial_betrayal ===
 # title: The Trial of Betrayal
 # yuga: kali
+# calculate_betrayer: true
 # audio: betrayal_tension
 
 That night, in the ruins of the Merchant City, the air turns sour. Ashwatthama emerges from the shadows, his forehead-gem pulsing with a frantic, red alarm.
@@ -67,26 +68,47 @@ Vibhishana checks the map. "He is right. The encryption on our scrolls has been 
     -> act3_trial_betrayal_confrontation
 
 === act3_trial_betrayal_confrontation ===
-{
-    - aff_parashurama < aff_hanuman && aff_parashurama < aff_vibhishana && aff_parashurama < aff_vyasa && aff_parashurama < aff_kripacharya && aff_parashurama < aff_ashwatthama:
-        -> act3_betrayer_parashurama
-    - aff_ashwatthama < aff_hanuman && aff_ashwatthama < aff_vibhishana:
-        -> act3_betrayer_ashwatthama
-    - else:
-        -> act3_betrayer_vibhishana // Default to Vibhishana as the strategist who doubts
+{ betrayer_id:
+    - "parashurama": -> act3_betrayer_parashurama
+    - "ashwatthama": -> act3_betrayer_ashwatthama
+    - "hanuman": -> act3_betrayer_hanuman
+    - "vyasa": -> act3_betrayer_vyasa
+    - "kripacharya": -> act3_betrayer_kripacharya
+    - else: -> act3_betrayer_vibhishana 
 }
 
 === act3_betrayer_parashurama ===
+# companion_pulse: parashurama
 Parashurama steps forward, his axe heavy in his hands. He does not look at you.
 "Mada showed me the future, Kalki. He showed me the city burning even if you win. He promised a peace that didn't require more blood. I have seen enough blood."
 -> act3_betrayal_choice
 
 === act3_betrayer_ashwatthama ===
+# companion_pulse: ashwatthama
 Ashwatthama steps forward, the gem in his forehead weeping.
 "I have been cursed for three thousand years, Kalki. Mada offered to take it away. He offered to let me finally... die."
 -> act3_betrayal_choice
 
+=== act3_betrayer_hanuman ===
+# companion_pulse: hanuman
+Hanuman bows his head, his golden fur dimming.
+"Mada offered me a timeline where Rama returned. A lie, I knew it to be a lie... but for just a moment, I wanted the lie more than I wanted this age."
+-> act3_betrayal_choice
+
+=== act3_betrayer_vyasa ===
+# companion_pulse: vyasa
+Vyasa drops his stylus. It shatters on the floor.
+"I have written the ruin of ages, Avatar. Mada showed me a world where my scriptures were never needed because there was never any pain. The price was only our obedience."
+-> act3_betrayal_choice
+
+=== act3_betrayer_kripacharya ===
+# companion_pulse: kripacharya
+Kripacharya tightens his grip on his bow.
+"A general must know when a war is unwinnable. Mada provided the casualty reports of tomorrow. The math of our survival was zero. I chose the preservation of life over the victory of dharma."
+-> act3_betrayal_choice
+
 === act3_betrayer_vibhishana ===
+# companion_pulse: vibhishana
 Vibhishana steps forward, his crystalline shield dim.
 "My logic was my shield, Kalki. But Mada showed me the tactical impossibility of our win. I was... trying to negotiate a surrender that would save the villagers."
 -> act3_betrayal_choice

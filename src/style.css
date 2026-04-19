@@ -441,6 +441,21 @@ body {
   100% { box-shadow: 0 0 5px rgba(201, 168, 76, 0.2); }
 }
 
+.companion-slot.companion-pulsing {
+  animation: companionSpeak 3s ease;
+}
+
+.companion-slot.companion-pulsing .companion-icon {
+  border-color: var(--c-gold);
+  text-shadow: 0 0 10px var(--c-gold);
+  background: rgba(201, 168, 76, 0.1);
+}
+
+@keyframes companionSpeak {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(201, 168, 76, 0); }
+  20% { transform: scale(1.05); box-shadow: -10px 0 20px -5px rgba(201, 168, 76, 0.4); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(201, 168, 76, 0); }
+}
 .companion-icon {
   width: 42px;
   height: 42px;
