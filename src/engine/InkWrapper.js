@@ -85,6 +85,10 @@ export class InkWrapper {
       if (key === 'encounter')  this.processEncounter(value);
       if (key === 'actMap')     this.ui.showMap(value);
       if (key === 'companion_pulse') this.ui.pulseCompanion(value);
+      if (key === 'companion_joined') {
+        const comp = this.ui.allCompanions.find(c => c.id === value);
+        if (comp) this.ui.showCompanionLore(comp);
+      }
 
       if (key === 'calculate_betrayer') {
         let lowestAffinity = Infinity;
