@@ -24,6 +24,7 @@ export class UIManager {
     this.pendingVision = {}; // accumulates vision_* tags before overlay fires
     
     this.visionOverlay = document.getElementById('memory-vision-overlay');
+    this.bgLayer = document.getElementById('bg-layer');
     
     // Default Settings
     this.settings = {
@@ -33,7 +34,7 @@ export class UIManager {
       vfx: true
     };
     this.loadSettings();
-    
+    this.initParallax();
     this.init();
 
     this.allCompanions = [
@@ -125,6 +126,49 @@ export class UIManager {
     this.modalOverlay.onclick = (e) => {
       if (e.target === this.modalOverlay) this.hideModal();
     };
+  }
+
+  initParallax() {
+    window.addEventListener('mousemove', (e) => {
+      if (!this.bgLayer) return;
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      this.bgLayer.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+    });
+
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', (e) => {
+        if (!this.bgLayer || !e.beta) return;
+        const x = (e.gamma / 45) * 15;
+        const y = ((e.beta - 45) / 45) * 15;
+        this.bgLayer.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+      });
+    }
+  }
+
+  playChoiceImpact() {
+    // Haptic
+    if (navigator.vibrate) navigator.vibrate(15);
+
+    // Procedural Selection Click
+    if (this.audio && this.audio.audioContext) {
+        const ctx = this.audio.audioContext;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(150, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 0.1);
+        
+        gain.gain.setValueAtTime(0.05 * this.audio.masterVolume, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+        
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        
+        osc.start();
+        osc.stop(ctx.currentTime + 0.1);
+    }
   }
 
   loadSettings() {
@@ -692,7 +736,10 @@ export class UIManager {
       const delay = (this.contentDiv.children.length * 0.4) + (idx * 0.2);
       btn.style.animationDelay = `${delay}s`;
       btn.classList.add('reveal');
-      btn.onclick = () => { if (this.onChoiceSelected) this.onChoiceSelected(choice.index); };
+      btn.onclick = () => {
+        this.playChoiceImpact();
+        if (this.onChoiceSelected) this.onChoiceSelected(choice.index);
+      };
       target.appendChild(btn);
     });
   }
