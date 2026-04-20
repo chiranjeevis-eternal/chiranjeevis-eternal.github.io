@@ -169,7 +169,6 @@ export class UIManager {
         osc.start();
         osc.stop(ctx.currentTime + 0.1);
     }
-    }
   }
 
   setDistortion(active) {
