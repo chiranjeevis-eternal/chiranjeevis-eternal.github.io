@@ -15,7 +15,7 @@ export class VFXManager {
     this.resize();
     window.addEventListener('resize', () => this.resize());
     
-    for (let i = 0; i < 150; i++) {
+    for (let i = 0; i < 90; i++) {
       this.particles.push(this.createParticle());
     }
     
@@ -31,10 +31,10 @@ export class VFXManager {
     return {
       x: Math.random() * this.canvas.width,
       y: Math.random() * this.canvas.height,
-      size: Math.random() * 4 + 1,
+      size: Math.random() * 2 + 1,
       speedX: Math.random() * 0.5 - 0.25,
       speedY: Math.random() * 0.5 - 0.1,
-      opacity: Math.random() * 0.7 + 0.2
+      opacity: Math.random() * 0.4 + 0.1
     };
   }
 
@@ -65,7 +65,7 @@ export class VFXManager {
       
       this.ctx.beginPath();
       this.ctx.fillStyle = this.particleColor;
-      this.ctx.shadowBlur = 15;
+      this.ctx.shadowBlur = 6;
       this.ctx.shadowColor = this.particleColor;
       this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
       this.ctx.fill();
