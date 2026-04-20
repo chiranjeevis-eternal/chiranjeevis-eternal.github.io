@@ -810,7 +810,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transition: background-image 4s ease-in-out, opacity 4s ease-in-out, transform 0.1s ease-out;
+    transition: background-image 0.8s ease-in-out, opacity 0.8s ease-in-out, transform 0.1s ease-out, filter 0.8s ease-in-out;
     opacity: 0.2;
     filter: brightness(0.8) contrast(1.2) saturate(0.7);
     animation: bgBreath 20s ease-in-out infinite alternate;
@@ -820,7 +820,7 @@ body {
 
 @keyframes bgBreath {
     from { transform: scale(1); }
-    to { transform: scale(1.05); }
+    to { transform: scale(1.15); }
 }
 
 #bg-layer::after {
@@ -839,6 +839,8 @@ body {
 
 #bg-layer.fading {
     opacity: 0;
+    filter: brightness(0) contrast(2);
+    transform: scale(0.9);
 }
 
 #vfx-layer {
@@ -1229,10 +1231,10 @@ input[type="checkbox"] {
   pointer-events: none;
   z-index: 50;
   background: radial-gradient(
-    circle 300px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(255, 255, 230, 0.05) 0%,
-    rgba(0,0,0,0.1) 40%,
-    rgba(0,0,0,0.4) 100%
+    circle 350px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 230, 180, 0.12) 0%,
+    rgba(0,0,0,0.5) 50%,
+    rgba(0,0,0,0.85) 100%
   );
   mix-blend-mode: multiply;
 }

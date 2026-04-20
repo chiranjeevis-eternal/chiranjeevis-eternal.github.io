@@ -581,12 +581,12 @@ export class UIManager {
     this.currentBg = bgName;
     const url = `assets/backgrounds/${bgName}.png`;
     
-    // Smooth transition logic
+    // High-impact transition
     this.bgLayer.classList.add('fading');
     setTimeout(() => {
         this.bgLayer.style.backgroundImage = `url(${url})`;
         this.bgLayer.classList.remove('fading');
-    }, 1500);
+    }, 800);
   }
 
   getState() {
