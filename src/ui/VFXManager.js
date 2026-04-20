@@ -43,7 +43,7 @@ export class VFXManager {
       case 'satya': this.particleColor = 'rgba(255, 230, 150, 0.4)'; break; // Pure Gold
       case 'treta': this.particleColor = 'rgba(255, 120, 50, 0.3)'; break; // Saffron Flame
       case 'dvapara': this.particleColor = 'rgba(100, 200, 255, 0.3)'; break; // Electric Blue
-      case 'kali': this.particleColor = 'rgba(180, 80, 255, 0.7)'; break; // Sharp Violet Haze
+      case 'kali': this.particleColor = 'rgba(230, 180, 255, 0.8)'; break; // Radiant Neon Violet
       default: this.particleColor = 'rgba(200, 200, 200, 0.2)';
     }
   }
@@ -64,6 +64,9 @@ export class VFXManager {
       if (p.y > this.canvas.height) p.y = 0;
       
       this.ctx.beginPath();
+      this.ctx.fillStyle = this.particleColor;
+      this.ctx.shadowBlur = 15;
+      this.ctx.shadowColor = this.particleColor;
       this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
       this.ctx.fill();
     });
