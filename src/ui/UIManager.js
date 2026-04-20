@@ -130,10 +130,16 @@ export class UIManager {
 
   initParallax() {
     window.addEventListener('mousemove', (e) => {
-      if (!this.bgLayer) return;
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
-      this.bgLayer.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+      // Parallax
+      if (this.bgLayer) {
+        const px = (e.clientX / window.innerWidth - 0.5) * 20;
+        const py = (e.clientY / window.innerHeight - 0.5) * 20;
+        this.bgLayer.style.transform = `translate(${px}px, ${py}px) scale(1.05)`;
+      }
+
+      // Torchlight tracking
+      document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
     });
 
     if (window.DeviceOrientationEvent) {
