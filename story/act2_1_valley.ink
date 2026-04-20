@@ -29,6 +29,8 @@ The **Adharma Fog** rolls across the valley floor like a living thing, thick and
 
 === act2_valley_skirmish ===
 Halfway across the waste, the ground begins to churn. Grey shapes—neither man nor ghost—emerge from the soot. They are **Ash-Wraiths**, the echoes of those who died in the Great Fire. They carry blades of jagged glass and their eyes are hollow pits of violet flame.
+# shake:strong
+# flash:red
 
 "To arms!" you roar, drawing your iron blade.
 
@@ -75,6 +77,7 @@ Finally, on the eve of the fourth night, he stands before your fire. This is **P
 "The iron in your hand is heavy," Parashurama says, pointing his axe at your blade. "But it is nothing compared to the iron in your soul. To defeat Kali, you must learn to kill the ego before you kill the man."
 
 He strikes the ground with the haft of his axe. The world shivers.
+# shake:subtle
 
 "Look into my eyes, Avatar. See what happens when a Guru loses his temper."
 
