@@ -89,6 +89,10 @@ export class InkWrapper {
         const comp = this.ui.allCompanions.find(c => c.id === value);
         if (comp) this.ui.showCompanionLore(comp);
       }
+      if (key === 'shake') this.ui.shakeScene(value);
+      if (key === 'flash') {
+        if (value === 'red') this.ui.flashRed();
+      }
 
       if (key === 'calculate_betrayer') {
         let lowestAffinity = Infinity;

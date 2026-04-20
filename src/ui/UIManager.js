@@ -417,6 +417,22 @@ export class UIManager {
     }, 1200);
   }
 
+  shakeScene(type = 'strong') {
+    const el = this.container;
+    const cls = type === 'strong' ? 'shake-scene' : 'shake-subtle';
+    el.classList.remove('shake-scene', 'shake-subtle');
+    void el.offsetWidth;
+    el.classList.add(cls);
+    setTimeout(() => el.classList.remove(cls), 600);
+  }
+
+  flashRed() {
+    this.container.classList.remove('flash-red');
+    void this.container.offsetWidth;
+    this.container.classList.add('flash-red');
+    setTimeout(() => this.container.classList.remove('flash-red'), 400);
+  }
+
   _spawnVisionParticles(color) {
     const container = document.getElementById('vision-particles');
     if (!container) return;
@@ -504,6 +520,11 @@ export class UIManager {
           if (Math.abs(delta) > 10) this.spawnEmberBurst(12);
       }
     });
+
+    if (this.audio) {
+      this.audio.updateAlignment(stats.dharma, stats.adharma);
+    }
+
     this.lastStats = { ...stats };
   }
 

@@ -52,9 +52,16 @@ document.addEventListener("DOMContentLoaded", () => {
     resumeBtn.classList.remove('hidden');
   }
 
-  beginBtn.addEventListener('click', () => startSession(true));
-  resumeBtn.addEventListener('click', () => startSession(false));
+  beginBtn.addEventListener('click', () => {
+    document.getElementById('initiation-loader').classList.add('hidden-fade');
+    startSession(true);
+  });
+  resumeBtn.addEventListener('click', () => {
+    document.getElementById('initiation-loader').classList.add('hidden-fade');
+    startSession(false);
+  });
 });
+
 
 // PWA Service Worker Registration
 if ('serviceWorker' in navigator) {

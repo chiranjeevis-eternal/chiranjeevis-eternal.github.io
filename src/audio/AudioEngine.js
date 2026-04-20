@@ -11,6 +11,10 @@ export class AudioEngine {
     };
     this.masterVolume = 0.5;
     this.isMuted = false;
+    this.alignmentNodes = {
+      filter: null,
+      distortion: null
+    };
   }
 
   init() {
@@ -26,20 +30,33 @@ export class AudioEngine {
     const freqs = [65.41, 98.00, 130.81, 261.63]; 
     const masterGain = this.audioContext.createGain();
     masterGain.gain.value = 0.15 * this.masterVolume;
+    
+    // Alignment Resonance Nodes
+    const masterFilter = this.audioContext.createBiquadFilter();
+    masterFilter.type = 'lowpass';
+    masterFilter.frequency.value = 2000;
+    
+    const masterDist = this.audioContext.createWaveShaper();
+    masterDist.curve = this._makeDistortionCurve(0);
+    masterDist.oversample = '4x';
+
+    masterFilter.connect(masterDist);
+    masterDist.connect(masterGain);
     masterGain.connect(this.audioContext.destination);
+
+    this.alignmentNodes.filter = masterFilter;
+    this.alignmentNodes.distortion = masterDist;
 
     freqs.forEach((freq, idx) => {
       const osc = this.audioContext.createOscillator();
       const lfo = this.audioContext.createOscillator();
       const gain = this.audioContext.createGain();
 
-      // Triangle wave with slight detuning for string-like richness
       osc.type = 'triangle';
       osc.frequency.value = freq + (Math.random() * 0.4 - 0.2);
 
-      // Tremolo LFO for the distinct tanpura swelling sound
       lfo.type = 'sine';
-      lfo.frequency.value = 0.2 + (idx * 0.05); // Slow, overlapping swells
+      lfo.frequency.value = 0.2 + (idx * 0.05); 
       
       const lfoGain = this.audioContext.createGain();
       lfoGain.gain.value = 0.5;
@@ -49,13 +66,40 @@ export class AudioEngine {
       gain.gain.value = 0.5;
 
       osc.connect(gain);
-      gain.connect(masterGain);
+      gain.connect(masterFilter); // Connect to alignment chain
 
       osc.start();
       lfo.start();
     });
 
     this.layers.base = { type: 'procedural', masterGain };
+  }
+
+  updateAlignment(dharma, adharma) {
+    if (!this.audioContext || !this.alignmentNodes.filter) return;
+
+    // Dharma brightens (High-pass style)
+    // Adharma darkens/distorts (Low-pass + Overdrive)
+    const dFactor = Math.min(dharma / 100, 1);
+    const aFactor = Math.min(adharma / 100, 1);
+
+    const freq = 2000 - (aFactor * 1800) + (dFactor * 1000);
+    this.alignmentNodes.filter.frequency.setTargetAtTime(freq, this.audioContext.currentTime, 1.5);
+    
+    const distAmount = (aFactor * 100);
+    this.alignmentNodes.distortion.curve = this._makeDistortionCurve(distAmount);
+  }
+
+  _makeDistortionCurve(amount) {
+    const k = typeof amount === 'number' ? amount : 50;
+    const n_samples = 44100;
+    const curve = new Float32Array(n_samples);
+    const deg = Math.PI / 180;
+    for (let i = 0; i < n_samples; ++i) {
+      const x = i * 2 / n_samples - 1;
+      curve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Math.abs(x));
+    }
+    return curve;
   }
 
   playProceduralYuga(yuga) {
