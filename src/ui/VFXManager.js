@@ -15,7 +15,7 @@ export class VFXManager {
     this.resize();
     window.addEventListener('resize', () => this.resize());
     
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 150; i++) {
       this.particles.push(this.createParticle());
     }
     
@@ -31,10 +31,10 @@ export class VFXManager {
     return {
       x: Math.random() * this.canvas.width,
       y: Math.random() * this.canvas.height,
-      size: Math.random() * 2 + 1,
+      size: Math.random() * 4 + 1,
       speedX: Math.random() * 0.5 - 0.25,
       speedY: Math.random() * 0.5 - 0.1,
-      opacity: Math.random() * 0.5 + 0.1
+      opacity: Math.random() * 0.7 + 0.2
     };
   }
 
@@ -43,7 +43,7 @@ export class VFXManager {
       case 'satya': this.particleColor = 'rgba(255, 230, 150, 0.4)'; break; // Pure Gold
       case 'treta': this.particleColor = 'rgba(255, 120, 50, 0.3)'; break; // Saffron Flame
       case 'dvapara': this.particleColor = 'rgba(100, 200, 255, 0.3)'; break; // Electric Blue
-      case 'kali': this.particleColor = 'rgba(150, 50, 255, 0.2)'; break; // Violet Haze
+      case 'kali': this.particleColor = 'rgba(180, 80, 255, 0.7)'; break; // Sharp Violet Haze
       default: this.particleColor = 'rgba(200, 200, 200, 0.2)';
     }
   }
