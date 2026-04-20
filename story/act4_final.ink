@@ -158,6 +158,7 @@ Ashwatthama steps between you and them. His hands are covered in green, radioact
 You kick open the bronze doors. The inner sanctum is vast, empty of soldiers. Only a single, black mirror stretches from the floor to the ceiling behind a throne of fused gold and bone.
 
 Your reflection does not move. Instead, a figure steps out of the glass. He is vast, his skin the color of an eclipse, his eyes the violet of the Adharma Fog. 
+# distortion:start 
 
 This is **Kali**.
 
@@ -305,7 +306,7 @@ The world is different now—the fog is gone, but the scars remain. Shambhala is
 
 You rule for one true generation, a king who remembers the weight of the axe. It is not a perfect age, but it is a just one.
 
-# game_over: true
+# game_end
 -> END
 
 === ending_sage_ascending ===
@@ -318,7 +319,7 @@ You drop the sword. The physical world blurs. Vyasa smiles, opening a blank scro
 
 You do not rule a kingdom. You dissolve into the cosmic memory, becoming the ink that will write the laws of the next creation. 
 
-# game_over: true
+# game_end
 -> END
 
 === ending_fractured_dawn ===
@@ -329,7 +330,7 @@ The battle is won, but the cost was absolute. Shambhala remains in ruins, and th
 
 A new age begins, but the memory of Kali lingers in the wind. Justice exists, but it requires constant bleeding to maintain.
 
-# game_over: true
+# game_end
 -> END
 
 === ending_ashwatthama_redeemed ===
@@ -340,7 +341,7 @@ As the dust settles, Ashwatthama falls to his knees. The red, weeping wound on h
 
 The gem is gone. He is just a man. He weeps, not with grief, but with profound, devastating relief. You saved the world, but more importantly, you saved its most broken ghost.
 
-# game_over: true
+# game_end
 -> END
 
 === ending_wanderer ===
@@ -351,7 +352,7 @@ You look at the empty throne. You look at the waiting Chiranjeevis.
 
 Then, you turn your back on the fortress. You leave the sword plunged into the earth. The world has been given back to humanity. What they do with it is their burden, not yours. You walk into the clearing fog, becoming nothing more than a legend.
 
-# game_over: true
+# game_end
 -> END
 
 === ending_eternal_return ===
@@ -362,7 +363,7 @@ The wheel clicks into place. Time folds in on itself. The end is indistinguishab
 
 In the village of Shambhala, a child is born. Ancient texts are read in a crumbling ashram. The signs appear again. The dance never truly ends.
 
-# game_over: true
+# game_end
 -> END
 
 === ending_dark_avatar ===
@@ -373,5 +374,5 @@ The violet light enters your veins, and your eyes turn the color of the Adharma 
 
 You sit on the throne of fused gold and bone. The age does not end. It simply finds a more efficient, more terrifying master.
 
-# game_over: true
+# game_end
 -> END

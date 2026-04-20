@@ -169,6 +169,53 @@ export class UIManager {
         osc.start();
         osc.stop(ctx.currentTime + 0.1);
     }
+    }
+  }
+
+  setDistortion(active) {
+    if (active) this.container.classList.add('distort-world');
+    else this.container.classList.remove('distort-world');
+  }
+
+  showEndSummary(stats, activeCompanions) {
+    this.modalOverlay.classList.remove('hidden-fade');
+    const compIcons = this.allCompanions
+      .filter(c => activeCompanions.includes(c.id))
+      .map(c => `<span title="${c.name}" style="font-size: 2rem; margin: 0 5px; filter: drop-shadow(0 0 10px var(--c-gold));">${c.icon}</span>`)
+      .join('');
+
+    const dharmaState = stats.dharma > stats.adharma ? "BRIGHT" : "SHADOWED";
+    const title = stats.dharma > stats.adharma ? "LEGEND OF THE SATYA YUGA" : "ECHO OF THE AGE OF KALI";
+
+    this.modalBody.innerHTML = `
+      <div style="text-align:center; padding: 2rem;">
+        <h2 class="modal-title" style="font-size: 2rem; color: var(--c-gold)">${title}</h2>
+        <div style="margin: 2rem 0; letter-spacing: 2px; color: var(--c-text-muted)">YOUR DHARMA IS ${dharmaState}</div>
+        
+        <div class="modal-section" style="border-top: 1px solid var(--c-border); padding-top: 2rem;">
+          <h3 style="margin-bottom: 1rem;">THE CHIRANJEEVIS ASSEMBLED</h3>
+          <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+             ${compIcons || "None stood with you."}
+          </div>
+          <p style="font-style: italic; font-size: 0.9rem; opacity: 0.7;">
+            ${activeCompanions.length}/7 Immortals stood by your side in the final turning of the wheel.
+          </p>
+        </div>
+
+        <div class="modal-section">
+          <h3>COSMIC ALIGNMENT</h3>
+          <div style="display: flex; justify-content: space-around; width: 100%; margin-top: 1rem;">
+            <div><div style="color: var(--c-gold)">KARMA</div> <strong>${stats.karma}</strong></div>
+            <div><div style="color: #e07020">DHARMA</div> <strong>${stats.dharma}</strong></div>
+            <div><div style="color: var(--c-adharma)">ADHARMA</div> <strong>${stats.adharma}</strong></div>
+          </div>
+        </div>
+
+        <div style="margin-top: 3rem;">
+          <button class="choice-btn" style="width: auto; padding: 1rem 3rem;" onclick="location.reload()">REGENERATE THE AGES</button>
+        </div>
+      </div>
+    `;
   }
 
   loadSettings() {

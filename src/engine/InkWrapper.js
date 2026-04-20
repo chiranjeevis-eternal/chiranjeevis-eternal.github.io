@@ -93,6 +93,17 @@ export class InkWrapper {
       if (key === 'flash') {
         if (value === 'red') this.ui.flashRed();
       }
+      if (key === 'distortion') {
+        this.ui.setDistortion(value === 'start');
+      }
+      if (key === 'game_end') {
+        const stats = this.story.variablesState["karma"] ? {
+          karma: this.story.variablesState["karma"],
+          dharma: this.story.variablesState["dharma"],
+          adharma: this.story.variablesState["adharma"]
+        } : { karma: 50, dharma: 0, adharma: 0 };
+        this.ui.showEndSummary(stats, this.ui.activeCompanions);
+      }
 
       if (key === 'calculate_betrayer') {
         let lowestAffinity = Infinity;
