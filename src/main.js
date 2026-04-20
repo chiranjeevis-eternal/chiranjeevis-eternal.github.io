@@ -53,13 +53,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   beginBtn.addEventListener('click', () => {
-    document.getElementById('initiation-loader').classList.add('hidden-fade');
     startSession(true);
   });
   resumeBtn.addEventListener('click', () => {
-    document.getElementById('initiation-loader').classList.add('hidden-fade');
     startSession(false);
   });
+
+  // Cinematic Initiation Sequence
+  // The loader displays for 3.5s to "manifest" the world before revealing the landing page
+  setTimeout(() => {
+    const loader = document.getElementById('initiation-loader');
+    if (loader) loader.classList.add('hidden-fade');
+  }, 3500);
 });
 
 
