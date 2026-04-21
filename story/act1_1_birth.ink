@@ -54,6 +54,14 @@ In the center of the village square, three soldiers in the lacquered black armor
     You draw your iron blade—the heavy metal vibrating with a sudden heat. 
     -> act1_battle_start
 
++ [Unleash the Mark's raw power.]
+    ~ essence -= 30
+    ~ dharma += 20
+    # flash: gold
+    # shake: strong
+    The Srivatsa mark on your palm blazes with unbearable light. The soldiers are thrown back by a concussive wave of pure divinity, their black armor cracking like eggshells.
+    -> act1_aftermath
+
 + [Wait for a strategic opening from the shadows.]
     ~ adharma += 5
     You stay in the periphery, watching for a gap in their black armor.

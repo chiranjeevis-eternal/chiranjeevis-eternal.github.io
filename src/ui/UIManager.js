@@ -633,6 +633,7 @@ export class UIManager {
     let color = 'var(--c-gold)';
     if (key === 'dharma') color = '#e07020';
     if (key === 'adharma') color = 'var(--c-adharma)';
+    if (key === 'essence') color = 'var(--c-atman)';
     if (key === 'karma' && delta < 0) color = 'var(--c-kali-red)';
 
     valEl.textContent = newVal;

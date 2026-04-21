@@ -2,6 +2,7 @@
 VAR karma = 50
 VAR dharma = 0
 VAR adharma = 10
+VAR essence = 100
 VAR yuga = "kali"
 
 // --- COMPANION TRACKERS ---

@@ -40,8 +40,9 @@ body.yuga-dvapara {
   --c-bg: #0d0d12;
   --c-gold: #c9a84c;
   --c-gold-dim: rgba(201, 168, 76, 0.3);
-  --c-adharma: #6a20e0;
-  --c-border: #2a2a3a;
+  --c-adharma: #6b21a8;
+  --c-atman: #22d3ee;
+  --c-text-muted: #7a7080;
 }
 
 /* --- Initiation Loader --- */
@@ -426,7 +427,7 @@ body {
 }
 
 .stat-container {
-  width: 130px;
+  width: 110px;
 }
 
 .stat-meta {
@@ -454,6 +455,7 @@ body {
 .progress-fill.gold { background: var(--c-gold); box-shadow: 0 0 10px rgba(201, 168, 76, 0.5); }
 .progress-fill.saffron { background: #e07020; box-shadow: 0 0 10px rgba(224, 112, 32, 0.5); }
 .progress-fill.violet { background: var(--c-adharma); box-shadow: 0 0 10px rgba(107, 33, 168, 0.5); }
+.progress-fill.atman { background: var(--c-atman); box-shadow: 0 0 15px rgba(34, 211, 238, 0.6); }
 
 .stat-pulse {
   animation: barPulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
