@@ -807,7 +807,7 @@ body {
     position: fixed;
     inset: 0;
     z-index: 1;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
     transition: background-image 0.8s ease-in-out, opacity 0.8s ease-in-out, transform 0.1s ease-out, filter 0.8s ease-in-out;
