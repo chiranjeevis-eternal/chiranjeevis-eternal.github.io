@@ -218,7 +218,7 @@ export class UIManager {
 
         <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 1rem;">
           <button class="choice-btn" style="width: 100%;" onclick="location.reload()">REGENERATE THE AGES (RESTART)</button>
-          <button class="choice-btn" style="width: 100%; border-color: var(--c-text-muted); opacity: 0.7;" onclick="window.close(); alert('The Yuga has ended. You may now close this window.')">FINISH PILGRIMAGE (CLOSE)</button>
+          <button class="choice-btn" style="width: 100%; border-color: var(--c-text-muted); opacity: 0.7;" onclick="location.reload()">FINISH PILGRIMAGE (RETURN TO START)</button>
         </div>
       </div>
     `;
