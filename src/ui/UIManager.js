@@ -193,31 +193,32 @@ export class UIManager {
     const title = stats.dharma > stats.adharma ? "LEGEND OF THE SATYA YUGA" : "ECHO OF THE AGE OF KALI";
 
     this.modalBody.innerHTML = `
-      <div style="text-align:center; padding: 2rem;">
-        <h2 class="modal-title" style="font-size: 2rem; color: var(--c-gold)">${title}</h2>
-        <div style="margin: 2rem 0; letter-spacing: 2px; color: var(--c-text-muted)">YOUR DHARMA IS ${dharmaState}</div>
+      <div style="text-align:center; padding: 1rem; max-width: 600px; margin: 0 auto;">
+        <h2 class="modal-title" style="font-size: 2.2rem; color: var(--c-gold); text-shadow: 0 0 20px rgba(201, 168, 76, 0.4);">${title}</h2>
+        <div style="margin: 1rem 0; letter-spacing: 3px; color: var(--c-text-muted); font-weight: 600;">ALIGNED WITH ${dharmaState} DHARMA</div>
         
-        <div class="modal-section" style="border-top: 1px solid var(--c-border); padding-top: 2rem;">
-          <h3 style="margin-bottom: 1rem;">THE CHIRANJEEVIS ASSEMBLED</h3>
-          <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
-             ${compIcons || "None stood with you."}
+        <div class="modal-section" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; margin-top: 2rem;">
+          <h3 style="margin-bottom: 1.5rem; letter-spacing: 2px;">THE CHIRANJEEVIS ASSEMBLED</h3>
+          <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+             ${compIcons || '<div style="opacity:0.5">The path was walked alone.</div>'}
           </div>
-          <p style="font-style: italic; font-size: 0.9rem; opacity: 0.7;">
-            ${activeCompanions.length}/7 Immortals stood by your side in the final turning of the wheel.
+          <p style="font-style: italic; font-size: 0.95rem; color: var(--c-gold); opacity: 0.8;">
+            ${activeCompanions.length} of 7 Immortals recognized your spirit.
           </p>
         </div>
 
-        <div class="modal-section">
-          <h3>COSMIC ALIGNMENT</h3>
-          <div style="display: flex; justify-content: space-around; width: 100%; margin-top: 1rem;">
-            <div><div style="color: var(--c-gold)">KARMA</div> <strong>${stats.karma}</strong></div>
-            <div><div style="color: #e07020">DHARMA</div> <strong>${stats.dharma}</strong></div>
-            <div><div style="color: var(--c-adharma)">ADHARMA</div> <strong>${stats.adharma}</strong></div>
+        <div class="modal-section" style="margin-top: 2rem;">
+          <h3 style="letter-spacing: 2px;">COSMIC RESIDUE</h3>
+          <div style="display: flex; justify-content: space-around; width: 100%; margin: 1.5rem 0; background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 8px;">
+            <div style="text-align:center"><div style="color: var(--c-gold); font-size: 0.7rem; letter-spacing:1px;">KARMA</div><div style="font-size: 1.8rem; font-weight:bold;">${stats.karma}</div></div>
+            <div style="text-align:center"><div style="color: #e07020; font-size: 0.7rem; letter-spacing:1px;">DHARMA</div><div style="font-size: 1.8rem; font-weight:bold;">${stats.dharma}</div></div>
+            <div style="text-align:center"><div style="color: var(--c-adharma); font-size: 0.7rem; letter-spacing:1px;">ADHARMA</div><div style="font-size: 1.8rem; font-weight:bold;">${stats.adharma}</div></div>
           </div>
         </div>
 
-        <div style="margin-top: 3rem;">
-          <button class="choice-btn" style="width: auto; padding: 1rem 3rem;" onclick="location.reload()">REGENERATE THE AGES</button>
+        <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 1rem;">
+          <button class="choice-btn" style="width: 100%;" onclick="location.reload()">REGENERATE THE AGES (RESTART)</button>
+          <button class="choice-btn" style="width: 100%; border-color: var(--c-text-muted); opacity: 0.7;" onclick="window.close(); alert('The Yuga has ended. You may now close this window.')">FINISH PILGRIMAGE (CLOSE)</button>
         </div>
       </div>
     `;
@@ -780,6 +781,23 @@ export class UIManager {
     const target = (this.inVision && this._visionChoicesEl)
       ? this._visionChoicesEl
       : this.choicesDiv;
+
+    if (choices.length === 0) {
+      const btn = document.createElement('button');
+      btn.className = 'choice-btn reveal';
+      btn.textContent = 'THE END: CLAIM YOUR DESTINY';
+      btn.style.animationDelay = '1s';
+      btn.onclick = () => {
+        const stats = {
+          karma: parseInt(document.getElementById('stat-karma-val').textContent),
+          dharma: parseInt(document.getElementById('stat-dharma-val').textContent),
+          adharma: parseInt(document.getElementById('stat-adharma-val').textContent)
+        };
+        this.showEndSummary(stats, this.activeCompanions);
+      };
+      target.appendChild(btn);
+      return;
+    }
 
     choices.forEach((choice, idx) => {
       const btn = document.createElement('button');

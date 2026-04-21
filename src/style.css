@@ -805,7 +805,7 @@ body {
 
 #bg-layer {
     position: fixed;
-    inset: 5rem;
+    inset: 0;
     z-index: 1;
     background-size: cover;
     background-position: center;
