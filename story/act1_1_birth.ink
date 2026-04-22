@@ -173,9 +173,9 @@ Vanya approaches you. "They look to you, Kalki."
 + [Reassure them: "We reach the Peaks together."]
     ~ karma += 10
     ~ dharma += 5
-    -> act2_valley_entrance
+    -> travel_shambhala_to_mahendra
 
 + [Warn them: "Prepare for war."]
     ~ adharma += 5
     ~ karma += 5
-    -> act2_valley_entrance
+    -> travel_shambhala_to_mahendra
