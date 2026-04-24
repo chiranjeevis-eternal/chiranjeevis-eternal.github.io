@@ -318,8 +318,9 @@ body {
   inset: -100px;
   z-index: 500;
   pointer-events: none;
-  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/1k_Static_Grain.png/1024px-1k_Static_Grain.png');
-  opacity: 0.12; /* Boosted visibility */
+  background-image: repeating-radial-gradient(#000 0 0.0001%,#fff 0 0.0002%);
+  background-size: 100px 100px;
+  opacity: 0.04;
   mix-blend-mode: overlay;
   animation: grainJitter 0.1s steps(2) infinite;
 }
@@ -454,6 +455,24 @@ body {
   .footer-icon-btn { margin-left: 0; flex: 1; font-size: 0.6rem; }
   
   .choice-btn { padding: 1rem; font-size: 0.85rem; }
+
+  .landing-title {
+    font-size: 2.2rem !important;
+    letter-spacing: 0.05em !important;
+    margin-top: 2rem;
+  }
+  .landing-subtitle {
+    font-size: 0.75rem !important;
+    letter-spacing: 0.25em !important;
+  }
+  #landing-content {
+    padding: 1rem;
+    margin-top: 0;
+  }
+  .landing-context p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
 }
 
 #scene-title { 
