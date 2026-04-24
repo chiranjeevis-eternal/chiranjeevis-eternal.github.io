@@ -340,15 +340,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 3rem;
+  padding: 0.8rem 1.5rem; /* Reduced for mobile/compact feel */
   border-bottom: 1px solid var(--c-border);
   font-family: var(--font-ui);
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  background-color: var(--c-bg); /* Use solid bg for sticky */
-  backdrop-filter: blur(10px);
+  background-color: #0d0d12; /* Solid opaque hex */
+  backdrop-filter: blur(15px);
   z-index: 1000;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.6);
   flex-wrap: wrap;
   gap: 1rem;
 }
@@ -377,12 +377,10 @@ body {
     height: auto;
     border-right: none;
     border-bottom: 1px solid var(--c-border);
-    position: sticky;
-    top: 4rem; /* Below sticky top-bar on mobile */
-    background: rgba(13, 13, 18, 0.95);
-    backdrop-filter: blur(5px);
+    position: relative; /* Remove sticky to prevent overlap bugs */
+    background: #0d0d12;
     z-index: 90;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
   }
   
   #companions-list {
