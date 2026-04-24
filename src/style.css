@@ -333,6 +333,8 @@ body {
 }
 
 #top-bar {
+  position: sticky;
+  top: 0;
   flex: 0 0 auto;
   display: flex;
   justify-content: space-between;
@@ -342,9 +344,9 @@ body {
   font-family: var(--font-ui);
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  background-color: var(--c-surface);
+  background-color: var(--c-bg); /* Use solid bg for sticky */
   backdrop-filter: blur(10px);
-  z-index: 100;
+  z-index: 1000;
   box-shadow: 0 4px 30px rgba(0,0,0,0.5);
   flex-wrap: wrap;
   gap: 1rem;
@@ -375,7 +377,7 @@ body {
     border-right: none;
     border-bottom: 1px solid var(--c-border);
     position: sticky;
-    top: 5rem; /* Below top-bar */
+    top: 4rem; /* Below sticky top-bar on mobile */
     background: rgba(13, 13, 18, 0.95);
     backdrop-filter: blur(5px);
     z-index: 90;
@@ -383,12 +385,17 @@ body {
   }
   
   #companions-list {
-    flex-direction: row;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     overflow-x: auto;
     padding: 0 1rem;
-    gap: 1.25rem;
+    gap: 1rem;
     justify-content: center;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
+  #companions-list::-webkit-scrollbar { display: none; }
 
   .companion-slot {
     flex-direction: row;
@@ -427,9 +434,26 @@ body {
 }
 
 @media (max-width: 600px) {
-  #stats-strip { gap: 1rem; }
-  .stat-container { width: 90px; }
-  .choice-btn { padding: 1rem; }
+  #stats-strip { gap: 0.5rem; justify-content: space-between; }
+  .stat-container { width: 73px; }
+  .stat-meta { font-size: 0.55rem; flex-direction: column; align-items: center; gap: 2px; }
+  .stat-label { display: none; }
+  
+  #footer-bar { 
+    padding: 1rem; 
+    flex-direction: column; 
+    gap: 1rem; 
+    text-align: center; 
+  }
+  #footer-right { 
+    display: flex; 
+    gap: 0.5rem; 
+    width: 100%; 
+    justify-content: center; 
+  }
+  .footer-icon-btn { margin-left: 0; flex: 1; font-size: 0.6rem; }
+  
+  .choice-btn { padding: 1rem; font-size: 0.85rem; }
 }
 
 #scene-title { 
