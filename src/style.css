@@ -374,20 +374,36 @@ body {
     height: auto;
     border-right: none;
     border-bottom: 1px solid var(--c-border);
+    position: sticky;
+    top: 5rem; /* Below top-bar */
+    background: rgba(13, 13, 18, 0.95);
+    backdrop-filter: blur(5px);
+    z-index: 90;
+    padding: 0.5rem 0;
   }
   
   #companions-list {
     flex-direction: row;
     overflow-x: auto;
-    padding: 1rem;
-    gap: 1.5rem;
+    padding: 0 1rem;
+    gap: 1.25rem;
+    justify-content: center;
   }
 
   .companion-slot {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    padding: 0;
-    gap: 0.5rem;
+    padding: 0.25rem;
+    gap: 0;
+    border: none !important;
+  }
+
+  .companion-icon {
+    margin-bottom: 0 !important;
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 1rem !important;
+    border-radius: 50%;
   }
 
   .companion-name {
@@ -405,7 +421,8 @@ body {
   }
 
   #prose-column {
-    padding: 2rem 1.5rem;
+    padding: 1rem 1rem;
+    max-width: 100%;
   }
 }
 
