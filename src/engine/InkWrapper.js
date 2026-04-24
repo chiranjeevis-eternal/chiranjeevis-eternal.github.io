@@ -48,7 +48,8 @@ export class InkWrapper {
     const stats = {
       karma: this.story.variablesState["karma"] || 50,
       dharma: this.story.variablesState["dharma"] || 0,
-      adharma: this.story.variablesState["adharma"] || 10
+      adharma: this.story.variablesState["adharma"] || 10,
+      essence: this.story.variablesState["essence"] ?? 100
     };
     
     const activeCompanions = this.companionIds.filter(id => {

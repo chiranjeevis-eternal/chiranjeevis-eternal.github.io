@@ -108,5 +108,5 @@ The path to the Mahendra Peaks is open. Parashurama walks beside you now, a sile
 ~ comp_parashurama = true
 # companion_joined: parashurama
 
--> act2_hanuman_arrival
+-> camp_post_parashurama
 

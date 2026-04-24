@@ -16,6 +16,7 @@ INCLUDE act3_3b_moha.ink
 INCLUDE act3_4_bali.ink
 INCLUDE act4_final.ink
 INCLUDE travel_pilgrimage.ink
+INCLUDE camp_interactions.ink
 
 // Starting point
 -> prologue_start

@@ -14,7 +14,7 @@ export class UIManager {
      this.audio = new AudioEngine();
      this.onChoiceSelected = null;
     
-    this.lastStats = { karma: 50, dharma: 0, adharma: 10 };
+    this.lastStats = { karma: 50, dharma: 0, adharma: 10, essence: 100 };
     this.activeCompanions = [];
     this.currentYuga = 'kali';
     this.currentTitle = 'Chiranjeevis Eternal';
@@ -608,7 +608,7 @@ export class UIManager {
   }
 
   updateStats(stats) {
-    const keys = ['karma', 'dharma', 'adharma'];
+    const keys = ['karma', 'dharma', 'adharma', 'essence'];
     keys.forEach(key => {
       const newVal = stats[key];
       const delta = newVal - (this.lastStats[key] || 0);
