@@ -4,6 +4,7 @@
   --font-title: 'Cinzel Decorative', serif;
   --font-ui:    'Cinzel', serif;
   --font-prose: 'Cormorant Garamond', serif;
+  --font-size-scale: 1;
 }
 
 /* Default Theme: Kali Yuga */
@@ -725,6 +726,7 @@ body {
   opacity: 0;
   transform: translateY(10px);
   animation: proseIn 1s forwards ease-out;
+  font-size: calc(1.15rem * var(--font-size-scale, 1));
 }
 
 @keyframes proseIn { to { opacity: 1; transform: translateY(0); } }

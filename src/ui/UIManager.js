@@ -31,7 +31,8 @@ export class UIManager {
       volume: 50,
       atmosphere: true,
       grain: true,
-      vfx: true
+      vfx: true,
+      fontSize: 100
     };
     this.loadSettings();
     this.initParallax();
@@ -249,6 +250,9 @@ export class UIManager {
     
     if (this.vfx) this.vfx.active = this.settings.vfx;
     if (this.vfxLayer) this.vfxLayer.style.display = this.settings.vfx ? 'block' : 'none';
+
+    // Font Scale
+    document.documentElement.style.setProperty('--font-size-scale', this.settings.fontSize / 100);
   }
 
   showSettings() {
@@ -275,6 +279,10 @@ export class UIManager {
         <div class="setting-row">
           <span class="setting-label">Fly Ash & Embers</span> 
           <input type="checkbox" id="set-vfx" ${this.settings.vfx ? 'checked' : ''}>
+        </div>
+        <div class="setting-row">
+          <span class="setting-label">Text Scale</span> 
+          <input type="range" id="set-font-size" min="80" max="150" value="${this.settings.fontSize}">
         </div>
       </div>
       <div style="margin-top:2rem; text-align:center">
@@ -312,6 +320,13 @@ export class UIManager {
 
     vfx.onchange = (e) => {
       this.settings.vfx = e.target.checked;
+      this.applySettings();
+      this.saveSettings();
+    };
+
+    const fnt = document.getElementById('set-font-size');
+    fnt.oninput = (e) => {
+      this.settings.fontSize = parseInt(e.target.value);
       this.applySettings();
       this.saveSettings();
     };
