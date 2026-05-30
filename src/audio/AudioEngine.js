@@ -22,6 +22,18 @@ export class AudioEngine {
     this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
     console.log("Audio Engine initialized.");
     this.startTanpuraDrone();
+    this._initVisibilityHandling();
+  }
+
+  _initVisibilityHandling() {
+    document.addEventListener('visibilitychange', () => {
+      if (!this.audioContext) return;
+      if (document.hidden) {
+        this.audioContext.suspend();
+      } else if (!this.isMuted) {
+        this.audioContext.resume();
+      }
+    });
   }
 
   startTanpuraDrone() {

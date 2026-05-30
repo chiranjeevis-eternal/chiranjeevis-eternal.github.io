@@ -54,7 +54,7 @@ export class UIManager {
   }
 
   init() {
-    this.initModalHandlers();
+    // intentionally empty — initModalHandlers called explicitly in constructor
   }
 
   setVFX(vfxManager) {
@@ -223,8 +223,8 @@ export class UIManager {
         </div>
 
         <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 1rem;">
-          <button class="choice-btn" style="width: 100%;" onclick="location.reload()">REGENERATE THE AGES (RESTART)</button>
-          <button class="choice-btn" style="width: 100%; border-color: var(--c-text-muted); opacity: 0.7;" onclick="location.reload()">FINISH PILGRIMAGE (RETURN TO START)</button>
+          <button class="choice-btn" style="width: 100%;" onclick="localStorage.removeItem('chiranjeevis_eternal_save'); location.reload()">REGENERATE THE AGES (NEW GAME)</button>
+          <button class="choice-btn" style="width: 100%; border-color: var(--c-text-muted); opacity: 0.7;" onclick="window._ui && window._ui.returnToLanding()">RETURN TO THE BEGINNING</button>
         </div>
       </div>
     `;
@@ -414,7 +414,7 @@ export class UIManager {
     return `
       <div style="text-align:center; color: var(--c-gold); margin-bottom: 20px; font-family: var(--font-title); font-size: 1.5rem; letter-spacing: 5px; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);">${config.title}</div>
       <div style="position: relative; padding: 5px; background: linear-gradient(45deg, #111, #222); border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.8), inset 0 0 20px rgba(212,175,55,0.1); border: 1px solid rgba(212, 175, 55, 0.3);">
-        <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: auto; background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/1k_Static_Grain.png/1024px-1k_Static_Grain.png'), radial-gradient(circle at center, #1a1610 0%, #0a0805 100%); mix-blend-mode: screen; border-radius: 4px;">
+        <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: auto; background: radial-gradient(ellipse at 40% 35%, #1e1a0e 0%, #120e06 45%, #080503 100%); border-radius: 4px;">
           <defs>
             <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
               <feGaussianBlur stdDeviation="3" result="blur" />
@@ -838,13 +838,21 @@ export class UIManager {
     paragraphs.forEach((text, i) => {
       const p = document.createElement('p');
       p.className = isVision ? 'story-paragraph vision-prose-para' : 'story-paragraph';
-      // Render **bold** → <strong> and _italic_ → <em>
       p.innerHTML = text
         .replace(/\*\*([^*]+)\*\*/g, '<strong class="prose-name">$1</strong>')
         .replace(/_([^_]+)_/g, '<em>$1</em>');
       p.style.animationDelay = `${i * 0.4}s`;
       target.appendChild(p);
     });
+
+    // Auto-scroll prose column to reveal new content
+    const proseCol = document.getElementById('prose-column');
+    if (proseCol) {
+      const delay = paragraphs.length * 0.4 * 1000 + 200;
+      setTimeout(() => {
+        proseCol.scrollTo({ top: proseCol.scrollHeight, behavior: 'smooth' });
+      }, delay);
+    }
   }
 
   renderChoices(choices) {
@@ -893,13 +901,30 @@ export class UIManager {
     }, totalDelay * 1000);
   }
 
+  returnToLanding() {
+    this.hideModal();
+    const gc = document.getElementById('game-container');
+    const lp = document.getElementById('landing-page');
+    if (gc) { gc.style.transition = 'opacity 1.2s ease'; gc.style.opacity = '0'; }
+    setTimeout(() => {
+      if (gc) gc.style.display = 'none';
+      if (lp) {
+        lp.classList.remove('hidden-fade');
+        lp.style.display = '';
+        lp.style.opacity = '1';
+      }
+    }, 1200);
+  }
+
   toggleMobileCompanions() {
-    const panel = document.getElementById('companion-panel');
-    const btn   = document.getElementById('companion-drawer-btn');
+    const panel    = document.getElementById('companion-panel');
+    const btn      = document.getElementById('companion-drawer-btn');
+    const backdrop = document.getElementById('drawer-backdrop');
     if (!panel) return;
     const isOpen = panel.classList.contains('drawer-open');
     panel.classList.toggle('drawer-open', !isOpen);
-    if (btn) btn.setAttribute('aria-expanded', String(!isOpen));
+    if (btn)      btn.setAttribute('aria-expanded', String(!isOpen));
+    if (backdrop) backdrop.style.display = isOpen ? 'none' : 'block';
   }
 
   updateCompanionCount(count) {

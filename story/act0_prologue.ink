@@ -38,11 +38,38 @@ You watch an ember drift lazily upward, catching the anemic low light of the mor
     ~ dharma += 10
     ~ karma += 5
     ~ prologue_village_approach = "sprint"
-    There is no time for complex strategy; there is only immediate duty. You abandon the safety of the treeline and sprint down the rocky incline. Your boots kick up clouds of dry dust. Your mind clears of all philosophical burdens, focusing entirely on the geometry of the descent and the position of the smoke. You will throw yourself between the swords of the invaders and the fragile bodies of the elders who raised you. 
-    -> act1_house
+    There is no time for complex strategy; there is only immediate duty. You abandon the safety of the treeline and sprint down the rocky incline. Your boots kick up clouds of dry dust. Your mind clears of all philosophical burdens.
+    -> prologue_nature
 
 + [Wait in the shadows. Keep the high ground.]
     ~ adharma += 5
     ~ prologue_village_approach = "shadows"
-    Caution is the armor of the survivor. To rush in blindly is to invite an arrow into the throat. You step backward into the thicket, letting the darkness of the ancient pines swallow you completely. If Adharmendra's soldiers want to conquer Shambhala, they will eventually have to secure the high ground where you stand. You regulate your breathing, slow your heart rate, and wait for the enemy to break formation and come to you.
+    Caution is the armor of the survivor. You step backward into the thicket, letting the darkness of the ancient pines swallow you. You regulate your breathing, slow your heart rate, and wait for the enemy to come to you.
+    -> prologue_nature
+
+=== prologue_nature ===
+# title: What You Are
+
+Before you move another step — in the one breath between seeing the smoke and acting — something deeper than strategy asks a question.
+
+Twenty years in this valley. Twenty years of scripture, sword-training, and watching the world decay beyond the mountains. You know the weight of the blade at your hip. You know the mark on your palm.
+
+But *what kind of force are you*?
+
+* [A blade. When Dharma requires an edge, I am it.]
+    ~ kalki_nature = "warrior"
+    ~ dharma += 5
+    This is not cruelty. This is clarity. You were born with the muscle memory of kings who fell on chariots and warriors who walked into exile. You understand cause and effect without sentiment. Every problem, at its core, requires an edge applied with precision. The avatar of the final age is not a philosopher — they are the last argument.
+    -> act1_house
+
+* [A lamp. Understanding cuts deeper than any sword.]
+    ~ kalki_nature = "sage"
+    ~ dharma += 5
+    This is not weakness. This is the longer strategy. Every war is a failure of knowledge — if you can see clearly enough, the sword becomes the last option rather than the first. You were born knowing that the Kali Yuga ends not when its armies are defeated but when its lies are exposed. You are the kind of mind that changes ages by changing what people believe is possible.
+    -> act1_house
+
+* [A direction. The movement itself is the answer.]
+    ~ kalki_nature = "wanderer"
+    ~ karma += 5
+    This is not indecision. This is the oldest wisdom. You are not here to win or to understand — you are here to keep moving when everything else has stopped. The age ends not because someone kills the right enemy, but because someone refuses to stop walking toward the light. You are that refusal, made flesh.
     -> act1_house

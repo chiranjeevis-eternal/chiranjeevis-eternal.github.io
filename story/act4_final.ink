@@ -289,11 +289,35 @@ The Chiranjeevis gather around you. Their long walk is over.
 # yuga: satya
 # audio: victory_bells
 
-The light from your palm covers the earth, washing away the soot and the ash. The ancient rivers begin to flow again. 
+The light from your palm covers the earth.
 
-The Chiranjeevis look at each other and smile. They lay down their weapons. Parashurama's axe turns to dust. Hanuman's fur turns to white smoke. They dissolve into the golden light.
+Not a flash — a steady, building warmth, like a sun that has been below the horizon for a thousand years and is finally rising for real. The soot and the ash dissolve. The ancient rivers, sluggish and violet-tinged for generations, run clear.
 
-The Golden Age is reborn. You are Kalki, the Turner of the Wheel.
+{comp_parashurama && comp_hanuman && comp_vibhishana && comp_vyasa && comp_bali && comp_kripacharya && comp_ashwatthama:
+    All seven Chiranjeevis are here. Every immortal who walked the broken earth for three thousand years — they are all here for this moment. The one they have been waiting for since before the stars found their positions.
+}
+{not (comp_parashurama && comp_hanuman && comp_vibhishana && comp_vyasa && comp_bali && comp_kripacharya && comp_ashwatthama):
+    Some of the Chiranjeevis are here. Not all — but enough. The ones who made it to this moment stand in a loose circle around you, and their long wait is, at last, over.
+}
+
+They look at each other. Then they look at you. Then they look at their own hands — the hands that have carried weapons and scrolls and grief for longer than most civilizations have existed.
+
+{memories_parashu_judgment:
+    Parashurama looks at his axe for a long time. Then he opens his hand. The axe falls. It does not hit the ground — it dissolves into golden light before it gets there. He makes a sound that is not quite a word. It sounds like relief.
+}
+{memories_ashwatthama_curse:
+    Ashwatthama presses both hands to the gem on his forehead. It does not bleed. For the first time in three thousand years, it simply... does not bleed. He closes his eyes and something in his posture unknots that you have never seen knotted because it was always like that.
+}
+{memories_bali_surrender:
+    Bali looks at the clearing sky with the expression of a man who has just completed a very long count. "Day one," he says quietly. Nobody asks what he means. They all understand.
+}
+{memories_vyasa_truth:
+    Vyasa opens the back of the manuscript to the blank pages. He watches as the ink appears — not slowly, not uncertain, just: appearing. The record, finally permitted to exist. He reads the first line and closes the manuscript without a word.
+}
+
+The Chiranjeevis dissolve into the light, one by one — not dying, not disappearing, but *completing*. Joining the light they were always made of.
+
+You are Kalki, the Turner of the Wheel. The Satya Yuga does not arrive because you won a battle. It arrives because enough people, across enough lifetimes, refused to stop believing it was possible.
 
 # game_over: true
 -> END
@@ -302,9 +326,25 @@ The Golden Age is reborn. You are Kalki, the Turner of the Wheel.
 # title: THE WARRIOR'S PEACE
 # yuga: kali
 
-The world is different now—the fog is gone, but the scars remain. Shambhala is rebuilt from the stones of the fallen.
+The fog is gone. The battle is won. The world is not golden — it is grey and scarred and exhausted in the particular way of things that have survived rather than thrived.
 
-You rule for one true generation, a king who remembers the weight of the axe. It is not a perfect age, but it is a just one.
+Shambhala is rebuilt. Slowly, from the stones of the fallen, with the labour of people who are beginning to believe that building something is more interesting than defending themselves against the alternative.
+
+{comp_parashurama:
+    Parashurama stays for the first year of rebuilding. He sharpens tools instead of blades. He does not look comfortable doing it. He also does not stop.
+}
+{comp_kripacharya:
+    Kripacharya organizes the new generation of defenders — not an army, but a practice. People who know the cost of war because someone made sure to teach them before Kali's fog could make them forget.
+}
+{not comp_hanuman && not comp_vyasa:
+    The Chiranjeevis who did not make it to this moment are gone back to their corners — Hanuman to his mountain, Vyasa to his manuscripts. You can feel their absence the way you feel a missing tooth: not constantly, but whenever you try to bite down on something difficult.
+}
+
+You rule for one true generation — a king who remembers the weight of the axe. Not because you enjoy ruling, but because someone has to stand in the center and hold the shape of the thing while the world remembers how to hold itself. It is not a perfect age. But it is a just one.
+
+{memories_parashu_judgment:
+    The patient voice that spoke in the ears of kings — you hear it occasionally, at the edge of sleep, offering comfortable alternatives to the difficult work of maintenance. You close the window every time. Maintenance is not glamorous. It is the only thing that works.
+}
 
 # game_end
 -> END
@@ -313,11 +353,24 @@ You rule for one true generation, a king who remembers the weight of the axe. It
 # title: THE SAGE ASCENDING
 # yuga: dvapara
 
-You drop the sword. The physical world blurs. Vyasa smiles, opening a blank scroll.
+You drop the sword.
 
-"The physical age is only a reflection, Avatar," the Chronicler says.
+It falls in slow motion, or perhaps you are moving in a different time than the blade. By the time it hits the stone floor, you are already somewhere else — not gone, but shifted, the way light shifts when it passes through water.
 
-You do not rule a kingdom. You dissolve into the cosmic memory, becoming the ink that will write the laws of the next creation. 
+{comp_vyasa:
+    Vyasa smiles. He opens the blank pages of the manuscript — the ones that refused to fill for thirty years — and this time the ink appears immediately. Flooding the pages. Writing itself. He reads a line, then another, and his expression changes. "Oh," he says softly. "That is how it ends."
+    He holds the manuscript up so you can see the pages.
+    You are the ink.
+}
+{not comp_vyasa:
+    You feel the absence of Vyasa the way you feel the absence of a word you almost remembered. The cosmic memory is there regardless — it does not require a chronicler. It simply continues, untranslated.
+}
+
+{memories_vyasa_truth:
+    The blank pages he showed you by firelight. The writing that kept fading. Now it is permanent because you are the one writing it. The universe finally consented to record its own ending — because you became the record.
+}
+
+You do not rule a kingdom. You dissolve into the cosmic memory, becoming the ink that will write the laws of the next creation. Not a god — a principle. The principle that a single person's refusal to accept the darkness as permanent is enough to begin a new age.
 
 # game_end
 -> END
@@ -326,9 +379,25 @@ You do not rule a kingdom. You dissolve into the cosmic memory, becoming the ink
 # title: THE FRACTURED DAWN
 # yuga: kali
 
-The battle is won, but the cost was absolute. Shambhala remains in ruins, and the Chiranjeevis vanish back into the shadows. The world is free, but it is cold.
+The battle is won. Kali is shattered. The fog is thinning.
 
-A new age begins, but the memory of Kali lingers in the wind. Justice exists, but it requires constant bleeding to maintain.
+And the Chiranjeevis are gone.
+
+Not dramatically — they simply slip away in the hours after, one by one, back to their mountains and their manuscripts and their waiting. They came for the battle. The aftermath is not their function. The aftermath is yours.
+
+{not comp_hanuman && not comp_vyasa && not comp_parashurama:
+    You face the aftermath alone — or nearly alone. The survivors from Shambhala are here. They look at you with the specific expectation of people who have followed someone through fire and are now wondering what comes next. You do not entirely know. That is the honest answer.
+}
+
+Shambhala remains in ruins. The fog is thinner, not gone. Justice exists in the world now, but it is not self-sustaining — it requires constant, unglamorous maintenance by people who remember why it matters. The work of the next age is not heroic. It is municipal.
+
+{kalki_nature == "wanderer":
+    This is, perhaps, the worst possible outcome for someone who is fundamentally a direction rather than a destination. You built a road. You do not particularly want to live on it.
+}
+
+A new age begins. Not the Satya Yuga — not yet. But something better than what was. Something that, if tended carefully by people who choose to care, might eventually become the Golden Age on its own.
+
+That is not a bad thing to leave behind.
 
 # game_end
 -> END
@@ -337,9 +406,27 @@ A new age begins, but the memory of Kali lingers in the wind. Justice exists, bu
 # title: THE REDEEMED WARRIOR
 # yuga: dvapara
 
-As the dust settles, Ashwatthama falls to his knees. The red, weeping wound on his forehead—the curse of three thousand years—finally closes.
+As the dust settles, Ashwatthama falls to his knees.
 
-The gem is gone. He is just a man. He weeps, not with grief, but with profound, devastating relief. You saved the world, but more importantly, you saved its most broken ghost.
+The gem on his forehead — the bleeding, weeping, inescapable wound that has been his punishment and his reminder for three thousand years — goes still.
+
+Then dark.
+
+Then absent.
+
+{memories_ashwatthama_curse:
+    You remember the tent in the Dvapara Yuga. The blade of grass. The voice speaking between his thoughts in the cadence of his father. The incantation that left his lips before he fully chose it. Three thousand years of bleeding for that one moment. And now it is enough. The universe has counted the time and found the debt paid.
+}
+
+The gem is simply gone. No ceremony. No announcement. No cosmic fanfare. Just: a wound that finally closed.
+
+He is just a man. A very old man, standing in the ruins of a fortress at the end of an age, with nothing on his forehead but skin.
+
+He weeps. Not with grief — the grief has been happening for three thousand years and he is finished with it. He weeps with the specific, devastating relief of something long braced finally being allowed to relax. The relief of a man who was told for three millennia that he was not allowed to rest, and who is, for the first time, permitted.
+
+You saved the world. You saved the age. You ended the Kali Yuga.
+
+But Ashwatthama will tell you — if you ask him, in the years that follow — that the thing that mattered most was the moment someone looked at his wound and said: *the voice found you. That is not the same as choosing to be its instrument.*
 
 # game_end
 -> END
@@ -348,9 +435,28 @@ The gem is gone. He is just a man. He weeps, not with grief, but with profound, 
 # title: THE WANDERER WALKS ON
 # yuga: kali
 
-You look at the empty throne. You look at the waiting Chiranjeevis.
+You look at the empty throne. The fused gold and bone of Adharmendra's seat of power, now just furniture.
 
-Then, you turn your back on the fortress. You leave the sword plunged into the earth. The world has been given back to humanity. What they do with it is their burden, not yours. You walk into the clearing fog, becoming nothing more than a legend.
+You look at the waiting Chiranjeevis.
+
+{comp_hanuman:
+    Hanuman is watching you with an expression that contains no surprise. He has walked with enough Avatars — enough princes who turned back from the path, enough sages who chose the mountain over the court — to recognize the shape of this decision.
+}
+{comp_parashurama:
+    Parashurama puts his axe on his shoulder. He does not bow. He nods, once, slightly. A warrior's acknowledgment of a different kind of courage.
+}
+
+You leave the sword plunged into the stone floor of the throne room. Let whoever comes next find it and ask what kind of person left a sword in a stone.
+
+The world has been given back to humanity. What they do with it is their burden, not yours. The fog is clearing. The rivers are flowing. The structures of Kali's age are crumbling — not with violence, but with the ordinary entropy of things no longer maintained by fear.
+
+{memories_kripacharya_war:
+    The soldier on Kurukshetra who left no footprints past the edge of the field. You understand now. Not a failure, and not a completion. An interval. A breath between verses. You are walking into the same fog he walked into, becoming the next reference point for whoever is counting the days in the dark.
+}
+
+You walk out of the fortress and into the clearing grey. Within a week, your name is a rumor. Within a year, it is a story. Within a generation, it is a principle — the idea that someone walked through the worst age and out the other side, leaving the door open.
+
+That is not nothing.
 
 # game_end
 -> END
@@ -359,9 +465,28 @@ Then, you turn your back on the fortress. You leave the sword plunged into the e
 # title: THE ETERNAL RETURN
 # yuga: satya
 
-The wheel clicks into place. Time folds in on itself. The end is indistinguishable from the beginning.
+The wheel clicks into place.
 
-In the village of Shambhala, a child is born. Ancient texts are read in a crumbling ashram. The signs appear again. The dance never truly ends.
+Not metaphorically. You hear it — a sound like the deepest bell in the oldest temple, felt more than heard, traveling through the stone and the marrow and the specific frequency of a universe adjusting its own position.
+
+Time folds.
+
+{memories_bali_surrender:
+    You think of Bali in the darkness of Patala, counting days. The count he kept for three thousand years. The date Vamana gave him that arrived forty years too early because someone fed the rot deliberately. The rot is gone now. The count is complete. In the deep place beneath the world, Bali will finally be able to stop counting.
+}
+{memories_kripacharya_war:
+    The soldier on Kurukshetra who should not have been breathing. The footprints that stopped at the edge of the field. He was not a forerunner — he was a returning. The wheel was already turning then. It is always already turning.
+}
+
+In the village of Shambhala, a child is born.
+
+Ancient texts are read in a crumbling ashram by a scholar who will spend forty years not understanding them and twenty minutes, very late in life, understanding everything.
+
+A white horse is seen at the edge of a forest by a girl of nine who will spend the rest of her life trying to describe it to people who were not there.
+
+The signs appear again. Not the same signs — the wheel does not repeat, it *spirals*. Each cycle higher or lower than the last, depending on the choices of the people in it. The specific shape of this return was made in the choices you made, which were made possible by the choices of everyone you walked with, which were made possible by the choices of everyone who came before.
+
+The dance never truly ends. But it gets better at dancing.
 
 # game_end
 -> END
@@ -370,9 +495,30 @@ In the village of Shambhala, a child is born. Ancient texts are read in a crumbl
 # title: THE DARK AVATAR
 # yuga: kali
 
-The violet light enters your veins, and your eyes turn the color of the Adharma Fog. Kali's laugh echoes from your own throat.
+The violet light enters your veins.
 
-You sit on the throne of fused gold and bone. The age does not end. It simply finds a more efficient, more terrifying master.
+It is not sudden. That is the surprising part. It does not arrive like a possession or a corruption — it arrives like a conclusion. The logical endpoint of a hundred choices made along the way, each one individually defensible, the sum of which is this.
+
+{kalki_nature == "warrior":
+    The blade finds its master. You are still a warrior — you will always be a warrior. But now the edge serves a different Dharma.
+}
+{kalki_nature == "sage":
+    The lamp has not gone out. It simply burns a different color now. The understanding is still there. Only the direction of it has changed.
+}
+
+Kali's laugh echoes from your own throat. It does not sound the way you expected a demon's laugh to sound. It sounds reasonable. Satisfied. The laugh of someone who has been proven correct.
+
+{comp_hanuman:
+    Hanuman is the last to leave. He stands in the doorway for a long time, looking at you with eyes that have seen the end of one age and the beginning of another and are now watching the end of something different. He does not speak. There is nothing left to say.
+}
+
+You sit on the throne of fused gold and bone.
+
+The age does not end. It simply finds a more efficient master. The Kali Yuga, it turns out, did not need a demon king. It only needed an avatar who was tired enough, and angry enough, and given just enough reasonable justification at just the right moment.
+
+The patient voice that spoke in the ears of kings across every Yuga settles into its new home and goes quiet. It does not need to speak anymore. It has found something better than an instrument.
+
+It has found a throne.
 
 # game_end
 -> END

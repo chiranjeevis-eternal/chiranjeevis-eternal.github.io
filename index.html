@@ -105,6 +105,12 @@
 
       </main>
 
+      <!-- Mobile Drawer Backdrop -->
+      <div id="drawer-backdrop"
+           style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:199; backdrop-filter:blur(2px);"
+           onclick="window._ui && window._ui.toggleMobileCompanions()"
+           aria-hidden="true"></div>
+
       <!-- Mobile Companion Drawer Toggle (hidden on desktop via CSS) -->
       <button id="companion-drawer-btn"
               class="companion-drawer-btn"
