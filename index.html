@@ -4,31 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#c9a84c">
+    <meta name="description" content="A premium narrative interactive fiction experience set in the Kali Yuga. Guide Kalki through the Age of Darkness with seven immortal Chiranjeevis by your side.">
     <link rel="manifest" href="./manifest.json">
     <link rel="apple-touch-icon" href="./icon-512.png">
     <title>Chiranjeevis Eternal: The Age of Kali</title>
-    <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-
   </head>
   <body>
     <!-- Initiation Loader -->
-    <div id="initiation-loader">
+    <div id="initiation-loader" role="status" aria-label="Loading game">
       <div class="loader-ritual">
-        <div class="sudarshana-spinner"></div>
+        <div class="sudarshana-spinner" aria-hidden="true"></div>
         <div class="loader-text">MANIFESTING DHARMA...</div>
       </div>
     </div>
 
-    <!-- Landing Page / Loading Context -->
+    <!-- Landing Page -->
     <div id="landing-page">
       <div id="landing-content">
         <h1 class="landing-title">CHIRANJEEVIS ETERNAL</h1>
         <h2 class="landing-subtitle">THE AGE OF KALI</h2>
-        
-        <div class="landing-context">
+
+        <div class="landing-context" role="article">
           <p>The Age of Iron is choking on its own ash.</p>
           <p>The Bull of Dharma, which once stood proud across the earth, now balances precariously upon a single fractured leg. The world has forgotten its sacred rites. Kings have become thieves, and the rivers run sluggish with the rot of a thousand false promises.</p>
           <p>For millennia, seven immortals—the Chiranjeevis—have walked this decaying earth in silence. They carry the burdens of fallen empires and the echoes of avatars long gone, bound by an ancient oath to wait for the final turning of the wheel.</p>
@@ -38,91 +37,106 @@
         </div>
 
         <div class="landing-actions">
-          <button id="begin-btn">ENTER THE YUGA</button>
-          <button id="resume-btn" class="hidden">CONTINUE PILGRIMAGE</button>
+          <button id="begin-btn" aria-label="Begin a new game">ENTER THE YUGA</button>
+          <button id="resume-btn" class="hidden" aria-label="Continue your saved pilgrimage">CONTINUE PILGRIMAGE</button>
         </div>
       </div>
     </div>
 
     <!-- App Container -->
-    <div id="game-container" class="yuga-kali">
-        <div id="vfx-layer"></div>
-        <div id="bg-layer"></div>
-        <div id="torchlight"></div>
-        <div class="film-grain"></div>
-      
-      <!-- Top Header Strip -->
-      <header id="top-bar">
-        <div id="scene-title">The Age of Kali</div>
-        <div id="stats-strip">
+    <div id="game-container" class="yuga-kali" role="main">
+      <div id="vfx-layer" aria-hidden="true"></div>
+      <div id="bg-layer" aria-hidden="true"></div>
+      <div id="torchlight" aria-hidden="true"></div>
+      <div class="film-grain" aria-hidden="true"></div>
+
+      <!-- Top Header -->
+      <header id="top-bar" role="banner">
+        <div id="scene-title" aria-live="polite">The Age of Kali</div>
+        <div id="stats-strip" role="region" aria-label="Player statistics">
           <div class="stat-container">
-            <div class="stat-meta"><span class="stat-label">KARMA</span> <span id="stat-karma-val">50</span></div>
-            <div class="progress-bg"><div id="bar-karma" class="progress-fill gold" style="width: 50%"></div></div>
+            <div class="stat-meta"><span class="stat-label">KARMA</span> <span id="stat-karma-val" aria-label="Karma value">50</span></div>
+            <div class="progress-bg" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Karma">
+              <div id="bar-karma" class="progress-fill gold" style="width: 50%"></div>
+            </div>
           </div>
           <div class="stat-container">
-            <div class="stat-meta"><span class="stat-label">DHARMA</span> <span id="stat-dharma-val">0</span></div>
-            <div class="progress-bg"><div id="bar-dharma" class="progress-fill saffron" style="width: 0%"></div></div>
+            <div class="stat-meta"><span class="stat-label">DHARMA</span> <span id="stat-dharma-val" aria-label="Dharma value">0</span></div>
+            <div class="progress-bg" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Dharma">
+              <div id="bar-dharma" class="progress-fill saffron" style="width: 0%"></div>
+            </div>
           </div>
           <div class="stat-container">
-            <div class="stat-meta"><span class="stat-label">ADHARMA</span> <span id="stat-adharma-val">10</span></div>
-            <div class="progress-bg"><div id="bar-adharma" class="progress-fill violet" style="width: 10%"></div></div>
+            <div class="stat-meta"><span class="stat-label">ADHARMA</span> <span id="stat-adharma-val" aria-label="Adharma value">10</span></div>
+            <div class="progress-bg" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" aria-label="Adharma">
+              <div id="bar-adharma" class="progress-fill violet" style="width: 10%"></div>
+            </div>
           </div>
           <div class="stat-container">
-            <div class="stat-meta"><span class="stat-label">ESSENCE</span> <span id="stat-essence-val">100</span></div>
-            <div class="progress-bg"><div id="bar-essence" class="progress-fill atman" style="width: 100%"></div></div>
+            <div class="stat-meta"><span class="stat-label">ESSENCE</span> <span id="stat-essence-val" aria-label="Essence value">100</span></div>
+            <div class="progress-bg" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Essence">
+              <div id="bar-essence" class="progress-fill atman" style="width: 100%"></div>
+            </div>
           </div>
         </div>
       </header>
 
-      <!-- Main Layout: 3 Columns Desktop / Stacked Mobile -->
+      <!-- Main Layout -->
       <main id="layout-grid">
-        
-        <!-- Left: Companion Panel -->
-        <aside id="companion-panel">
-          <div id="companions-list">
-            <!-- Injected via UI Manager -->
+
+        <!-- Left: Companion Panel (desktop sidebar / mobile drawer) -->
+        <aside id="companion-panel" aria-label="Companion guardians">
+          <div id="companions-list" role="list" aria-label="Active Chiranjeevis">
+            <!-- Injected via UIManager -->
           </div>
         </aside>
 
         <!-- Center: Story Prose -->
-        <section id="prose-column">
-          <div id="story-content">
-            <!-- Text reveals here -->
+        <section id="prose-column" aria-label="Story">
+          <div id="story-content" aria-live="polite" aria-atomic="false">
           </div>
-          <div id="choices-container">
-            <!-- Action buttons injected here -->
+          <div id="choices-container" role="group" aria-label="Your choices">
           </div>
         </section>
 
-        <!-- Right: Empty / Map / Secondary UI -->
-        <aside id="secondary-panel">
+        <!-- Right: Secondary panel -->
+        <aside id="secondary-panel" aria-hidden="true">
         </aside>
 
       </main>
 
-      <!-- Footer / Yuga Indicator -->
-      <!-- Sub-Panels / Modals -->
-    <div id="modal-overlay" class="hidden-fade">
-        <div id="modal-content">
-            <button id="modal-close">&times;</button>
-            <div id="modal-body"></div>
-        </div>
-    </div>
+      <!-- Mobile Companion Drawer Toggle (hidden on desktop via CSS) -->
+      <button id="companion-drawer-btn"
+              class="companion-drawer-btn"
+              aria-expanded="false"
+              aria-controls="companion-panel"
+              aria-label="Toggle companion panel"
+              onclick="window._ui && window._ui.toggleMobileCompanions()">
+        ✦ COMPANIONS (<span id="companion-count">0</span>)
+      </button>
 
-    <footer id="footer-bar">
+      <!-- Modals -->
+      <div id="modal-overlay" class="hidden-fade" role="dialog" aria-modal="true" aria-label="Information panel">
+        <div id="modal-content">
+          <button id="modal-close" aria-label="Close panel">&times;</button>
+          <div id="modal-body"></div>
+        </div>
+      </div>
+
+      <footer id="footer-bar" role="contentinfo">
         <div id="footer-left">
-            <span id="yuga-indicator">◉ KALI YUGA</span>
-            <span style="font-size: 0.6rem; opacity: 0.3; margin-left:1rem;">v1.0.0</span>
+          <span id="yuga-indicator" aria-live="polite">◉ KALI YUGA</span>
+          <span style="font-size: 0.6rem; opacity: 0.3; margin-left:1rem;">v1.0.0</span>
         </div>
         <div id="footer-right">
-            <button id="help-btn" class="footer-icon-btn">❔ HELP</button>
-            <button id="settings-btn" class="footer-icon-btn">⚙️ SETTINGS</button>
+          <button id="help-btn" class="footer-icon-btn" aria-label="Show map and help">❔ HELP</button>
+          <button id="settings-btn" class="footer-icon-btn" aria-label="Open settings">⚙️ SETTINGS</button>
         </div>
-    </footer>
-</div>
+      </footer>
+    </div>
 
-    <!-- Memory Vision Full Screen Overlay -->
-    <div id="memory-vision-overlay" class="hidden"></div>
+    <!-- Memory Vision Overlay -->
+    <div id="memory-vision-overlay" class="hidden" role="dialog" aria-modal="true" aria-label="Memory Vision"></div>
 
     <script type="module" src="src/main.js"></script>
   </body>

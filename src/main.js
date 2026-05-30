@@ -9,9 +9,10 @@ let game, ui;
 async function startSession(isNew = true) {
   try {
     ui = new UIManager();
+    window._ui = ui; // Expose for inline onclick handlers (mobile drawer)
     const vfx = new VFXManager('vfx-layer');
     ui.setVFX(vfx);
-    
+
     game = new InkWrapper(storyJson, ui);
     
     const landingPage = document.getElementById('landing-page');

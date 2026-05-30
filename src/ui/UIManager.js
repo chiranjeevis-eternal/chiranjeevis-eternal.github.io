@@ -191,7 +191,12 @@ export class UIManager {
       .join('');
 
     const dharmaState = stats.dharma > stats.adharma ? "BRIGHT" : "SHADOWED";
-    const title = stats.dharma > stats.adharma ? "LEGEND OF THE SATYA YUGA" : "ECHO OF THE AGE OF KALI";
+    // Use the Ink-set ending title if available, otherwise fall back to a stat-derived one
+    const title = stats.title && stats.title !== 'Chiranjeevis Eternal'
+      ? stats.title
+      : this.currentTitle && this.currentTitle !== 'Chiranjeevis Eternal'
+        ? this.currentTitle
+        : (stats.dharma > stats.adharma ? "LEGEND OF THE SATYA YUGA" : "ECHO OF THE AGE OF KALI");
 
     this.modalBody.innerHTML = `
       <div style="text-align:center; padding: 1rem; max-width: 600px; margin: 0 auto;">
@@ -238,20 +243,31 @@ export class UIManager {
   }
 
   applySettings() {
-    // Audio
+    const vol = this.settings.volume / 100;
+
+    // Master volume
     if (this.audio) {
-      this.audio.masterVolume = this.settings.volume / 100;
-      this.audio.setVolume(this.settings.volume / 100);
+      this.audio.masterVolume = vol;
+      this.audio.setVolume(vol);
     }
-    
-    // Visuals
+
+    // Atmosphere (ambient drone on/off)
+    if (this.audio && this.audio.layers && this.audio.layers.base && this.audio.layers.base.masterGain) {
+      this.audio.layers.base.masterGain.gain.value = this.settings.atmosphere ? 0.15 * vol : 0;
+    }
+    if (this.audio && this.audio.layers && this.audio.layers.yuga && this.audio.layers.yuga.masterGain) {
+      this.audio.layers.yuga.masterGain.gain.value = this.settings.atmosphere ? 0.20 * vol : 0;
+    }
+
+    // Film grain
     const grain = document.querySelector('.film-grain');
     if (grain) grain.style.display = this.settings.grain ? 'block' : 'none';
-    
+
+    // VFX particles
     if (this.vfx) this.vfx.active = this.settings.vfx;
     if (this.vfxLayer) this.vfxLayer.style.display = this.settings.vfx ? 'block' : 'none';
 
-    // Font Scale
+    // Font scale (applies via CSS calc on prose/choices)
     document.documentElement.style.setProperty('--font-size-scale', this.settings.fontSize / 100);
   }
 
@@ -595,14 +611,52 @@ export class UIManager {
   setBackground(bgName) {
     if (!bgName) return;
     this.currentBg = bgName;
-    const url = `assets/backgrounds/${bgName}.png`;
-    
-    // High-impact transition
+
+    // CSS gradient backgrounds — no image files required
+    const gradients = {
+      'act1':         'radial-gradient(ellipse at 20% 85%, #2a0f05 0%, #0f060a 45%, #050308 100%)',
+      'act2':         'radial-gradient(ellipse at 75% 25%, #061505 0%, #030a04 45%, #020403 100%)',
+      'act3':         'radial-gradient(ellipse at 50% 60%, #1e0802 0%, #0d0306 45%, #040206 100%)',
+      'act4':         'radial-gradient(ellipse at 50% 0%, #110020 0%, #070010 50%, #030009 100%)',
+      'act5':         'radial-gradient(ellipse at 50% 50%, #200005 0%, #0d0004 45%, #040003 100%)',
+      'kalki_strike': 'radial-gradient(ellipse at 50% 50%, rgba(255,250,200,0.9) 0%, rgba(255,215,0,0.7) 18%, rgba(180,80,0,0.6) 40%, #100020 70%, #050010 100%)',
+      'shambhala':    'radial-gradient(ellipse at 40% 30%, #1a1205 0%, #0e0c04 45%, #060504 100%)',
+      'valley':       'radial-gradient(ellipse at 60% 70%, #0a1402 0%, #060c02 45%, #030602 100%)',
+      'fortress':     'radial-gradient(ellipse at 50% 10%, #18001c 0%, #0a0012 50%, #04000a 100%)',
+    };
+
+    const bg = gradients[bgName] || gradients['act1'];
     this.bgLayer.classList.add('fading');
     setTimeout(() => {
-        this.bgLayer.style.backgroundImage = `url(${url})`;
-        this.bgLayer.classList.remove('fading');
+      this.bgLayer.style.background = bg;
+      this.bgLayer.classList.remove('fading');
     }, 800);
+  }
+
+  // Returns a thematic CSS gradient for companion/villain portrait slots
+  _getPortraitGradient(id, isVillain = false) {
+    const companionGradients = {
+      'parashurama': 'radial-gradient(circle at 40% 30%, #8b1a1a 0%, #3d0a0a 50%, #1a0505 100%)',
+      'hanuman':     'radial-gradient(circle at 50% 20%, #d4630a 0%, #7a3800 50%, #2a1200 100%)',
+      'vibhishana':  'radial-gradient(circle at 60% 40%, #1a4a8b 0%, #0d2550 50%, #050f20 100%)',
+      'vyasa':       'radial-gradient(circle at 50% 30%, #8b7a1a 0%, #4a4010 50%, #1a1805 100%)',
+      'bali':        'radial-gradient(circle at 40% 50%, #2a8b1a 0%, #154a0d 50%, #071d05 100%)',
+      'kripacharya': 'radial-gradient(circle at 55% 25%, #6b8b1a 0%, #384a0d 50%, #151d05 100%)',
+      'ashwatthama': 'radial-gradient(circle at 50% 40%, #1a1a8b 0%, #0d0d50 50%, #05051a 100%)',
+    };
+    const villainGradients = {
+      'adharmendra': 'radial-gradient(circle at 50% 30%, #4a1a00 0%, #250d00 50%, #0f0500 100%)',
+      'koka':        'radial-gradient(circle at 40% 20%, #1a1a1a 0%, #0a0a0a 50%, #030303 100%)',
+      'vikoka':      'radial-gradient(circle at 50% 50%, #000000 0%, #0a000a 60%, #050005 100%)',
+      'lobha':       'radial-gradient(circle at 60% 30%, #6b5300 0%, #3a2d00 50%, #150f00 100%)',
+      'krodha':      'radial-gradient(circle at 50% 20%, #6b0000 0%, #3a0000 50%, #150000 100%)',
+      'moha':        'radial-gradient(circle at 50% 40%, #3a006b 0%, #1e003a 50%, #0a0015 100%)',
+      'mada':        'radial-gradient(circle at 40% 30%, #6b3a00 0%, #3a1e00 50%, #150b00 100%)',
+      'matsarya':    'radial-gradient(circle at 50% 30%, #006b3a 0%, #003a1e 50%, #00150b 100%)',
+      'kali':        'radial-gradient(circle at 50% 10%, #3a006b 0%, #1e0038 35%, #0a0020 60%, #030010 100%)',
+    };
+    const map = isVillain ? villainGradients : companionGradients;
+    return map[id] || 'radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0d0d1a 100%)';
   }
 
   getState() {
@@ -680,20 +734,17 @@ export class UIManager {
 
   updateCompanions(activeIds) {
     activeIds.forEach(id => {
-      if (!this.activeCompanions.includes(id)) {
-        this.triggerAwakening(id);
-      }
+      if (!this.activeCompanions.includes(id)) this.triggerAwakening(id);
     });
 
     this.allCompanions.forEach(comp => {
       const slot = document.getElementById(`comp-slot-${comp.id}`);
-      if (activeIds.includes(comp.id)) {
-        slot.classList.add('discovered');
-      } else {
-        slot.classList.remove('discovered');
-      }
+      if (!slot) return;
+      if (activeIds.includes(comp.id)) slot.classList.add('discovered');
+      else slot.classList.remove('discovered');
     });
     this.activeCompanions = [...activeIds];
+    this.updateCompanionCount(activeIds.length);
   }
 
   triggerAwakening(id) {
@@ -730,20 +781,22 @@ export class UIManager {
 
   showCompanionLore(comp) {
     this.modalOverlay.classList.remove('hidden-fade');
+    const portrait = this._getPortraitGradient(comp.id, false);
     this.modalBody.innerHTML = `
       <div class="modal-content-split">
-        <div class="modal-portrait" style="background-image: url('assets/companions/${comp.id}.png')"></div>
+        <div class="modal-portrait" style="background:${portrait}; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.5rem;">
+          <span style="font-size:3.5rem; filter:drop-shadow(0 0 20px var(--c-gold));">${comp.icon}</span>
+          <span style="font-family:var(--font-main); font-size:0.6rem; letter-spacing:4px; color:var(--c-gold); opacity:0.6;">CHIRANJEEVI</span>
+        </div>
         <div class="modal-text-side">
           <h2 class="modal-title">${comp.name.toUpperCase()}</h2>
           <div class="modal-section">
             <h3>THE IMMORTAL'S BURDEN</h3>
             <p>${comp.bio}</p>
           </div>
-          <div class="modal-section">
-            <div id="world-map" style="font-size:0.7rem; color:var(--c-gold)">
-               BOND LEVEL: AWAKENED<br>
-               YUGA ORIGIN: TRETA/DVAPARA/SATYA
-            </div>
+          <div class="modal-section" style="font-size:0.7rem; color:var(--c-gold); line-height:2;">
+            BOND LEVEL: AWAKENED<br>
+            STATUS: ETERNAL GUARDIAN
           </div>
         </div>
       </div>
@@ -752,20 +805,22 @@ export class UIManager {
 
   showEncounter(villain) {
     this.modalOverlay.classList.remove('hidden-fade');
+    const portrait = this._getPortraitGradient(villain.id, true);
     this.modalBody.innerHTML = `
       <div class="modal-content-split">
-        <div class="modal-portrait" style="background-image: url('assets/villains/${villain.id}.png')"></div>
+        <div class="modal-portrait" style="background:${portrait}; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.5rem;">
+          <span style="font-size:3.5rem; filter:drop-shadow(0 0 20px var(--c-kali-red)); opacity:0.9;">💀</span>
+          <span style="font-family:var(--font-main); font-size:0.55rem; letter-spacing:3px; color:var(--c-kali-red); opacity:0.7;">KALI'S FORCE</span>
+        </div>
         <div class="modal-text-side">
           <h2 class="modal-title" style="color:var(--c-kali-red)">${villain.name.toUpperCase()}</h2>
           <div class="modal-section">
-            <h3 style="color:var(--c-adharma)">THE MARK OF KALI</h3>
+            <h3 style="color:var(--c-adharma)">VICE: ${villain.vice || 'THE MARK OF KALI'}</h3>
             <p>${villain.bio}</p>
           </div>
-          <div class="modal-section">
-            <div id="world-map" style="font-size:0.7rem; color:var(--c-kali-red)">
-               THREAT LEVEL: OMEGA<br>
-               ADHARMA AURA: ${villain.aura}
-            </div>
+          <div class="modal-section" style="font-size:0.7rem; color:var(--c-kali-red); line-height:2;">
+            THREAT LEVEL: OMEGA<br>
+            ADHARMA AURA: ${villain.aura}
           </div>
         </div>
       </div>
@@ -819,6 +874,7 @@ export class UIManager {
       const btn = document.createElement('button');
       btn.className = this.inVision ? 'choice-btn vision-choice-btn' : 'choice-btn';
       btn.textContent = choice.text;
+      btn.setAttribute('aria-label', `Choice ${idx + 1}: ${choice.text}`);
       const delay = (this.contentDiv.children.length * 0.4) + (idx * 0.2);
       btn.style.animationDelay = `${delay}s`;
       btn.classList.add('reveal');
@@ -828,5 +884,26 @@ export class UIManager {
       };
       target.appendChild(btn);
     });
+
+    // Auto-focus first choice after animations settle (keyboard navigation)
+    const totalDelay = (this.contentDiv.children.length * 0.4) + (choices.length * 0.2) + 0.3;
+    setTimeout(() => {
+      const firstBtn = target.querySelector('.choice-btn');
+      if (firstBtn && document.activeElement === document.body) firstBtn.focus();
+    }, totalDelay * 1000);
+  }
+
+  toggleMobileCompanions() {
+    const panel = document.getElementById('companion-panel');
+    const btn   = document.getElementById('companion-drawer-btn');
+    if (!panel) return;
+    const isOpen = panel.classList.contains('drawer-open');
+    panel.classList.toggle('drawer-open', !isOpen);
+    if (btn) btn.setAttribute('aria-expanded', String(!isOpen));
+  }
+
+  updateCompanionCount(count) {
+    const countEl = document.getElementById('companion-count');
+    if (countEl) countEl.textContent = count;
   }
 }
