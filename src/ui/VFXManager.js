@@ -14,11 +14,21 @@ export class VFXManager {
     this.container.appendChild(this.canvas);
     this.resize();
     window.addEventListener('resize', () => this.resize());
-    
+
     for (let i = 0; i < 90; i++) {
       this.particles.push(this.createParticle());
     }
-    
+
+    this._paused = false;
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        this._paused = true;
+      } else if (this._paused && this.active) {
+        this._paused = false;
+        this.animate();
+      }
+    });
+
     this.animate();
   }
 
@@ -49,7 +59,7 @@ export class VFXManager {
   }
 
   animate() {
-    if (!this.active) return;
+    if (!this.active || this._paused) return;
     
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     

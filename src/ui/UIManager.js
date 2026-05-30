@@ -184,6 +184,7 @@ export class UIManager {
   }
 
   showEndSummary(stats, activeCompanions) {
+    localStorage.setItem('chiranjeevis_completed', '1');
     this.modalOverlay.classList.remove('hidden-fade');
     const compIcons = this.allCompanions
       .filter(c => activeCompanions.includes(c.id))
@@ -223,7 +224,14 @@ export class UIManager {
         </div>
 
         <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 1rem;">
-          <button class="choice-btn" style="width: 100%;" onclick="localStorage.removeItem('chiranjeevis_eternal_save'); location.reload()">REGENERATE THE AGES (NEW GAME)</button>
+          <button class="choice-btn" style="width: 100%; border-color: #e6b840;" onclick="
+            localStorage.removeItem('chiranjeevis_eternal_save');
+            const d = parseFloat(localStorage.getItem('difficulty') || '1.0');
+            localStorage.setItem('difficulty', Math.min((d * 1.3).toFixed(2), 3.0));
+            localStorage.setItem('chiranjeevis_ng_plus', '1');
+            location.reload()
+          ">✦ NEW GAME + (HARDER CYCLE)</button>
+          <button class="choice-btn" style="width: 100%;" onclick="localStorage.removeItem('chiranjeevis_eternal_save'); location.reload()">NEW GAME (NORMAL)</button>
           <button class="choice-btn" style="width: 100%; border-color: var(--c-text-muted); opacity: 0.7;" onclick="window._ui && window._ui.returnToLanding()">RETURN TO THE BEGINNING</button>
         </div>
       </div>
@@ -302,6 +310,7 @@ export class UIManager {
         </div>
       </div>
       <div style="margin-top:2rem; text-align:center">
+        <button id="modal-reset-save" class="choice-btn" style="width:auto; padding:0.7rem 2rem; font-size:0.75rem; border-color:var(--c-kali-red); color:var(--c-kali-red); opacity:0.7;">WIPE SAVE DATA</button>
         <button id="modal-close-btn" class="choice-btn" style="width: auto; padding: 1rem 3rem;">RETURN TO JOURNEY</button>
       </div>
     `;
@@ -348,6 +357,27 @@ export class UIManager {
     };
 
     close.onclick = () => this.hideModal();
+
+    const resetBtn = document.getElementById('modal-reset-save');
+    if (resetBtn) resetBtn.onclick = () => this.confirmResetSave();
+  }
+
+  confirmResetSave() {
+    this.modalBody.innerHTML = `
+      <h2 class="modal-title" style="color:var(--c-kali-red)">WIPE KARMIC RECORD?</h2>
+      <p style="font-family:var(--font-prose); color:var(--c-text); font-size:1rem; line-height:1.8; text-align:center; margin:2rem 0; opacity:0.85;">
+        This will erase all progress, companions, and karma.<br>
+        <em>The Chiranjeevis will return to waiting.</em>
+      </p>
+      <div style="display:flex; gap:1rem; justify-content:center; margin-top:2rem;">
+        <button class="choice-btn" style="border-color:var(--c-kali-red); color:var(--c-kali-red);" onclick="
+          localStorage.clear();
+          document.getElementById('modal-overlay').classList.add('hidden-fade');
+          setTimeout(() => location.reload(), 400);
+        ">ERASE EVERYTHING</button>
+        <button class="choice-btn" style="border-color:var(--c-text-muted); opacity:0.6;" onclick="window._ui && window._ui.showSettings()">RETURN</button>
+      </div>
+    `;
   }
 
   showHelp() {
@@ -1227,12 +1257,12 @@ export class UIManager {
       target.appendChild(p);
     });
 
-    // Auto-scroll prose column to reveal new content
-    const proseCol = document.getElementById('prose-column');
-    if (proseCol) {
-      const delay = paragraphs.length * 0.4 * 1000 + 200;
+    // Auto-scroll the layout grid so new prose is visible
+    const scrollContainer = document.getElementById('layout-grid') || document.getElementById('prose-column');
+    if (scrollContainer) {
+      const delay = paragraphs.length * 400 + 300;
       setTimeout(() => {
-        proseCol.scrollTo({ top: proseCol.scrollHeight, behavior: 'smooth' });
+        scrollContainer.scrollTo({ top: scrollContainer.scrollHeight, behavior: 'smooth' });
       }, delay);
     }
   }

@@ -5,9 +5,19 @@
 # actMap: act4
 # audio: thunder_march
 
-The time for words is over. You lead the Company of Seven and the Army of the Chasm South, toward the obsidian fortress of Adharmendra. The sky above is no longer iron grey; it is black, lit by the periodic, violet flash of the *Vimana of Shadows*.
+The time for words is over. You lead the Company of Seven and the Army of the Chasm South, toward the obsidian fortress of Adharmendra. The sky is black, lit by the periodic, violet flash of the *Vimana of Shadows*.
 
-The Adharma Fog is so thick here that you can barely see the person beside you. But you feel them. Impossibly heavy weights pressing into the earth.
+The Adharma Fog is so thick here that you can barely see the person beside you. But you feel them — impossibly heavy weights pressing into the earth. Each Chiranjeevi a different kind of silence.
+
+{aff_parashurama > 15:
+    Parashurama walks directly behind you, axe unsheathed. There is something different in the way he carries it today — not with the grip of duty but with the grip of choice. He made a decision somewhere on the road here, and it shows in his shoulders.
+}
+{aff_hanuman > 15:
+    Hanuman has been completely silent since dawn. Not the silence of worry — the silence of total preparation. Every resource gathered, every distraction set aside. When Hanuman is this quiet, the things around him tend to break.
+}
+{aff_bali > 15:
+    Bali has been counting under his breath since the Black Chasm. Not the old countdown — something new. The count of steps remaining. He has waited three thousand years for this march. He intends to remember every step of it.
+}
 
 * [Lead from the front.]
     ~ dharma += 10
@@ -15,18 +25,18 @@ The Adharma Fog is so thick here that you can barely see the person beside you. 
         # companion_pulse: vyasa
         Vyasa watches you, his scrolls fluttering. "You do not lead as a man, Kalki. You lead as the Age itself. The light is blinding."
     }
-    You draw your iron blade—now glowing with a steady, white heat. The fog withers before you.
+    You draw your iron blade — now glowing with a steady, white heat. The fog withers before you.
     -> act4_koka_gate
 
 * [Walk among the soldiers.]
     ~ karma += 5
-# companion_pulse: hanuman
+    # companion_pulse: hanuman
     Hanuman walks beside you. "They are afraid," he notes gently. "Show them your shadow, Avatar, not just your light."
     -> act4_koka_gate
 
 * {comp_bali} [Let Mahabali lead the vanguard.]
     ~ karma += 10
-    Bali takes the front. The earth literally bends under his steps. 
+    Bali takes the front. The earth bends under his steps. The soldiers behind him walk straighter, as if borrowed courage travels through stone.
     -> act4_koka_gate
 
 === act4_koka_gate ===
@@ -92,6 +102,17 @@ You push through to the courtyard. Adharmendra waits for you. He is no longer th
     ~ dharma += 20
     # stat_change: dharma_up
     You lower your blade and show him the mark on your palm. He drops his sword, his eyes clearing for a single second. "Thank you," he says, as he finally turns to dust.
+    -> act4_inner_sanctum
+
+* {comp_vibhishana && aff_vibhishana > 15} [Let Vibhishana speak to him — one fallen king to another.]
+    ~ dharma += 25
+    # companion_pulse: vibhishana
+    # stat_change: dharma_up
+    Vibhishana steps forward. He does not draw his shield. He stands before Adharmendra with open hands — the exact posture he used when he walked out of Lanka.
+    "I know what the voice promised you," Vibhishana says quietly. "I know how reasonable it sounded. I know what you traded for it and what you thought you were protecting." A pause. "I made the same calculation. I made a different choice. I have regretted the choice every day since and I would make it again."
+    Adharmendra's armor stops glowing. The violet light leaks out of him slowly, like poison leaving a wound.
+    "I remember being a king," he says. Then he is dust.
+    ~ aff_vibhishana += 10
     -> act4_inner_sanctum
 
 * [Strike him down without hesitation.]
@@ -319,6 +340,16 @@ The Chiranjeevis dissolve into the light, one by one — not dying, not disappea
 
 You are Kalki, the Turner of the Wheel. The Satya Yuga does not arrive because you won a battle. It arrives because enough people, across enough lifetimes, refused to stop believing it was possible.
 
+{kali_name_given == "ignorance":
+    The new age's scholars record the Kali Yuga as the Age of Ignorance. The word becomes a diagnosis, not a condemnation — the recognition that most evil is not malice but the failure to look clearly at what one is doing and why.
+}
+{kali_name_given == "ego":
+    The new age's scholars record the Kali Yuga as the Age of Ego — the age in which the self forgot it was connected to everything else, and called that forgetting freedom. The word becomes a mirror.
+}
+{kali_name_given == "time":
+    The new age's scholars record the Kali Yuga as the Age of Time — the most honest accounting. Every age is time. The question is only what is done with it. The naming is its own kind of wisdom.
+}
+
 # game_over: true
 -> END
 
@@ -398,6 +429,16 @@ Shambhala remains in ruins. The fog is thinner, not gone. Justice exists in the 
 A new age begins. Not the Satya Yuga — not yet. But something better than what was. Something that, if tended carefully by people who choose to care, might eventually become the Golden Age on its own.
 
 That is not a bad thing to leave behind.
+
+{kali_name_given == "ignorance":
+    The historians of the rebuilt cities call it the Age of Ignorance. The name spreads. It is not used as an insult. It is used as a reminder — here is what happens when a civilization stops asking why.
+}
+{kali_name_given == "ego":
+    The philosophers of the new era write extensively about the Age of Ego. The concept becomes a cornerstone of how the next generation thinks about governance, about power, about the specific way that self-interest convinces itself it is also the world's interest.
+}
+{kali_name_given == "time":
+    "The Age of Time," the first chronicles call it. Every age is time, spent or wasted. The naming sticks not because it is poetic but because it is accurate. The Kali Yuga was an age that forgot it was temporary.
+}
 
 # game_end
 -> END

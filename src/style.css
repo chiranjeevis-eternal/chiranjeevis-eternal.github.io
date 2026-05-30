@@ -613,6 +613,10 @@ body {
   padding: 3rem 1.5rem;
   border-right: 1px solid var(--c-border);
   background: var(--c-bg);
+  overflow-y: auto;
+  max-height: calc(100vh - 120px);
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-border) transparent;
 }
 
 #companions-list {
