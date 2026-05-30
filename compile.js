@@ -9,5 +9,5 @@ const compiler = new Compiler(source, {
 });
 const story = compiler.Compile();
 const json = story.ToJson();
-fs.writeFileSync('story/story.json', json);
-console.log('Compiled story/main.ink to story/story.json');
+fs.writeFileSync('src/story.json', json);
+console.log('Compiled story/main.ink -> src/story.json');

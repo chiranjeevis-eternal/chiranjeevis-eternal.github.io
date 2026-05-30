@@ -61,4 +61,4 @@ Kripacharya joins your company.
 ~ comp_kripacharya = true
 # companion_joined: kripacharya
 
--> act3_ashwatthama_arrival
+-> camp_post_kripacharya

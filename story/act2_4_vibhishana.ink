@@ -73,5 +73,5 @@ Vibhishana joins your company.
 ~ comp_vibhishana = true
 # companion_joined: vibhishana
 
--> act3_kripacharya_arrival
+-> camp_post_vibhishana
 

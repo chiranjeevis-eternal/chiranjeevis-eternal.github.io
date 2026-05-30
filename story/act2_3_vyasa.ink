@@ -57,4 +57,4 @@ Vyasa joins your company.
 ~ comp_vyasa = true
 # companion_joined: vyasa
 
--> act2_vibhishana_arrival
+-> camp_post_vyasa

@@ -53,8 +53,8 @@ Hanuman watches you with an expression of infinite patience.
     -> act2_hanuman_companion
 
 === act2_hanuman_companion ===
-Hanuman joins your company. 
+Hanuman joins your company.
 ~ comp_hanuman = true
 # companion_joined: hanuman
 
--> act2_vyasa_arrival
+-> camp_post_hanuman
