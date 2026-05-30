@@ -78,7 +78,7 @@ export class InkWrapper {
       if (key === 'yuga')       this.ui.setYugaTheme(value);
       if (key === 'background') this.ui.setBackground(value);
       if (key === 'encounter')  this.processEncounter(value);
-      if (key === 'actMap')     this.ui.showMap(value);
+      if (key === 'actMap')     this.ui.currentActId = value; // track for Help button, don't auto-open
       if (key === 'companion_pulse')  this.ui.pulseCompanion(value);
       if (key === 'companion_joined') {
         const comp = this.ui.allCompanions.find(c => c.id === value);

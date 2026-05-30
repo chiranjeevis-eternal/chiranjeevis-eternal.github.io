@@ -120,7 +120,7 @@ export class UIManager {
     const settingsBtn = document.getElementById('settings-btn');
     const closeBtn = document.getElementById('modal-close');
 
-    if (helpBtn) helpBtn.onclick = () => this.showMap();
+    if (helpBtn) helpBtn.onclick = () => this.showMap(this.currentActId || 'act1');
     if (settingsBtn) settingsBtn.onclick = () => this.showSettings();
     if (closeBtn) closeBtn.onclick = () => this.hideModal();
 
@@ -403,7 +403,7 @@ export class UIManager {
     return maps[id] || maps.act1;
   }
 
-  _mapShell(title, subtitle, bgGrad, content, legend) {
+  _mapShell(title, subtitle, bgGrad, content, legend, actId) {
     return `
       <div style="font-family:'Cinzel',serif; color:#c9a84c; text-align:center; font-size:1.1rem; letter-spacing:6px; margin-bottom:6px; text-shadow:0 0 12px rgba(201,168,76,0.4);">${title}</div>
       <div style="font-family:'Cormorant Garamond',serif; color:rgba(201,168,76,0.5); text-align:center; font-size:0.75rem; letter-spacing:3px; margin-bottom:12px; font-style:italic;">${subtitle}</div>
@@ -581,7 +581,8 @@ export class UIManager {
       'Two paths lead north. Both arrive at the same mountain.',
       'radial-gradient(ellipse at 40% 30%, #12101a 0%, #0a0a0f 55%, #060608 100%)',
       content.replace(/class="(march|pulse|fogDrift)act/g, `class="$1${actId}`),
-      `<span>◈ Current Position</span><span style="opacity:0.6">— Ridge of Saffron (Karma)</span><span style="color:#5080cc;opacity:0.7">-- Whispering Ravines (Shadow)</span><span style="opacity:0.4">▲ Mahendra Peaks (Destination)</span>`
+      `<span>◈ Current Position</span><span style="opacity:0.6">— Ridge of Saffron (Karma)</span><span style="color:#5080cc;opacity:0.7">-- Whispering Ravines (Shadow)</span><span style="opacity:0.4">▲ Mahendra Peaks (Destination)</span>`,
+      actId
     );
   }
 
@@ -646,7 +647,8 @@ export class UIManager {
       'Four immortals. Four memories. The company grows.',
       'radial-gradient(ellipse at 20% 40%, #0e1020 0%, #0a0c18 50%, #060810 100%)',
       content,
-      `<span>● Visited</span><span>◈ Current</span><span style="opacity:0.5;color:#8a2be2">🐴 Black horse sighting</span>`
+      `<span>● Visited</span><span>◈ Current</span><span style="opacity:0.5;color:#8a2be2">🐴 Black horse sighting</span>`,
+      actId
     );
   }
 
@@ -754,7 +756,8 @@ export class UIManager {
       'Greed. Delusion. Betrayal. Each must be faced before the march.',
       'radial-gradient(ellipse at 50% 15%, #14080a 0%, #0c0808 45%, #080608 100%)',
       content,
-      `<span>◈ Current</span><span style="color:#b48c00;opacity:0.7">-- Lobha path</span><span style="color:#6400a0;opacity:0.7">-- Moha path</span><span style="color:#32a032;opacity:0.7">— Bali descent</span><span style="color:#c83c00;opacity:0.6">✕ Krodha encounter</span>`
+      `<span>◈ Current</span><span style="color:#b48c00;opacity:0.7">-- Lobha path</span><span style="color:#6400a0;opacity:0.7">-- Moha path</span><span style="color:#32a032;opacity:0.7">— Bali descent</span><span style="color:#c83c00;opacity:0.6">✕ Krodha encounter</span>`,
+      actId
     );
   }
 
@@ -851,7 +854,8 @@ export class UIManager {
       'What lies at the center of the Kali Yuga.',
       'radial-gradient(ellipse at 50% 50%, #0f0015 0%, #070010 45%, #040008 100%)',
       content,
-      `<span>◈ Current</span><span>● Cleared</span><span style="color:#8b0000;opacity:0.7">◆ Encounter</span><span style="color:#8a2be2;opacity:0.5">~ Illusion</span>`
+      `<span>◈ Current</span><span>● Cleared</span><span style="color:#8b0000;opacity:0.7">◆ Encounter</span><span style="color:#8a2be2;opacity:0.5">~ Illusion</span>`,
+      actId
     );
   }
 
