@@ -4,6 +4,7 @@
 # background: act2
 # actMap: act2
 # audio: valley_wind
+# image: act2/1_valley_of_ash.png
 
 You lead the survivors through the narrow throat of the ravine. On the other side, the world opens up into a vast, grey wound in the earth: **The Valley of Ash**.
 

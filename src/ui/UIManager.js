@@ -605,6 +605,25 @@ export class UIManager {
     }, 800);
   }
 
+  setSceneImage(imagePath) {
+    const container = document.getElementById('illustration-container');
+    const img = document.getElementById('scene-illustration');
+    
+    if (!imagePath) {
+      container.classList.add('hidden-fade');
+      return;
+    }
+    
+    // Smooth transition
+    container.classList.add('hidden-fade');
+    setTimeout(() => {
+      img.src = `assets/graphics/${imagePath}`;
+      img.onload = () => {
+        container.classList.remove('hidden-fade');
+      };
+    }, 400);
+  }
+
   getState() {
     return {
       title: this.currentTitle,

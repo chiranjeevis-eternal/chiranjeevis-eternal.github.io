@@ -3,6 +3,7 @@
 # yuga: kali
 # background: act0
 # actMap: act1
+# image: act0/1_shambhala_establishing.png
 
 The sky above the hidden valley of Shambhala is not blue. It has not been blue for a century. It is the colour of bruised iron, choked by the invisible weight of a world decaying beyond the mountains. The great tectonic spine of the Himalayas, which has shielded this sanctuary since the dawn of the Treta Yuga, offers no protection against the creeping rot of the age.
 
@@ -10,6 +11,11 @@ You are standing at the edge of the sacred eastern treeline. The wind, usually c
 
 It carries the faint, metallic tang of blood spilt a thousand miles away. You are young in this physical vessel—a man barely cresting into adulthood—but the memories locked deep within your blood are older than the continental plates shifting beneath your feet. You feel the unravelling of the Kali Yuga in your very bones. The great wheel of time is grinding to a halt, and it demands blood to turn again.
 
+* [Look at yourself.]
+    -> prologue_intro
+
+=== prologue_intro ===
+# image: act0/2_kalki_intro.png
 You wear no armor yet, only the woven cotton of a village ascetic, but a heavy iron blade hangs at your hip. It was forged in silence by elders who refused to meet your eye when they handed it to you. They knew what you were born to do.
 
 + [Observe the terrible silence of the valley.]
@@ -25,6 +31,7 @@ You wear no armor yet, only the woven cotton of a village ascetic, but a heavy i
 === prologue_p2 ===
 # title: The Scent of Smoke
 # yuga: kali
+# image: act0/3_village_smoke.png
 
 A sound breaks the stillness. A sharp, singular crack that echoes off the granite face of the northern gorge. 
 
@@ -38,6 +45,7 @@ You watch an ember drift lazily upward, catching the anemic low light of the mor
     ~ dharma += 10
     ~ karma += 5
     ~ prologue_village_approach = "sprint"
+    # image: act0/4_kalki_sprint.png
     There is no time for complex strategy; there is only immediate duty. You abandon the safety of the treeline and sprint down the rocky incline. Your boots kick up clouds of dry dust. Your mind clears of all philosophical burdens, focusing entirely on the geometry of the descent and the position of the smoke. You will throw yourself between the swords of the invaders and the fragile bodies of the elders who raised you. 
     -> act1_house
 

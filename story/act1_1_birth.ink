@@ -1,6 +1,7 @@
 === act1_house ===
 # title: The Father's House
 # yuga: kali
+# image: act1/1_fathers_house.png
 
 You are twelve years old when your father, Vishnuyasha, takes you into the inner sanctum of the house. The air here smells of old parchment and the heavy, sweet scent of Tulsi.
 
@@ -21,6 +22,7 @@ He looks at you with a weight in his eyes that no child should have to carry. "Y
 === act1_horse ===
 # title: The Horse at Dawn
 # yuga: kali
+# image: act1/2_devadatta.png
 
 Years pass in a blur of scripture and woodcutting. One morning, just as the sun is a bruised purple slit on the horizon, you find a white horse at the edge of the forest. 
 
@@ -41,6 +43,7 @@ This is **Devadatta**.
 === act1_screams ===
 # title: The Screams of Shambhala
 # yuga: kali
+# image: act1/3_village_battle.png
 
 The vision of the mountain peaks of the Satya Yuga vanishes like smoke in a gale. You are back in the present, your feet planted in the dry earth of Shambhala.
 
@@ -106,6 +109,7 @@ The threat is gone, but Shambhala is burning. The snow falling from the iron sky
 === act1_mothers_wisdom ===
 # title: The Mother's Wisdom
 # yuga: kali
+# image: act1/4_mothers_wisdom.png
 
 You find your mother, Sumati, in the ruins of the temple. She is tending to a wounded child, her face serene despite the chaos.
 

@@ -76,6 +76,8 @@ export class InkWrapper {
       if (key === 'vision_chiranjeevi') this._pendingVisionMeta.chiranjeevi = value;
     });
 
+    let hasImage = false;
+
     // Second pass: act on command tags
     tags.forEach(tag => {
       if (!tag.includes(':')) return;
@@ -93,6 +95,14 @@ export class InkWrapper {
       if (key === 'shake') this.ui.shakeScene(value);
       if (key === 'flash') {
         if (value === 'red') this.ui.flashRed();
+      }
+      if (key === 'image') {
+        hasImage = true;
+        if (value === 'clear') {
+          this.ui.setSceneImage(null);
+        } else {
+          this.ui.setSceneImage(value);
+        }
       }
       if (key === 'distortion') {
         this.ui.setDistortion(value === 'start');
@@ -133,6 +143,10 @@ export class InkWrapper {
         }
       }
     });
+
+    if (!hasImage) {
+      this.ui.setSceneImage(null);
+    }
   }
 
   processEncounter(id) {
