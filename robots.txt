@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chiranjeevis-eternal.github.io/sitemap.xml
